@@ -182,6 +182,15 @@ class Service:
         parsed.update({"server": server_side, "log_tail": text[-4000:]})
         return parsed
 
+    def run_command(self, client, name_or_guid, timeout_ms=600000):
+        """Execute one IDE command and judge the result from the engine log written meanwhile."""
+        offset = self.engine_log_offset()
+        result = client.execute(name_or_guid, timeout_ms=timeout_ms)
+        text = self.engine_log_since(offset)
+        parsed = self.parse_engine_log(text)
+        parsed.update({"command": result, "log_tail": text[-4000:]})
+        return parsed
+
     def state(self):
         with open(self.state_path, "r", encoding="utf-8") as handle:
             return json.load(handle)

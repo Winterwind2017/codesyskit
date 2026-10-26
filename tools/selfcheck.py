@@ -69,6 +69,15 @@ def main():
     check("task configuration is created for compilable projects",
           "create_task_configuration" in source)
 
+    # 5b. transport and path invariants learned the hard way
+    check("replies are utf-8 and fully sent",
+          "Encoding.UTF8.GetBytes(text)" in source and "while sent < total" in source)
+    check("requests decoded as utf-8", '.decode("utf-8", "replace")' in source)
+    for command in ("cmd_object_rename", "cmd_object_delete", "cmd_object_move"):
+        body = source.split("def %s(" % command, 1)[1].split("\ndef ", 1)[0]
+        check("%s guards the project root" % command, "mutable_node(" in body)
+    check("api inventory present", os.path.exists(os.path.join(ROOT, "docs", "API-SURFACE.md")))
+
     # 6. quoting helper is used everywhere a process is launched
     check("service uses build_command_line", "build_command_line(" in read(
         os.path.join(SRC, "codesyskit", "service.py")))

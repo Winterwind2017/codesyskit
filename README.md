@@ -28,6 +28,21 @@ So the engine is hosted where it belongs — inside a headless CODESYS process �
 it over loopback. See `docs/ARCHITECTURE.md` for the full reasoning and `COM-vs-SERVER.md` in the
 research notes for the comparison table.
 
+## What you can drive
+
+| area | commands |
+| --- | --- |
+| session | `ping` `version` `status` (service) |
+| devices | `devices` (1 562 shipped descriptions, filter by name/vendor) |
+| project | `project.create/open/save/close/info` `tree` `projects` |
+| code | `pou.create/read/write` `object.info/rename/delete/move` `folder.create` `find.text` |
+| tasks | `task.create` `tasks` |
+| build | `build` (judged from the engine log) |
+| IDE commands | `commands` (870) `execute` |
+| libraries | `libraries` (537 available) `library.add` |
+| exchange | `export.xml` `import.xml` `export.native` `project.archive` `generate.runtime` |
+| online | `online.state/login/logout/start/stop/read/write/download` (needs gateway+PLC) |
+
 ## Verified behaviour
 
 Live end-to-end (`python tests/live_service.py`, 16/16):
@@ -45,6 +60,22 @@ Live end-to-end (`python tests/live_service.py`, 16/16):
 | bare project (no task) | **compiles nothing, 0 errors** — the trap this kit warns about |
 | bad token / unknown command | `E_TOKEN` / `E_UNKNOWN_CMD` |
 | `service.stop` | 1.2 s |
+
+Extended surface (`python tests/live_surface.py`, 22/22):
+
+| step | result |
+| --- | --- |
+| `commands` | 870 IDE commands with guid/tokens/description |
+| `execute 重新编译` | judged from the engine log, 0 errors |
+| move / rename / delete round trip | restored to the original path |
+| UTF-8 text round trip | `(* 中文注释：计数器 *)` read back byte for byte |
+| `find.text` | 3 hits with line numbers |
+| `libraries` | 4 referenced, 537 available; `library.add("Standard")` sticks |
+| `export.xml` | 1 095 B (app) / 1 988 B (device subtree) |
+| `import.xml` | empty project children 2 → 3 |
+| `export.native` / `project.archive` / `generate.runtime` | 23 KB / 5.4 MB / `surfaceItf.m4` |
+| `project.doc` | honest `E_UNAVAILABLE` (silent no-op headless) |
+| `online.state` / `online.login` | `logged_in:false` / `E_CODESYS` with the gateway message |
 
 ## Install
 
@@ -69,6 +100,12 @@ codesyskit ping
 codesyskit devices --filter "Control Win" --limit 5
 codesyskit call build --args '{}' --timeout 600
 codesyskit batch --file calls.json
+codesyskit commands --filter 编译      # 870 IDE commands
+codesyskit execute 重新编译            # run one, judged from the engine log
+codesyskit find nCounter              # search declarations + implementations
+codesyskit libs                       # referenced / available libraries
+codesyskit export-xml out.xml         # PLCopenXML of the active application
+codesyskit archive job.projectarchive
 codesyskit run script.py              # one-shot --runscript, no resident process
 codesyskit server-script [--out f]    # print the generated IronPython server
 codesyskit stop

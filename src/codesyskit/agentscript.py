@@ -34,6 +34,7 @@ MESSAGE_CATEGORY = "{194B48A9-AB51-43ae-B9A9-51D3EDAADDF3}"
 
 import scriptengine
 from System import Array, Byte, Guid
+from System.Text import Encoding
 from System.Net import IPAddress, IPEndPoint
 from System.Net.Sockets import Socket, SocketType, ProtocolType, AddressFamily
 
@@ -63,16 +64,27 @@ def log(text):
         pass
 
 
+def utext(value):
+    """IronPython: str() of a non-ASCII unicode raises, unicode() never does."""
+    try:
+        return unicode(value)
+    except Exception:
+        return str(value)
+
+
 def json_dump(value):
     return json.dumps(value, ensure_ascii=False)
 
 
 def reply(sock, payload):
+    """Encode UTF-8 and send every byte (Socket.Send may send a prefix only)."""
     text = payload if payload.endswith("\n") else payload + "\n"
-    data = Array.CreateInstance(Byte, len(text))
-    for index in range(len(text)):
-        data[index] = ord(text[index])
-    sock.Send(data)
+    data = Encoding.UTF8.GetBytes(text)
+    sent = 0
+    total = data.Length
+    while sent < total:
+        sent += sock.Send(data, sent, total - sent,
+                           __import__("System.Net.Sockets", fromlist=["SocketFlags"]).SocketFlags.None)
 
 
 def ok(request_id, result, elapsed_ms):
@@ -95,11 +107,19 @@ def name_of(obj):
         return None
 
 
-def path_of(obj, root):
+def path_of(obj, root=None):
+    """Walk the parent chain; the project itself contributes the first segment.
+
+    Identity comparisons against the project are unreliable (the engine hands out fresh
+    wrappers), so the path is built from names only and ``walk`` skips a leading project name.
+    """
     parts = []
     node = obj
-    while node is not None and node is not root:
-        parts.insert(0, name_of(node) or "?")
+    while node is not None:
+        name = name_of(node)
+        if name is None:
+            break                      # the project object is the root and has no name
+        parts.insert(0, name)
         try:
             node = node.parent
         except Exception:
@@ -127,9 +147,11 @@ def walk(root, path, create=False):
     node = root
     if not cleaned:
         return node
-    for segment in cleaned.split("/"):
-        if not segment:
-            continue
+    segments = [segment for segment in cleaned.split("/") if segment]
+    root_name = name_of(root)
+    if segments and root_name and segments[0] == root_name:
+        segments = segments[1:]
+    for segment in segments:
         found = None
         for child in children(node):
             if name_of(child) == segment:
@@ -303,11 +325,19 @@ def cmd_project_create(args):
     folder = os.path.dirname(path)
     if folder and not os.path.isdir(folder):
         os.makedirs(folder)
+    previous = PROJECTS.primary
+    closed_previous = False
+    if previous is not None:
+        try:
+            previous.close()
+            closed_previous = True
+        except Exception:
+            pass
     if os.path.exists(path):
         os.remove(path)
     project = PROJECTS.create(path)
     device_name = args.get("device")
-    result = {"path": str(project.path)}
+    result = {"path": str(project.path), "closed_previous": closed_previous}
     if device_name:
         picked = None
         for device in list(REPOSITORY.get_all_devices()):
@@ -475,6 +505,402 @@ def cmd_tasks(args):
     return {"count": len(items), "items": items}
 
 
+def object_path(project, path):
+    return path_of(walk(project, path), project)
+
+
+def mutable_node(project, path):
+    """Resolve a path for a mutating command; refuse the unnamed project root."""
+    node = walk(project, path)
+    if name_of(node) is None:
+        raise CmdError("E_STATE", "refusing to modify the project root (%r)" % (path,))
+    return node
+
+
+def library_manager_object(application):
+    for child in children(application):
+        try:
+            if child.is_libman:
+                return child
+        except Exception:
+            continue
+    return None
+
+
+def command_lookup(name_or_guid=None, index=None):
+    commands = list(SYSTEM.commands)
+    if index is not None:
+        return commands[int(index)]
+    wanted = utext(name_or_guid) if name_or_guid else ""
+    for command in commands:
+        try:
+            if utext(command.name) == wanted or utext(command.guid) == wanted:
+                return command
+        except Exception:
+            continue
+    for command in commands:
+        try:
+            if wanted and wanted.lower() in utext(command.name).lower():
+                return command
+        except Exception:
+            continue
+    raise CmdError("E_ARGS", "no IDE command matches %r" % (wanted,))
+
+
+
+def cmd_commands(args):
+    needle = args.get("filter")
+    limit = int(args.get("limit", 0) or 0)
+    items = []
+    total = 0
+    for command in list(SYSTEM.commands):
+        try:
+            name = utext(command.name)
+            guid = utext(command.guid)
+            description = utext(command.description or "")
+            tokens = []
+            try:
+                tokens = [utext(token) for token in list(command.tokens)]
+            except Exception:
+                tokens = []
+        except Exception:
+            continue
+        total += 1
+        if needle:
+            haystack = (name + " " + description + " " + " ".join(tokens)).lower()
+            if needle.lower() not in haystack:
+                continue
+        if limit and len(items) >= limit:
+            continue
+        items.append({"name": name, "guid": guid, "description": description,
+                      "tokens": tokens})
+    return {"count": total, "returned": len(items), "items": items}
+
+
+def cmd_execute(args):
+    target = args.get("name") or args.get("guid")
+    command = command_lookup(target, args.get("index"))
+    started = time.time()
+    command.execute()
+    return {"name": utext(command.name), "guid": utext(command.guid),
+            "elapsed_ms": int((time.time() - started) * 1000)}
+
+
+def cmd_object_info(args):
+    project = primary_project()
+    node = walk(project, args.get("path", ""))
+    info = {"path": path_of(node, project), "name": name_of(node)}
+    for flag in ("is_folder", "has_textual_declaration", "has_textual_implementation",
+                 "is_application", "is_libman", "is_task_configuration"):
+        try:
+            info[flag] = bool(getattr(node, flag))
+        except Exception:
+            info[flag] = None
+    info["children"] = [name_of(child) for child in children(node)]
+    return info
+
+
+def cmd_object_rename(args):
+    project = primary_project()
+    node = mutable_node(project, args.get("path", ""))
+    new_name = args.get("name")
+    if not new_name:
+        raise CmdError("E_ARGS", "object.rename needs 'name'")
+    node.rename(new_name)
+    return {"path": path_of(node, project), "name": name_of(node)}
+
+
+def cmd_object_delete(args):
+    project = primary_project()
+    node = mutable_node(project, args.get("path", ""))
+    name = name_of(node)
+    node.remove()
+    return {"deleted": name}
+
+
+def cmd_object_move(args):
+    project = primary_project()
+    node = mutable_node(project, args.get("path", ""))
+    if not args.get("parent"):
+        raise CmdError("E_ARGS", "object.move needs 'parent'")
+    parent = mutable_node(project, args["parent"])
+    index = int(args.get("index", -1))
+    node.move(parent, index)
+    return {"path": path_of(node, project), "parent": path_of(parent, project)}
+
+
+def cmd_folder_create(args):
+    project = primary_project()
+    name = args.get("name")
+    if not name:
+        raise CmdError("E_ARGS", "folder.create needs 'name'")
+    parent = walk(project, args["parent"]) if args.get("parent") else project
+    parent.create_folder(name)
+    parent_path = path_of(parent, project)
+    path = (parent_path.rstrip("/") + "/" + name) if parent_path != "/" else "/" + name
+    node = walk(project, path)             # verify it really exists
+    return {"path": path_of(node, project), "name": name_of(node)}
+
+
+def cmd_find_text(args):
+    project = primary_project()
+    needle = args.get("pattern")
+    if not needle:
+        raise CmdError("E_ARGS", "find.text needs 'pattern'")
+    case_sensitive = bool(args.get("case_sensitive"))
+    part = args.get("part") or "both"
+    root = walk(project, args.get("path", ""))
+    needle_cmp = needle if case_sensitive else needle.lower()
+    matches = []
+    limit = int(args.get("limit", 200) or 200)
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        for child in children(node):
+            stack.append(child)
+            parts = []
+            if part in ("both", "declaration"):
+                parts.append("declaration")
+            if part in ("both", "implementation"):
+                parts.append("implementation")
+            for which in parts:
+                document = None
+                try:
+                    document = getattr(child, "textual_" + which)
+                except Exception:
+                    continue
+                if document is None:
+                    continue
+                text = document.text
+                haystack = text if case_sensitive else text.lower()
+                start = 0
+                while len(matches) < limit:
+                    found = haystack.find(needle_cmp, start)
+                    if found < 0:
+                        break
+                    line_number = haystack.count("\n", 0, found) + 1
+                    line_start = haystack.rfind("\n", 0, found) + 1
+                    line_end = haystack.find("\n", found)
+                    if line_end < 0:
+                        line_end = len(text)
+                    matches.append({"path": path_of(child, project), "part": which,
+                                    "line": line_number,
+                                    "text": text[line_start:line_end][:200]})
+                    start = found + 1
+                if len(matches) >= limit:
+                    break
+            if len(matches) >= limit:
+                break
+        if len(matches) >= limit:
+            break
+    return {"count": len(matches), "items": matches}
+
+
+def cmd_libraries(args):
+    _, application = active_application()
+    libman = library_manager_object(application)
+    referenced = []
+    if libman is not None:
+        try:
+            referenced = [str(item) for item in list(libman.get_libraries())]
+        except Exception:
+            referenced = []
+    available = 0
+    try:
+        available = len(list(scriptengine.librarymanager.get_all_libraries()))
+    except Exception:
+        available = 0
+    return {"referenced": referenced, "referenced_count": len(referenced),
+            "available_count": available}
+
+
+def cmd_library_add(args):
+    _, application = active_application()
+    name = args.get("name")
+    if not name:
+        raise CmdError("E_ARGS", "library.add needs 'name'")
+    libman = library_manager_object(application)
+    if libman is None:
+        raise CmdError("E_STATE", "application has no library manager")
+    libman.add_library(name)
+    return {"added": name,
+            "referenced": [str(item) for item in list(libman.get_libraries())]}
+
+
+def cmd_export_xml(args):
+    project = primary_project()
+    path = args.get("path")
+    if not path:
+        raise CmdError("E_ARGS", "export.xml needs 'path'")
+    if args.get("target"):
+        targets = [walk(project, args["target"])]
+    else:
+        # the project root cannot be exported directly (cast error), the application can
+        _, application = active_application()
+        targets = [application]
+    folder = os.path.dirname(path)
+    if folder and not os.path.isdir(folder):
+        os.makedirs(folder)
+    project.export_xml(targets, path=path)
+    return {"path": path, "exists": os.path.exists(path),
+            "size": os.path.getsize(path) if os.path.exists(path) else 0}
+
+
+def cmd_import_xml(args):
+    project = primary_project()
+    path = args.get("path")
+    if not path:
+        raise CmdError("E_ARGS", "import.xml needs 'path'")
+    if not os.path.exists(path):
+        raise CmdError("E_STATE", "no such xml: %s" % path)
+    before = len(children(project))
+    try:
+        project.import_xml(path, None)
+    except TypeError:
+        project.import_xml(path)
+    after = len(children(project))
+    return {"path": path, "children_before": before, "children_after": after}
+
+
+def cmd_export_native(args):
+    project = primary_project()
+    path = args.get("path")
+    if not path:
+        raise CmdError("E_ARGS", "export.native needs 'path'")
+    targets = [walk(project, args["target"])] if args.get("target") else [project]
+    project.export_native(targets, path, recursive=True)
+    return {"path": path, "exists": os.path.exists(path),
+            "size": os.path.getsize(path) if os.path.exists(path) else 0}
+
+
+def cmd_archive(args):
+    project = primary_project()
+    path = args.get("path")
+    if not path:
+        raise CmdError("E_ARGS", "project.archive needs 'path'")
+    folder = os.path.dirname(path)
+    if folder and not os.path.isdir(folder):
+        os.makedirs(folder)
+    project.save_archive(path)
+    return {"path": path, "exists": os.path.exists(path),
+            "size": os.path.getsize(path) if os.path.exists(path) else 0}
+
+
+def cmd_generate_runtime(args):
+    project = primary_project()
+    directory = args.get("directory")
+    if not directory:
+        raise CmdError("E_ARGS", "generate.runtime needs 'directory'")
+    if not os.path.isdir(directory):
+        os.makedirs(directory)
+    project.generate_runtime_system_files(directory, generate_m4=True, generate_c=False)
+    return {"directory": directory, "files": sorted(os.listdir(directory))}
+
+
+def cmd_doc_export(args):
+    project = primary_project()
+    path = args.get("path")
+    if not path:
+        raise CmdError("E_ARGS", "project.doc needs 'path'")
+    project.export_doc(path)
+    exists = os.path.exists(path)
+    if not exists:
+        raise CmdError("E_UNAVAILABLE",
+                       "project.export_doc produces no file in --noUI mode (measured)",
+                       "the call returns normally but nothing is written")
+    return {"path": path, "exists": True, "size": os.path.getsize(path)}
+
+
+def online_application(args):
+    project, application = active_application()
+    return scriptengine.online.create_online_application(application)
+
+
+def cmd_online_login(args):
+    online_app = online_application(args)
+    option = scriptengine.OnlineChangeOption.Never
+    if args.get("change_option") == "update":
+        option = scriptengine.OnlineChangeOption.Always
+    elif args.get("change_option") == "ask":
+        option = scriptengine.OnlineChangeOption.Ask
+    try:
+        online_app.login(option, bool(args.get("delete_foreign", False)))
+    except Exception as exc:
+        raise CmdError("E_CODESYS",
+                       "login failed: %s" % str(exc)[:400],
+                       "check that the CODESYS Gateway service and a PLC runtime are running")
+    return {"logged_in": bool(online_app.is_logged_in),
+            "application_state": str(online_app.application_state),
+            "operation_state": str(online_app.operation_state)}
+
+
+def cmd_online_logout(args):
+    online_app = online_application(args)
+    online_app.logout()
+    return {"logged_in": bool(online_app.is_logged_in)}
+
+
+def cmd_online_state(args):
+    online_app = online_application(args)
+    state = {"logged_in": bool(online_app.is_logged_in)}
+    for attribute in ("application_state", "operation_state"):
+        try:
+            state[attribute] = str(getattr(online_app, attribute))
+        except Exception as exc:
+            state[attribute] = "unknown (%s)" % type(exc).__name__
+    return state
+
+
+def cmd_online_start(args):
+    online_app = online_application(args)
+    online_app.login(scriptengine.OnlineChangeOption.Never, False)
+    online_app.start()
+    return {"started": True, "application_state": str(online_app.application_state)}
+
+
+def cmd_online_stop(args):
+    online_app = online_application(args)
+    online_app.login(scriptengine.OnlineChangeOption.Never, False)
+    online_app.stop()
+    return {"stopped": True, "application_state": str(online_app.application_state)}
+
+
+def cmd_online_read(args):
+    online_app = online_application(args)
+    online_app.login(scriptengine.OnlineChangeOption.Never, False)
+    expressions = args.get("expressions") or ([args["expression"]] if args.get("expression") else [])
+    if not expressions:
+        raise CmdError("E_ARGS", "online.read needs 'expression' or 'expressions'")
+    if len(expressions) == 1:
+        return {"expression": expressions[0], "value": str(online_app.read_value(expressions[0]))}
+    values = online_app.read_values(expressions)
+    return {"values": [{"expression": expr, "value": str(value)}
+                       for expr, value in zip(expressions, values)]}
+
+
+def cmd_online_write(args):
+    online_app = online_application(args)
+    online_app.login(scriptengine.OnlineChangeOption.Never, False)
+    expression = args.get("expression")
+    if expression is None:
+        raise CmdError("E_ARGS", "online.write needs 'expression'")
+    online_app.set_prepared_value(expression, args.get("value"))
+    online_app.write_prepared_values()
+    return {"written": True, "expression": expression, "value": str(args.get("value"))}
+
+
+def cmd_online_download(args):
+    project, application = active_application()
+    online_app = scriptengine.online.create_online_application(application)
+    try:
+        online_app.login(scriptengine.OnlineChangeOption.Never, False)
+        online_app.start()
+    except Exception as exc:
+        raise CmdError("E_CODESYS", "download failed: %s" % str(exc)[:400],
+                       "needs a running gateway + PLC runtime")
+    return {"downloaded": True, "application_state": str(online_app.application_state)}
+
+
 def cmd_build(args):
     project, application = active_application()
     cleared = False
@@ -574,6 +1000,30 @@ COMMANDS = {
     "pou.create": cmd_pou_create,
     "task.create": cmd_task_create,
     "tasks": cmd_tasks,
+    "commands": cmd_commands,
+    "execute": cmd_execute,
+    "object.info": cmd_object_info,
+    "object.rename": cmd_object_rename,
+    "object.delete": cmd_object_delete,
+    "object.move": cmd_object_move,
+    "folder.create": cmd_folder_create,
+    "find.text": cmd_find_text,
+    "libraries": cmd_libraries,
+    "library.add": cmd_library_add,
+    "export.xml": cmd_export_xml,
+    "import.xml": cmd_import_xml,
+    "export.native": cmd_export_native,
+    "project.archive": cmd_archive,
+    "generate.runtime": cmd_generate_runtime,
+    "project.doc": cmd_doc_export,
+    "online.login": cmd_online_login,
+    "online.logout": cmd_online_logout,
+    "online.state": cmd_online_state,
+    "online.start": cmd_online_start,
+    "online.stop": cmd_online_stop,
+    "online.read": cmd_online_read,
+    "online.write": cmd_online_write,
+    "online.download": cmd_online_download,
     "build": cmd_build,
     "messages": cmd_messages,
     "batch": cmd_batch,
@@ -658,18 +1108,23 @@ def serve():
         try:
             # One request per connection: the engine is single threaded, and a keep-alive
             # connection would let one client lock everyone else out of the accept loop.
-            while "\n" not in pending:
-                count = client.Receive(buffer)
-                if count <= 0:
+            # Bytes are accumulated and decoded as UTF-8 so non-ASCII text survives.
+            while True:
+                raw = ""
+                while "\n" not in raw:
+                    count = client.Receive(buffer)
+                    if count <= 0:
+                        break
+                    raw += "".join([chr(buffer[i]) for i in range(count)])
+                if "\n" not in raw:
                     break
-                pending += "".join([chr(buffer[i]) for i in range(count)])
-            if "\n" in pending:
-                line = pending.split("\n", 1)[0]
+                line = raw.split("\n", 1)[0].decode("utf-8", "replace")
                 if line.strip():
                     payload, should_quit = handle_line(line)
                     reply(client, payload)
                     if should_quit:
                         running = False
+                break
         except Exception as exc:
             log("connection error: %s" % exc)
         finally:

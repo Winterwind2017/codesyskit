@@ -170,6 +170,107 @@ class CodesysClient:
         return self.call("batch", calls=calls, stop_on_error=stop_on_error,
                          timeout_ms=timeout_ms)
 
+    # -- IDE commands ------------------------------------------------------
+    def commands(self, filter=None, limit=0):
+        args = {"limit": limit}
+        if filter:
+            args["filter"] = filter
+        return self.call("commands", **args)
+
+    def execute(self, name=None, guid=None, index=None, timeout_ms=600000):
+        args = {}
+        for key, value in (("name", name), ("guid", guid), ("index", index)):
+            if value is not None:
+                args[key] = value
+        if not args:
+            raise ValueError("execute needs a name, a guid or an index")
+        return self.call("execute", timeout_ms=timeout_ms, **args)
+
+    # -- object structure --------------------------------------------------
+    def object_info(self, path):
+        return self.call("object.info", path=path)
+
+    def rename(self, path, name):
+        return self.call("object.rename", path=path, name=name)
+
+    def delete(self, path):
+        return self.call("object.delete", path=path)
+
+    def move(self, path, parent, index=-1):
+        return self.call("object.move", path=path, parent=parent, index=index)
+
+    def mkdir(self, name, parent=None):
+        args = {"name": name}
+        if parent:
+            args["parent"] = parent
+        return self.call("folder.create", **args)
+
+    # -- search ------------------------------------------------------------
+    def find(self, pattern, case_sensitive=False, part="both", limit=200, path=None):
+        args = {"pattern": pattern, "case_sensitive": case_sensitive, "part": part,
+                "limit": limit}
+        if path:
+            args["path"] = path
+        return self.call("find.text", **args)
+
+    # -- libraries ---------------------------------------------------------
+    def libraries(self):
+        return self.call("libraries")
+
+    def add_library(self, name):
+        return self.call("library.add", name=name)
+
+    # -- exchange ----------------------------------------------------------
+    def export_xml(self, path, target=None):
+        args = {"path": path}
+        if target:
+            args["target"] = target
+        return self.call("export.xml", **args)
+
+    def import_xml(self, path):
+        return self.call("import.xml", path=path)
+
+    def export_native(self, path, target=None):
+        args = {"path": path}
+        if target:
+            args["target"] = target
+        return self.call("export.native", **args)
+
+    def archive(self, path):
+        return self.call("project.archive", path=path)
+
+    def generate_runtime(self, directory):
+        return self.call("generate.runtime", directory=directory)
+
+    def export_doc(self, path):
+        return self.call("project.doc", path=path)
+
+    # -- online (needs a gateway + PLC runtime) ----------------------------
+    def online_state(self):
+        return self.call("online.state")
+
+    def online_login(self, change_option="never", delete_foreign=False):
+        return self.call("online.login", change_option=change_option,
+                         delete_foreign=delete_foreign)
+
+    def online_logout(self):
+        return self.call("online.logout")
+
+    def online_start(self):
+        return self.call("online.start")
+
+    def online_stop(self):
+        return self.call("online.stop")
+
+    def online_read(self, expression):
+        return self.call("online.read", expression=expression)
+
+    def online_write(self, expression, value):
+        return self.call("online.write", expression=expression, value=value)
+
+    def online_download(self):
+        return self.call("online.download")
+
     def quit(self):
         return self.call("quit")
 

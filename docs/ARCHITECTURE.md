@@ -7,7 +7,7 @@
 | `CODESYS.exe` is a **managed** .NET 4.8 launcher | REA: `managed=true`, 30 types / 276 methods, 0.5 MB |
 | the engine is a plugin, not a COM server | `RegAsm /regfile`: 3 coclasses, none of them the engine |
 | scripting is IronPython **2.7.12** | `ScriptLib\4.1.0.0` (515 stdlib modules) + `ScriptEngine.plugin 4.2.0.0` |
-| the API is fully documented offline | `ScriptLib\Stubs\scriptengine\*.pyi`: 50 modules / 262 classes / 1395 methods / 776 properties |
+| the API is fully documented offline | `ScriptLib\Stubs\scriptengine\*.pyi`: 50 modules, 262 classes, 1395 `def` lines (636 plain methods + 733 property accessors) — full catalog in `docs/API-SURFACE.md` |
 | the engine can run headless | `--profile="…" --noUI --runscript=…` |
 | 1562 device descriptions ship with the install | `device_repository.get_all_devices()` |
 | 870 IDE commands exist | `len(system.commands)` |
@@ -88,6 +88,31 @@ closes; the client opens a fresh connection per call (≈1 ms on loopback).
 
 Writes go through `replace(offset, length, text)` (or `remove(offset, length)` + `append(text)`;
 `remove` takes **(offset, length)** — reversed arguments silently turn the document into old+new).
+
+## 4b. Findings from the extended surface sweep
+
+* **`system.commands` is the general escape hatch**: 870 commands, each with `name`, `guid`,
+  `description`, `tokens` and `execute()`. `execute` is judged the same way as `build` — from the
+  engine's stderr window — so `service.run_command(client, "重新编译")` returns
+  `{ok, errors, warnings, messages}`.
+* **Libraries are scriptable**: `libman.get_libraries()` lists the referenced ones and
+  `add_library("Standard")` really appends to that list (verified twice); the global
+  `librarymanager.get_all_libraries()` reports **537** available libraries.
+* **Exchange works, with one shape constraint**: `export_xml([application])` writes 1 KB of
+  PLCopenXML, `export_xml([device])` 2 KB, `export_native` 23 KB, `save_archive` 5.4 MB; the
+  project root itself raises a cast error, so the default target is the active application.
+  `import_xml` succeeds into an **empty** project (children 2 → 3) and fails with
+  `未找到可导入的对象` when the target already has the same object.
+* **`export_doc` is a silent no-op in `--noUI`** (returns normally, writes nothing) — the command
+  reports `E_UNAVAILABLE` instead of pretending.
+* **No `create_symbol_configuration`** on application or device in this version
+  (`AttributeError`), so symbol-config creation is out of scope here.
+* **Two transport bugs found by the sweep** and fixed: replies were written as raw char codes
+  (`Cannot convert int(36333) to Byte` for any Chinese reply) and `Socket.Send` was assumed to send
+  everything. Replies are now UTF-8 encoded and sent in a loop; requests are decoded as UTF-8.
+* **Path building must avoid identity comparisons**: the engine hands out fresh wrapper objects, so
+  `/A/B/C` paths are built from names until the unnamed project root; mutating commands refuse a
+  path that resolves to the root.
 
 ## 5. Process model
 

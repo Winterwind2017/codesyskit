@@ -56,6 +56,30 @@ error   : {"v":1,"id":"<same>","ok":false,"code":"E_STATE",
 | `tasks` | — | `count`, `items[{name,path,kind,interval,pous[]}]` |
 | `build` | — | `ok`, `errors`, `warnings`, `infos`, `count`, `items[]`, `cleared`, `build_ms` (server-side view; usually empty, see §4) |
 | `messages` | `clear?` | same shape as `build` |
+| `commands` | `filter?`, `limit?` | `count`, `returned`, `items[{name,guid,description,tokens}]` |
+| `execute` | `name` \| `guid` \| `index` | `name`, `guid`, `elapsed_ms` |
+| `object.info` | `path` | `name`, `path`, `is_folder`, `has_textual_declaration`, `has_textual_implementation`, `children[]` |
+| `object.rename` | `path`, `name` | `path`, `name` |
+| `object.delete` | `path` | `deleted` |
+| `object.move` | `path`, `parent`, `index?` | `path`, `parent` |
+| `folder.create` | `name`, `parent?` | `path`, `name` |
+| `find.text` | `pattern`, `case_sensitive?`, `part?`, `limit?`, `path?` | `count`, `items[{path,part,line,text}]` |
+| `libraries` | — | `referenced[]`, `referenced_count`, `available_count` |
+| `library.add` | `name` | `added`, `referenced[]` |
+| `export.xml` | `path`, `target?` | `path`, `exists`, `size` |
+| `import.xml` | `path` | `path`, `children_before`, `children_after` |
+| `export.native` | `path`, `target?` | `path`, `exists`, `size` |
+| `project.archive` | `path` | `path`, `exists`, `size` |
+| `generate.runtime` | `directory` | `directory`, `files[]` |
+| `project.doc` | `path` | `E_UNAVAILABLE` in `--noUI` (measured no-op) |
+| `online.state` | — | `logged_in`, `application_state`, `operation_state` |
+| `online.login` | `change_option?` (`never`/`update`/`ask`), `delete_foreign?` | `logged_in`, states — or `E_CODESYS` |
+| `online.logout` | — | `logged_in` |
+| `online.start` | — | `started`, `application_state` |
+| `online.stop` | — | `stopped`, `application_state` |
+| `online.read` | `expression` \| `expressions[]` | `expression`+`value` or `values[]` |
+| `online.write` | `expression`, `value` | `written`, `expression`, `value` |
+| `online.download` | — | `downloaded`, `application_state` — needs gateway+PLC |
 | `batch` | `calls[{cmd,args}]`, `stop_on_error?` | `results[{index,cmd,ok,code,result\|error}]`, `executed` |
 | `exec` | `source` | `executed`, `locals` — **only** with `--allow-exec` |
 | `quit` | — | `bye` |
@@ -93,6 +117,51 @@ the call and parses them:
 `Text:` lines are progress chatter and are dropped; `Error/Warning/Fatal` become
 `messages[{category,severity,code,text}]`; the `编译完成` summary is authoritative for counts.
 
+## 4b. The IDE command channel (`commands` / `execute`)
+
+`system.commands` exposes **870** IDE commands, each with `name`, `guid`, `description`,
+`tokens` (e.g. `['project', 'rebuildactiveapp']`) and an `execute()` method. That is the
+"anything the GUI can do" escape hatch without touching a window:
+
+```python
+service.run_command(client, "重新编译")     # judged from engine.stderr.log, like build
+client.commands(filter="下载", limit=10)    # discover names first
+client.execute(guid="50dc8f97-9e21-4b15-a504-ea2549ab61e0")
+```
+
+Names are localized (this install is Chinese); resolve by `guid` or `tokens` for stability.
+
+## 4c. Exchange: XML / native / archive / runtime files
+
+| what | call | measured result |
+| --- | --- | --- |
+| PLCopenXML of the application | `export.xml` (default target = active application) | 1 095 B for the demo app |
+| PLCopenXML of a device subtree | `export.xml` with `target="/PLC"` | 1 988 B |
+| re-import into an **empty** project | `import.xml` | children 2 → 3 |
+| PLCopen native format | `export.native` | 23 091 B |
+| whole-project archive | `project.archive` | 5 479 773 B |
+| runtime system files | `generate.runtime` | `surfaceItf.m4` |
+| documentation export | `project.doc` | **no file** — `export_doc` is a silent no-op headless |
+
+The project root cannot be exported directly (`export_xml([project])` raises a cast error), which
+is why the default target is the **active application**.
+
+## 4d. Online
+
+`online.state` works without a target (`logged_in: false`). `online.login` reaches the engine and
+fails with the engine's own message when no gateway is running:
+
+```
+E_CODESYS: login failed: 登陆失败: 由于以下原因无法连接项目'PLC.Application'到设备:
+           网关没有正确配置是否继续项目?
+```
+
+On this machine the CODESYS Gateway and the soft PLC are installed as **services** (`CODESYS
+Gateway V3`, `CODESYS Control Win V3 - x64`), both `Stopped` and `StartMode=Manual`; starting them
+needs elevation, and running `GatewayService.exe` / `CODESYSControlService.exe` as a plain user
+process makes them exit immediately. So the online commands are implemented and their failure path
+is verified, but a green path needs a running gateway + PLC (or an elevated service start).
+
 ## 5. Timeouts
 
 * Client socket timeout (`CodesysClient(timeout=…)`, default 60 s) is the hard one: on expiry the
@@ -100,6 +169,19 @@ the call and parses them:
 * `timeout_ms` in the request is **advisory**: the engine cannot be pre-empted mid-command, so the
   server compares elapsed time after the command finishes and answers `E_TIMEOUT` if it overran.
 * `build` on a large project can take minutes; pass `timeout_ms`/`timeout` accordingly.
+
+## 5b. Text and paths
+
+* **UTF-8 everywhere.** Replies are encoded with `Encoding.UTF8.GetBytes` and sent in a loop
+  (`Socket.Send` may send a prefix); requests are accumulated as bytes and decoded as UTF-8.
+  Before this was fixed, any reply containing Chinese raised
+  `Cannot convert int(36333) to Byte` and the connection died. A live test writes
+  `(* 中文注释：计数器 *)` and reads it back byte for byte.
+* **Paths are name-based.** `/PLC/Plc Logic/Application/PLC_PRG`, built by walking the parent
+  chain until the unnamed project root. Objects returned right after creation may not carry a
+  name yet, so `folder.create` computes the path from the parent and re-resolves it.
+* **The project root is immutable by design.** `object.rename`/`object.delete`/`object.move`
+  refuse a path that resolves to the project (`E_STATE: refusing to modify the project root`).
 
 ## 6. Security
 

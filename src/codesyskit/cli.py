@@ -60,6 +60,34 @@ def main(argv=None):
     devices.add_argument("--filter", default=None)
     devices.add_argument("--limit", type=int, default=20)
 
+    cmds = sub.add_parser("commands", help="list IDE commands")
+    cmds.add_argument("--filter", default=None)
+    cmds.add_argument("--limit", type=int, default=20)
+
+    execute = sub.add_parser("execute", help="run one IDE command and judge it from the engine log")
+    execute.add_argument("name_or_guid")
+    execute.add_argument("--timeout", type=float, default=600.0)
+
+    find = sub.add_parser("find", help="search declarations and implementations")
+    find.add_argument("pattern")
+    find.add_argument("--case-sensitive", action="store_true")
+    find.add_argument("--part", default="both", choices=["both", "declaration", "implementation"])
+    find.add_argument("--limit", type=int, default=200)
+
+    sub.add_parser("libs", help="list referenced and available libraries")
+    lib_add = sub.add_parser("add-lib", help="reference a library by name")
+    lib_add.add_argument("name")
+
+    export_xml = sub.add_parser("export-xml", help="PLCopenXML export (default: active application)")
+    export_xml.add_argument("path")
+    export_xml.add_argument("--target", default=None)
+
+    import_xml = sub.add_parser("import-xml", help="PLCopenXML import into the open project")
+    import_xml.add_argument("path")
+
+    archive = sub.add_parser("archive", help="save the whole project as an archive")
+    archive.add_argument("path")
+
     batch = sub.add_parser("batch", help="run several commands in one request")
     batch.add_argument("--file", required=True, help="json file with [{\"cmd\":..,\"args\":{}}]")
 
@@ -144,6 +172,54 @@ def main(argv=None):
             client = service.client(timeout=args.timeout)
             try:
                 return emit(client.call(args.cmd, **payload))
+            finally:
+                client.close()
+        if args.verb == "commands":
+            client = service.client()
+            try:
+                return emit(client.commands(filter=args.filter, limit=args.limit))
+            finally:
+                client.close()
+        if args.verb == "execute":
+            result = service.run_command(client=service.client(timeout=args.timeout),
+                                         name_or_guid=args.name_or_guid,
+                                         timeout_ms=int(args.timeout * 1000))
+            return emit(result, errors.CLI_OK if result["ok"] else errors.CLI_ERROR)
+        if args.verb == "find":
+            client = service.client()
+            try:
+                return emit(client.find(args.pattern, case_sensitive=args.case_sensitive,
+                                        part=args.part, limit=args.limit))
+            finally:
+                client.close()
+        if args.verb == "libs":
+            client = service.client()
+            try:
+                return emit(client.libraries())
+            finally:
+                client.close()
+        if args.verb == "add-lib":
+            client = service.client()
+            try:
+                return emit(client.add_library(args.name))
+            finally:
+                client.close()
+        if args.verb == "export-xml":
+            client = service.client()
+            try:
+                return emit(client.export_xml(args.path, target=args.target))
+            finally:
+                client.close()
+        if args.verb == "import-xml":
+            client = service.client()
+            try:
+                return emit(client.import_xml(args.path))
+            finally:
+                client.close()
+        if args.verb == "archive":
+            client = service.client()
+            try:
+                return emit(client.archive(args.path))
             finally:
                 client.close()
         if args.verb == "batch":
