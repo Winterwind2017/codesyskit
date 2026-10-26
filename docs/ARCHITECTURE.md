@@ -170,6 +170,25 @@ Two traps found on the way:
   `Owner` / `Everyone`, while `users.create("tester")` is refused with
   `用户'(nobody)'未取得在'用户,组和权限'上操作'修改'的许可`.
 
+## 4e. Third sweep: what is left, and why it cannot be scripted
+
+Mined further (all live-verified): persistent variables, text-list **content** (ids + default +
+per-language), command-permission audit, and a full **library round trip**
+(`project.meta` → `export_library` 4 308 B → `install_library` with the repository argument,
+available libraries 537 → 538).
+
+Left, with the measured reason:
+
+| area | why not |
+| --- | --- |
+| recipes, alarm configuration, visualizations, trace, application composer | no `create_*` entry exists in the 262 stub classes (`create_recipe*`, `create_alarm*`, `create_visualization*`, `create_trace*` are all absent) and the matching IDE commands open a dialog, so their objects cannot be created headless |
+| static analysis, IEC 61131-10 export, OPC UA NodeSet, target-settings document | `execute` returns normally, writes no file and emits no message (dialog) |
+| online file transfer / source upload | the simulated target reports `connected=false`; `get_file_list_of_directory` fails with `获取文件入口失败` |
+| coredump, redundancy, breakpoints, watch list GUI | need a real PLC or an interactive debugger |
+| CAS (Git/SVN) | the extension exists but needs a repository, credentials and a checked-out workdir — a separate project, not a one-shot probe |
+| project comparison | `compare_to` needs a second *open* project; only one project can be primary |
+| image pool content | `images.add` is overloaded/ambiguous and needs real image files |
+
 ## 5. Process model
 
 ```

@@ -220,6 +220,10 @@ class CodesysClient:
     def add_library(self, name):
         return self.call("library.add", name=name)
 
+    def install_library(self, path):
+        """Install a .compiled-library / .library file into the local repository."""
+        return self.call("library.install", path=path)
+
     # -- exchange ----------------------------------------------------------
     def export_xml(self, path, target=None):
         args = {"path": path}
@@ -287,6 +291,32 @@ class CodesysClient:
         if add:
             args["add"] = add
         return self.call("textlist.languages", **args)
+
+    def create_persistent(self, name="PersistentVars"):
+        return self.call("pou.persistent", name=name)
+
+    def textlist_rows(self, path, limit=50):
+        return self.call("textlist.rows", path=path, limit=limit)
+
+    def textlist_text(self, path, text, text_id=None, language=None):
+        args = {"path": path, "text": text}
+        if text_id:
+            args["id"] = text_id
+        if language:
+            args["language"] = language
+        return self.call("textlist.text", **args)
+
+    def project_permissions(self, command, group=None):
+        args = {"command": command}
+        if group:
+            args["group"] = group
+        return self.call("project.permissions", **args)
+
+    def online_files(self, directory="/", simulation=None):
+        args = {"directory": directory}
+        if simulation is not None:
+            args["simulation"] = bool(simulation)
+        return self.call("online.files", **args)
 
     def textlist_export(self, path, out):
         return self.call("textlist.export", path=path, out=out)

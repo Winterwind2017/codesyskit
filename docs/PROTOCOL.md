@@ -92,6 +92,12 @@ error   : {"v":1,"id":"<same>","ok":false,"code":"E_STATE",
 | `textlist.create` | `name?`, `languages?` | `path`, `languages[]`, `language_count` |
 | `textlist.languages` | `path`, `add?` | `count`, `languages[]` |
 | `textlist.export` | `path`, `out` | `out`, `exists`, `size` |
+| `textlist.rows` | `path`, `limit?` | `count`, `items[{id,default,language_values}]` |
+| `textlist.text` | `path`, `text`, `id?`, `language?` | row snapshot + `written` |
+| `pou.persistent` | `name?` | `path`, `name` |
+| `project.permissions` | `command`, `group?` | `command_guid`, `groups{}`, `permitted?` |
+| `library.install` | `path` | `before`, `after`, `repository`, `installed` |
+| `online.files` | `directory?` | `E_UNAVAILABLE` on a simulated target (measured) |
 | `task.info` | `path` | `priority`, `interval`, `interval_unit`, `kind_of_task`, `watchdog`, `pous` |
 | `task.update` | `path`, `priority?`, `interval?`, `interval_unit?`, `watchdog_time?`, `watchdog_enabled?` | `changed`, plus the `task.info` fields |
 | `online.force` | `expression`, `value` | `forced[]`, `value`, `simulation` |
@@ -246,6 +252,23 @@ Measured quirks worth knowing before writing templates:
   verifies the file plus the renamed path instead of trusting that message.
 * `save_as_compiled_library` refuses a project without information:
   `指定的库不是托管库 (原因: 在工程信息中没有指定'公司')`.
+
+## 4f. Text content, permissions, libraries
+
+```python
+rows = client.textlist_rows(text_path)            # [{"id": "0000-0000-{…}-Version", "default": "1"}]
+client.textlist_text(text_path, "Counter label", text_id=rows["items"][0]["id"])
+client.textlist_text(text_path, "计数器", text_id=…, language="zh-CN")
+client.project_permissions("仿真", group="Owner")   # {"command_guid": "515e05ec-…", "permitted": true}
+client.install_library(r"D:\work\DemoKit.compiled-library")   # repository 537 -> 538
+```
+
+* `setlanguagetext(code, text)` takes **two strings** (an index raises
+  `TypeError: expected str, got int`); `setdefaulttext` returns `True`.
+* `install_library(path)` alone fails with `值不能为 null` — pass the repository:
+  `install_library(path, repositories[0])`. Measured round trip: our own 4 308 B compiled library
+  raised the available count **537 → 538**.
+* Permission audit returns the built-in groups by name (`Owner`, `Everyone`) with a real boolean.
 
 ## 5c. Online states you will see
 

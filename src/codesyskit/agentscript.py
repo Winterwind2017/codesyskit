@@ -1541,6 +1541,175 @@ def cmd_project_integrity(args):
     return {"before": before, "after": after, "enabled": after}
 
 
+def cmd_pou_persistent(args):
+    application = iec_container(args)
+    name = args.get("name") or "PersistentVars"
+    created = application.create_persistentvars(name)
+    return {"path": path_of(created, primary_project()), "name": name}
+
+
+def textlist_row(row):
+    entry = {"id": utext(row.id)}
+    try:
+        entry["default"] = utext(row.defaulttext)
+    except Exception:
+        entry["default"] = None
+    languages = []
+    try:
+        count = row.languagetextcount()
+    except Exception:
+        count = 0
+    for index in range(count):
+        try:
+            code = utext(row.languagetext(index))
+        except Exception:
+            code = None
+        languages.append(code)
+    entry["language_values"] = languages
+    return entry
+
+
+def cmd_textlist_rows(args):
+    project = primary_project()
+    node = walk(project, args.get("path", ""))
+    limit = int(args.get("limit", 50) or 50)
+    rows = list(node.rows)
+    items = [textlist_row(row) for row in rows[:limit]]
+    return {"path": path_of(node, project), "count": len(rows), "returned": len(items),
+            "items": items}
+
+
+def cmd_textlist_text(args):
+    """Write text-list content: ``setdefaulttext(text)`` or ``setlanguagetext(code, text)``.
+
+    Measured: ``setlanguagetext`` takes two strings (an index raises
+    ``TypeError: expected str, got int``), and it returns nothing (``setdefaulttext`` returns True).
+    """
+    project = primary_project()
+    node = walk(project, args.get("path", ""))
+    text = args.get("text")
+    if text is None:
+        raise CmdError("E_ARGS", "textlist.text needs 'text'")
+    wanted = args.get("id")
+    row = None
+    for candidate in list(node.rows):
+        if wanted is None or utext(candidate.id) == utext(wanted):
+            row = candidate
+            break
+    if row is None:
+        raise CmdError("E_STATE", "text id %r not found" % (wanted,))
+    language = args.get("language")
+    if language:
+        node.addlanguage(utext(language)) if utext(language) not in [
+            utext(node.getlanguage(index)) for index in range(node.languagecount())] else None
+        row.setlanguagetext(utext(language), utext(text))
+    else:
+        row.setdefaulttext(utext(text))
+    result = textlist_row(row)
+    result["path"] = path_of(node, project)
+    result["written"] = True
+    return result
+
+
+def cmd_project_permissions(args):
+    """Query the project permission of one IDE command for a group or user.
+
+    Measured: ``user_management.get_command_permission(command)`` returns an object with
+    ``command_guid`` and ``check_permission("<group>") -> bool`` for the built-in groups.
+    """
+    project = primary_project()
+    management = project.user_management
+    command = args.get("command")
+    if not command:
+        raise CmdError("E_ARGS", "project.permissions needs 'command' (name or guid)")
+    try:
+        target = command_lookup(command)
+    except CmdError:
+        target = utext(command)
+    permission = management.get_command_permission(target)
+    result = {"command": utext(getattr(target, "name", target)),
+              "command_guid": utext(permission.command_guid)}
+    groups = []
+    try:
+        for group in list(management.groups):
+            try:
+                groups.append(utext(group.name))
+            except Exception:
+                groups.append(utext(group))
+    except Exception:
+        groups = []
+    checked = {}
+    for group in groups:
+        try:
+            checked[group] = bool(permission.check_permission(group))
+        except Exception as exc:
+            checked[group] = "error: %s" % utext(exc)[:80]
+    result["groups"] = checked
+    if args.get("group"):
+        try:
+            result["permitted"] = bool(permission.check_permission(utext(args["group"])))
+        except Exception as exc:
+            result["permitted"] = "error: %s" % utext(exc)[:80]
+    return result
+
+
+def cmd_online_files(args):
+    """File transfer on a PLC. Measured: a simulated target has no file service."""
+    node, online_app = online_login_now(args)
+    try:
+        online_device = online_app.get_online_device()
+    except Exception as exc:
+        raise CmdError("E_UNAVAILABLE", "no online device: %s" % utext(exc)[:200])
+    connected = False
+    try:
+        connected = bool(online_device.connected)
+    except Exception:
+        connected = False
+    if not connected:
+        raise CmdError("E_UNAVAILABLE",
+                       "online file access needs a real PLC (the simulated target reports connected=false)",
+                       "measured: get_file_list_of_directory('/') -> 获取文件入口失败")
+    listing = []
+    for item in list(online_device.get_file_list_of_directory(args.get("directory") or "/")):
+        listing.append({"name": utext(item.name),
+                        "size": int(getattr(item, "size", 0) or 0)})
+    return {"directory": args.get("directory") or "/", "count": len(listing), "items": listing}
+
+
+def cmd_library_install(args):
+    """Install a library file into the local repository (measured: works headless)."""
+    path = args.get("path")
+    if not path:
+        raise CmdError("E_ARGS", "library.install needs 'path'")
+    if not os.path.exists(path):
+        raise CmdError("E_STATE", "no such library file: %s" % path)
+    manager = scriptengine.librarymanager
+    before = len(list(manager.get_all_libraries()))
+    repositories = []
+    try:
+        repositories = list(manager.repositories)
+    except Exception:
+        repositories = []
+    repository = repositories[0] if repositories else None
+    errors = []
+    installed = False
+    for attempt in (lambda: manager.install_library(path, repository),
+                    lambda: manager.install_library(path, repository, True),
+                    lambda: manager.install_library(path)):
+        try:
+            attempt()
+            installed = True
+            break
+        except Exception as exc:
+            errors.append(utext(exc)[:120])
+    if not installed:
+        raise CmdError("E_CODESYS", "install_library failed", "; ".join(errors[:3]))
+    after = len(list(manager.get_all_libraries()))
+    return {"path": path, "before": before, "after": after,
+            "repository": utext(getattr(repository, "name", repository)),
+            "installed": installed}
+
+
 def cmd_build(args):
     project, application = active_application()
     cleared = False
@@ -1691,6 +1860,12 @@ COMMANDS = {
     "online.forced": cmd_online_forced,
     "project.users": cmd_project_users,
     "project.integrity": cmd_project_integrity,
+    "pou.persistent": cmd_pou_persistent,
+    "textlist.rows": cmd_textlist_rows,
+    "textlist.text": cmd_textlist_text,
+    "project.permissions": cmd_project_permissions,
+    "online.files": cmd_online_files,
+    "library.install": cmd_library_install,
     "build": cmd_build,
     "messages": cmd_messages,
     "batch": cmd_batch,

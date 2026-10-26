@@ -36,14 +36,14 @@ research notes for the comparison table.
 | devices | `devices` (1 562 shipped descriptions, filter by name/vendor) |
 | project | `project.create/open/save/close/info` `tree` `projects` |
 | code | `pou.create/create_typed/read/write/member/members` `object.info/rename/delete/move` `folder.create` `find.text` |
-| model | GVL / DUT / interface / FB / function, methods / properties / actions, `symbols.create`, `textlist.*` |
+| model | GVL / DUT / interface / FB / function, methods / properties / actions, persistent vars, `symbols.create`, `textlist.*` (rows + per-language texts) |
 | project | `project.meta` `project.save_as` `project.export_library` `project.clean` `project.users` `project.integrity` `project.io_export/import` |
 | app | `app.clean` `app.generate` `app.status` |
 | tasks | `task.info` `task.update` (priority / interval / watchdog) |
 | tasks | `task.create` `tasks` |
 | build | `build` (judged from the engine log) |
 | IDE commands | `commands` (870) `execute` |
-| libraries | `libraries` (537 available) `library.add` |
+| libraries | `libraries` (537 available) `library.add` `library.install` (537 → 538) |
 | exchange | `export.xml` `import.xml` `export.native` `project.archive` `generate.runtime` |
 | online | `online.simulation` `online.state/login/logout/start/stop/read/write/monitor/download` — **simulation runs headless, no gateway, no admin** |
 
@@ -97,6 +97,10 @@ Deep surface (`python tests/live_deep.py`, 36/36):
 | `project.users` / `project.integrity` | users/groups listed (creation refused as `(nobody)`); integrity check `false → true` |
 | `app.clean` / `app.generate` / `app.status` | `is_uptodate` false → true, online change possible |
 | `online.force(777)` | value pinned at 777 while the task runs; `unforce` resumes 790 → 888 |
+| `textlist.rows` / `textlist.text` | id `0000-0000-{…}-Version`, default text written, zh-CN added, export 268 B |
+| `project.permissions` | `仿真` → Owner `true`, Everyone `true`, guid `515e05ec-…` |
+| `library.install` | our own compiled library installed: available libraries **537 → 538** |
+| `online.files` | honest `E_UNAVAILABLE` (simulated target reports `connected=false`) |
 
 Online through **simulation** (`python tests/live_online.py`, 16/16):
 

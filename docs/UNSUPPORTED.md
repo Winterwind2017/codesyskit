@@ -12,7 +12,11 @@
 | compiled-library export | **done** | `project.meta` (title + **company**) then `project.export_library` → 4 308 B; without project info the engine refuses. |
 | project comparison (`project.compare`) | measured wall | `compare_to` needs an `IExtendedObject[IScriptProject]`; a path raises `TypeError`, and a second project cannot be opened (`A primary project is already open`). |
 | IEC 61131-10 export / OPC UA NodeSet / static-analysis metrics / target-settings doc | GUI-only | `execute` on `导出IEC61131-10...`, `导出OPC UANodeSet`, `计算并导出标准指标`, `目标设置文档导出` returns normally, writes **no file** and emits **no message** — they open a file dialog. |
-| project user management (write) | needs rights | the script runs as `(nobody)`; `users.create` is refused with `用户'(nobody)'未取得在'用户,组和权限'上操作'修改'的许可`. Listing works. |
+| project user management (write) | needs rights | the script runs as `(nobody)`; `users.create` is refused with `用户'(nobody)'未取得在'用户,组和权限'上操作'修改'的许可`. Listing and command-permission audit work. |
+| recipes / alarm configuration / visualizations / trace / application composer | no creation API | none of the 262 stub classes has a `create_recipe*`, `create_alarm*`, `create_visualization*` or `create_trace*` entry, and the matching IDE commands are dialogs. |
+| online file transfer / source upload (`online.files`) | needs a real PLC | the simulated target reports `connected=false`; `get_file_list_of_directory` fails with `获取文件入口失败`. |
+| image pool content | unverified | `images.add` is overloaded/ambiguous and requires real image files. |
+| CAS source control (Git/SVN) | not attempted | `CasScriptProjectExtension` needs a repository, credentials and a workdir. |
 | GUI automation | **deliberately absent** | the engine is scriptable headless; driving windows would be strictly worse. |
 | concurrent clients | not supported | the engine is single threaded; use one client or a queue in front of the service. |
 | `exec` | off by default | arbitrary IronPython inside the IDE; enabled only with `--allow-exec`. |

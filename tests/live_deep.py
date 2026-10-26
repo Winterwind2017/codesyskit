@@ -120,6 +120,19 @@ def main():
             assert updated["priority"] == "20", updated["priority"]
             assert to_int(updated["interval"]) == 10, updated["interval"]
 
+        # ---- persistent variables / text content / permissions ------------
+        step("pou.persistent",
+             lambda: client.create_persistent("PersistentVars"))
+
+        def permission_audit():
+            result = client.project_permissions("仿真", group="Owner")
+            return {"guid": result["command_guid"], "permitted": result.get("permitted"),
+                    "groups": result["groups"]}
+
+        audited = step("project.permissions(仿真, Owner)", permission_audit)
+        if audited:
+            assert audited["permitted"] is True, audited
+
         # ---- symbol configuration ----------------------------------------
         symbols = step("symbols.create", lambda: client.symbols_create(export_comments=True))
         symbols_path = (symbols or {}).get("path")
@@ -136,6 +149,23 @@ def main():
                     lambda: client.textlist_languages(text_path, add="fr"))
         if more:
             assert more["count"] == 3, more
+        rows = step("textlist.rows", lambda: client.textlist_rows(text_path))
+        if rows:
+            print("      rows=%d ids=%s" % (rows["count"],
+                                            [item["id"] for item in rows["items"]][:2]))
+        if rows and rows["items"]:
+            first_id = rows["items"][0]["id"]
+
+            def write_texts():
+                client.textlist_text(text_path, "Counter label", text_id=first_id)
+                client.textlist_text(text_path, "计数器", text_id=first_id, language="zh-CN")
+                after = client.textlist_rows(text_path)
+                return {"default": after["items"][0]["default"]}
+
+            written_texts = step("textlist.text (default + zh-CN)", write_texts)
+            if written_texts:
+                assert written_texts["default"] == "Counter label", written_texts
+
         exported = step("textlist.export",
                         lambda: client.textlist_export(text_path,
                                                        os.path.join(WORK, "texts.xml")))
@@ -159,6 +189,13 @@ def main():
                       lambda: client.io_export(os.path.join(WORK, "io.csv")))
         if io_csv:
             assert io_csv["exists"] and io_csv["size"] > 0, io_csv
+
+        # ---- library round trip: export -> install ------------------------
+        def library_roundtrip():
+            installed = client.install_library(library["path"])
+            return {"before": installed["before"], "after": installed["after"]}
+
+        step("library.install (our own compiled library)", library_roundtrip)
 
         # ---- user management / integrity ---------------------------------
         users = step("project.users (+ create user/group)",
@@ -214,6 +251,15 @@ def main():
         if released:
             assert released["released"], released
 
+        def files_are_unavailable():
+            try:
+                client.online_files("/")
+            except protocol.ServiceError as exc:
+                assert exc.code == errors.E_UNAVAILABLE, exc.code
+                return exc.code
+            raise AssertionError("simulated PLC exposed a file service")
+
+        step("online.files -> E_UNAVAILABLE (simulated target)", files_are_unavailable)
         step("online.logout", lambda: client.online_logout())
         step("online.simulation(False)", lambda: client.online_simulation(False))
 
