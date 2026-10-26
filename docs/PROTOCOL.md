@@ -72,14 +72,16 @@ error   : {"v":1,"id":"<same>","ok":false,"code":"E_STATE",
 | `project.archive` | `path` | `path`, `exists`, `size` |
 | `generate.runtime` | `directory` | `directory`, `files[]` |
 | `project.doc` | `path` | `E_UNAVAILABLE` in `--noUI` (measured no-op) |
-| `online.state` | — | `logged_in`, `application_state`, `operation_state` |
-| `online.login` | `change_option?` (`never`/`update`/`ask`), `delete_foreign?` | `logged_in`, states — or `E_CODESYS` |
+| `online.simulation` | `enabled?` | `simulation`, `gateway`, `address` |
+| `online.state` | — | `logged_in`, `simulation`, `gateway`, `address`, `application_state`, `operation_state` |
+| `online.login` | `simulation?`, `change_option?` (`never`/`update`/`ask`), `delete_foreign?`, `autostart?` | snapshot (+ `start_error`) — or `E_CODESYS` |
 | `online.logout` | — | `logged_in` |
 | `online.start` | — | `started`, `application_state` |
 | `online.stop` | — | `stopped`, `application_state` |
 | `online.read` | `expression` \| `expressions[]` | `expression`+`value` or `values[]` |
 | `online.write` | `expression`, `value` | `written`, `expression`, `value` |
-| `online.download` | — | `downloaded`, `application_state` — needs gateway+PLC |
+| `online.download` | `simulation?` | snapshot + `boot_application` (login with `update` + create boot app) |
+| `online.monitor` | `expression?`/`expressions[]`, `samples?`, `interval_ms?` | `samples[{index, <expr>: value}]`, `count`, `interval_ms` |
 | `batch` | `calls[{cmd,args}]`, `stop_on_error?` | `results[{index,cmd,ok,code,result\|error}]`, `executed` |
 | `exec` | `source` | `executed`, `locals` — **only** with `--allow-exec` |
 | `quit` | — | `bye` |
@@ -146,21 +148,41 @@ Names are localized (this install is Chinese); resolve by `guid` or `tokens` for
 The project root cannot be exported directly (`export_xml([project])` raises a cast error), which
 is why the default target is the **active application**.
 
-## 4d. Online
+## 4d. Online: simulation is the headless path
 
-`online.state` works without a target (`logged_in: false`). `online.login` reaches the engine and
-fails with the engine's own message when no gateway is running:
+The engine's online API needs a *target*. On this machine the CODESYS gateway and the soft PLC
+are installed as **services** that a normal user cannot start (`sc start` → `Access is denied`;
+the service DACL grants start only to SYSTEM/Administrators). That is **not** needed: the device
+object has its own simulation flag, and simulation hosts the runtime inside the IDE process.
 
+```python
+client.online_simulation(True)        # device.set_simulation_mode(True) -> gateway auto-assigned
+client.online_login(autostart=True)   # logged_in, application_state=run, operation_state=program_loaded
+client.online_read("PLC_PRG.nCounter")        # "INT#8"
+client.online_write("PLC_PRG.nCounter", "1000")
+client.online_monitor(expression="PLC_PRG.nCounter", samples=5, interval_ms=300)
+# samples: INT#1016, INT#1036, INT#1056, INT#1076, INT#1096   <- the cyclic task keeps running
+client.online_stop()                  # application_state=stop
+client.online_start()                 # application_state=run
+client.online_download()              # login with change_option=update + create_boot_application
+client.online_logout()
+client.online_simulation(False)       # gateway back to 0000…, address ""
 ```
-E_CODESYS: login failed: 登陆失败: 由于以下原因无法连接项目'PLC.Application'到设备:
-           网关没有正确配置是否继续项目?
-```
 
-On this machine the CODESYS Gateway and the soft PLC are installed as **services** (`CODESYS
-Gateway V3`, `CODESYS Control Win V3 - x64`), both `Stopped` and `StartMode=Manual`; starting them
-needs elevation, and running `GatewayService.exe` / `CODESYSControlService.exe` as a plain user
-process makes them exit immediately. So the online commands are implemented and their failure path
-is verified, but a green path needs a running gateway + PLC (or an elevated service start).
+Measured facts behind the recipe:
+
+| fact | value |
+| --- | --- |
+| simulation gateway | `164cdffe-053d-451a-ba6d-66afd90b25ac`, driver `SharedMemory` (`ShmBaseName=GWDrvSharedMemShm`) |
+| device address after enabling simulation | `0000` (auto-assigned) |
+| `set_gateway_and_address` address format | an IP string (`127.0.0.1` → normalised `0127.0000.0000.0001`); `"localhost"` / `"Gateway-1"` are rejected |
+| login + `OnlineChangeOption.Never` | works in simulation, values keep running |
+| `set_prepared_value` | needs a **string** value (`42` raises `TypeError: expected str, got int`) |
+| boot application | `create_boot_application()` returns normally in simulation |
+
+**One online application per project.** The server keeps the `OnlineApplication` alive
+(`ONLINE` cache) and only logs in again when it is not logged in: a login is also an incremental
+download, so re-logging in for every read restarts the program and resets every value to 0.
 
 ## 5. Timeouts
 
@@ -169,6 +191,17 @@ is verified, but a green path needs a running gateway + PLC (or an elevated serv
 * `timeout_ms` in the request is **advisory**: the engine cannot be pre-empted mid-command, so the
   server compares elapsed time after the command finishes and answers `E_TIMEOUT` if it overran.
 * `build` on a large project can take minutes; pass `timeout_ms`/`timeout` accordingly.
+
+## 5c. Online states you will see
+
+| field | values |
+| --- | --- |
+| `logged_in` | `true` / `false` |
+| `application_state` | `none` (not logged in), `stop`, `run` |
+| `operation_state` | `none`, `program_loaded`, … |
+| `simulation` | `true` when the device simulation flag is on |
+| `gateway` | GUID of the gateway used; `00000000-…` when none |
+| `address` | device address (`0000` in simulation) |
 
 ## 5b. Text and paths
 

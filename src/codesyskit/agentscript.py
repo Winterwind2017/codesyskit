@@ -811,94 +811,253 @@ def cmd_doc_export(args):
     return {"path": path, "exists": True, "size": os.path.getsize(path)}
 
 
-def online_application(args):
+def device_node(project=None):
+    """The PLC device object (the child of the project that carries the online settings)."""
+    project = project or primary_project()
+    for child in children(project):
+        try:
+            if child.is_folder and name_of(child) is None:
+                continue
+        except Exception:
+            pass
+        try:
+            if child.get_simulation_mode is not None:
+                return child
+        except Exception:
+            continue
+    for child in children(project):
+        try:
+            if name_of(child) == "PLC":
+                return child
+        except Exception:
+            continue
+    return None
+
+
+def apply_simulation(node, enabled):
+    if enabled is None:
+        return False
+    current = bool(node.get_simulation_mode())
+    if bool(enabled) != current:
+        node.set_simulation_mode(bool(enabled))
+    return bool(node.get_simulation_mode())
+
+
+ONLINE = {"key": None, "app": None}
+
+
+def online_session(args):
+    """One online application per active application, kept alive across commands.
+
+    Re-creating it for every read would log in again, and a login is also a (incremental)
+    download: the program restarts and every value drops back to its initial value.
+    """
     project, application = active_application()
-    return scriptengine.online.create_online_application(application)
+    node = device_node(project)
+    if node is None:
+        raise CmdError("E_STATE", "project has no device node")
+    if args.get("simulation") is not None:
+        apply_simulation(node, args.get("simulation"))
+    key = path_of(application, project)
+    current = ONLINE.get("app")
+    if current is not None and ONLINE.get("key") == key:
+        try:
+            if current.is_logged_in:
+                return node, current
+        except Exception:
+            pass
+    online_app = scriptengine.online.create_online_application(application)
+    ONLINE["app"] = online_app
+    ONLINE["key"] = key
+    return node, online_app
 
 
-def cmd_online_login(args):
-    online_app = online_application(args)
+def online_snapshot(node, online_app):
+    snapshot = {"logged_in": bool(online_app.is_logged_in)}
+    for attribute in ("application_state", "operation_state"):
+        try:
+            snapshot[attribute] = unicode(getattr(online_app, attribute))
+        except Exception:
+            snapshot[attribute] = "unknown"
+    try:
+        snapshot["simulation"] = bool(node.get_simulation_mode())
+    except Exception:
+        snapshot["simulation"] = None
+    try:
+        snapshot["gateway"] = unicode(node.get_gateway())
+    except Exception:
+        snapshot["gateway"] = None
+    try:
+        snapshot["address"] = unicode(node.get_address())
+    except Exception:
+        snapshot["address"] = None
+    return snapshot
+
+
+def online_application(args):
+    return online_session(args)
+
+
+def online_login_now(args, change_option="never"):
+    node, online_app = online_session(args)
+    try:
+        if online_app.is_logged_in:
+            return node, online_app
+    except Exception:
+        pass
     option = scriptengine.OnlineChangeOption.Never
-    if args.get("change_option") == "update":
+    if change_option == "update" or args.get("change_option") == "update":
         option = scriptengine.OnlineChangeOption.Always
     elif args.get("change_option") == "ask":
         option = scriptengine.OnlineChangeOption.Ask
     try:
         online_app.login(option, bool(args.get("delete_foreign", False)))
     except Exception as exc:
-        raise CmdError("E_CODESYS",
-                       "login failed: %s" % str(exc)[:400],
-                       "check that the CODESYS Gateway service and a PLC runtime are running")
-    return {"logged_in": bool(online_app.is_logged_in),
-            "application_state": str(online_app.application_state),
-            "operation_state": str(online_app.operation_state)}
+        raise CmdError("E_CODESYS", "login failed: %s" % str(exc)[:400],
+                       "simulation=True needs no gateway; a real PLC needs a running gateway")
+    return node, online_app
+
+
+def cmd_online_simulation(args):
+    project = primary_project()
+    node = device_node(project)
+    if node is None:
+        raise CmdError("E_STATE", "project has no device node")
+    enabled = args.get("enabled")
+    if enabled is None:
+        enabled = not bool(node.get_simulation_mode())
+    result = {"simulation": apply_simulation(node, enabled)}
+    try:
+        result["gateway"] = unicode(node.get_gateway())
+        result["address"] = unicode(node.get_address())
+    except Exception:
+        pass
+    return result
+
+
+def cmd_online_login(args):
+    node, online_app = online_login_now(args)
+    snapshot = online_snapshot(node, online_app)
+    if args.get("autostart"):
+        try:
+            online_app.start()
+            snapshot = online_snapshot(node, online_app)
+        except Exception as exc:
+            snapshot["start_error"] = unicode(exc)[:200]
+    return snapshot
 
 
 def cmd_online_logout(args):
-    online_app = online_application(args)
+    node, online_app = online_application(args)
     online_app.logout()
-    return {"logged_in": bool(online_app.is_logged_in)}
+    snapshot = online_snapshot(node, online_app)
+    ONLINE["app"] = None
+    ONLINE["key"] = None
+    return snapshot
 
 
 def cmd_online_state(args):
-    online_app = online_application(args)
-    state = {"logged_in": bool(online_app.is_logged_in)}
-    for attribute in ("application_state", "operation_state"):
-        try:
-            state[attribute] = str(getattr(online_app, attribute))
-        except Exception as exc:
-            state[attribute] = "unknown (%s)" % type(exc).__name__
-    return state
+    project = primary_project()
+    node = device_node(project)
+    if node is None:
+        raise CmdError("E_STATE", "project has no device node")
+    current = ONLINE.get("app")
+    if current is None:
+        _, application = active_application()
+        current = scriptengine.online.create_online_application(application)
+        ONLINE["app"] = current
+        ONLINE["key"] = path_of(application, project)
+    return online_snapshot(node, current)
 
 
 def cmd_online_start(args):
-    online_app = online_application(args)
-    online_app.login(scriptengine.OnlineChangeOption.Never, False)
+    node, online_app = online_login_now(args)
     online_app.start()
-    return {"started": True, "application_state": str(online_app.application_state)}
+    snapshot = online_snapshot(node, online_app)
+    snapshot["started"] = True
+    return snapshot
 
 
 def cmd_online_stop(args):
-    online_app = online_application(args)
-    online_app.login(scriptengine.OnlineChangeOption.Never, False)
+    node, online_app = online_login_now(args)
     online_app.stop()
-    return {"stopped": True, "application_state": str(online_app.application_state)}
+    snapshot = online_snapshot(node, online_app)
+    snapshot["stopped"] = True
+    return snapshot
 
 
 def cmd_online_read(args):
-    online_app = online_application(args)
-    online_app.login(scriptengine.OnlineChangeOption.Never, False)
-    expressions = args.get("expressions") or ([args["expression"]] if args.get("expression") else [])
+    node, online_app = online_login_now(args)
+    expressions = args.get("expressions")
+    if not expressions and args.get("expression"):
+        expressions = [args["expression"]]
     if not expressions:
         raise CmdError("E_ARGS", "online.read needs 'expression' or 'expressions'")
+    values = {}
+    for expression in expressions:
+        try:
+            values[expression] = unicode(online_app.read_value(expression))
+        except Exception as exc:
+            values[expression] = "error: %s" % unicode(exc)[:120]
+    result = {"values": values, "count": len(values)}
     if len(expressions) == 1:
-        return {"expression": expressions[0], "value": str(online_app.read_value(expressions[0]))}
-    values = online_app.read_values(expressions)
-    return {"values": [{"expression": expr, "value": str(value)}
-                       for expr, value in zip(expressions, values)]}
+        result["expression"] = expressions[0]
+        result["value"] = values[expressions[0]]
+    return result
 
 
 def cmd_online_write(args):
-    online_app = online_application(args)
-    online_app.login(scriptengine.OnlineChangeOption.Never, False)
+    node, online_app = online_login_now(args)
     expression = args.get("expression")
     if expression is None:
         raise CmdError("E_ARGS", "online.write needs 'expression'")
-    online_app.set_prepared_value(expression, args.get("value"))
+    value = args.get("value")
+    online_app.set_prepared_value(expression, unicode(value))
     online_app.write_prepared_values()
-    return {"written": True, "expression": expression, "value": str(args.get("value"))}
+    after = None
+    try:
+        after = unicode(online_app.read_value(expression))
+    except Exception:
+        after = None
+    return {"written": True, "expression": expression, "value": unicode(value),
+            "readback": after}
+
+
+def cmd_online_monitor(args):
+    node, online_app = online_login_now(args)
+    expressions = args.get("expressions")
+    if not expressions and args.get("expression"):
+        expressions = [args["expression"]]
+    if not expressions:
+        raise CmdError("E_ARGS", "online.monitor needs 'expression' or 'expressions'")
+    samples = int(args.get("samples", 5) or 5)
+    interval = int(args.get("interval_ms", 500) or 500)
+    series = []
+    for index in range(samples):
+        row = {"index": index}
+        for expression in expressions:
+            try:
+                row[expression] = unicode(online_app.read_value(expression))
+            except Exception as exc:
+                row[expression] = "error: %s" % unicode(exc)[:100]
+        series.append(row)
+        if index + 1 < samples:
+            SYSTEM.delay(interval)
+    return {"samples": series, "count": len(series), "interval_ms": interval,
+            "expressions": expressions}
 
 
 def cmd_online_download(args):
-    project, application = active_application()
-    online_app = scriptengine.online.create_online_application(application)
+    node, online_app = online_login_now(args, change_option="update")
+    snapshot = online_snapshot(node, online_app)
+    created = None
     try:
-        online_app.login(scriptengine.OnlineChangeOption.Never, False)
-        online_app.start()
+        online_app.create_boot_application()
+        created = True
     except Exception as exc:
-        raise CmdError("E_CODESYS", "download failed: %s" % str(exc)[:400],
-                       "needs a running gateway + PLC runtime")
-    return {"downloaded": True, "application_state": str(online_app.application_state)}
+        created = "error: %s" % unicode(exc)[:160]
+    snapshot["boot_application"] = created
+    return snapshot
 
 
 def cmd_build(args):
@@ -1016,6 +1175,7 @@ COMMANDS = {
     "project.archive": cmd_archive,
     "generate.runtime": cmd_generate_runtime,
     "project.doc": cmd_doc_export,
+    "online.simulation": cmd_online_simulation,
     "online.login": cmd_online_login,
     "online.logout": cmd_online_logout,
     "online.state": cmd_online_state,
@@ -1023,6 +1183,7 @@ COMMANDS = {
     "online.stop": cmd_online_stop,
     "online.read": cmd_online_read,
     "online.write": cmd_online_write,
+    "online.monitor": cmd_online_monitor,
     "online.download": cmd_online_download,
     "build": cmd_build,
     "messages": cmd_messages,

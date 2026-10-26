@@ -114,6 +114,29 @@ Writes go through `replace(offset, length, text)` (or `remove(offset, length)` +
   `/A/B/C` paths are built from names until the unnamed project root; mutating commands refuse a
   path that resolves to the root.
 
+## 4c. Online: the chain that finally worked
+
+```
+gateway services?          blocked: `sc start` -> Access is denied (DACL gives IU no start right)
+plain-process launch?      GatewayService.exe / CODESYSControlService.exe exit at once (need SCM)
+add_new_gateway(...)       works: 3 drivers (SharedMemory / TCP-IP / Automation Server), config_params readable
+set_gateway_and_address()  works: an IP string is normalised to 0127.0000.0000.0001; "localhost" is rejected
+login with TCP gateway     fails: 网络错误:没有到达主机的路由 (nothing listens on 1217)
+device.set_simulation_mode(True)  <- THE ANSWER: gateway auto-assigned, address 0000, login succeeds
+```
+
+Measured on the working path: `application_state` goes `none → run`, the cyclic task increments a
+counter (8 → 68 in 1.2 s), a write of 1000 reads back 1007, five monitored samples step by 20,
+`stop`/`start` toggle the state, `create_boot_application()` returns normally.
+
+Two traps found on the way:
+
+* **re-login is a download**: creating a fresh `OnlineApplication` and logging in for every read
+  restarts the program and resets values to 0 (first attempts read `0, 0`). One `OnlineApplication`
+  is cached per project (`ONLINE`) and reused while `is_logged_in`.
+* **`set_prepared_value` wants a string** (`42` raises `TypeError: expected str, got int`), so
+  `online.write` stringifies the value before preparing it.
+
 ## 5. Process model
 
 ```

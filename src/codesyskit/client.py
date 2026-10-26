@@ -245,31 +245,74 @@ class CodesysClient:
     def export_doc(self, path):
         return self.call("project.doc", path=path)
 
-    # -- online (needs a gateway + PLC runtime) ----------------------------
+    # -- online (simulation works headless; a real PLC needs a gateway) -----
+    def online_simulation(self, enabled=None):
+        args = {}
+        if enabled is not None:
+            args["enabled"] = bool(enabled)
+        return self.call("online.simulation", **args)
+
     def online_state(self):
         return self.call("online.state")
 
-    def online_login(self, change_option="never", delete_foreign=False):
-        return self.call("online.login", change_option=change_option,
-                         delete_foreign=delete_foreign)
+    def online_login(self, simulation=None, change_option="never", delete_foreign=False,
+                     autostart=False):
+        args = {"change_option": change_option, "delete_foreign": delete_foreign,
+                "autostart": autostart}
+        if simulation is not None:
+            args["simulation"] = bool(simulation)
+        return self.call("online.login", **args)
 
-    def online_logout(self):
-        return self.call("online.logout")
+    def online_logout(self, simulation=None):
+        args = {}
+        if simulation is not None:
+            args["simulation"] = bool(simulation)
+        return self.call("online.logout", **args)
 
-    def online_start(self):
-        return self.call("online.start")
+    def online_start(self, simulation=None):
+        args = {}
+        if simulation is not None:
+            args["simulation"] = bool(simulation)
+        return self.call("online.start", **args)
 
-    def online_stop(self):
-        return self.call("online.stop")
+    def online_stop(self, simulation=None):
+        args = {}
+        if simulation is not None:
+            args["simulation"] = bool(simulation)
+        return self.call("online.stop", **args)
 
-    def online_read(self, expression):
-        return self.call("online.read", expression=expression)
+    def online_read(self, expression=None, expressions=None, simulation=None):
+        args = {}
+        if expression:
+            args["expression"] = expression
+        if expressions:
+            args["expressions"] = expressions
+        if simulation is not None:
+            args["simulation"] = bool(simulation)
+        return self.call("online.read", **args)
 
-    def online_write(self, expression, value):
-        return self.call("online.write", expression=expression, value=value)
+    def online_write(self, expression, value, simulation=None):
+        args = {"expression": expression, "value": value}
+        if simulation is not None:
+            args["simulation"] = bool(simulation)
+        return self.call("online.write", **args)
 
-    def online_download(self):
-        return self.call("online.download")
+    def online_monitor(self, expressions=None, expression=None, samples=5, interval_ms=500,
+                       simulation=None):
+        args = {"samples": samples, "interval_ms": interval_ms}
+        if expression:
+            args["expression"] = expression
+        if expressions:
+            args["expressions"] = expressions
+        if simulation is not None:
+            args["simulation"] = bool(simulation)
+        return self.call("online.monitor", timeout_ms=600000, **args)
+
+    def online_download(self, simulation=None):
+        args = {}
+        if simulation is not None:
+            args["simulation"] = bool(simulation)
+        return self.call("online.download", timeout_ms=600000, **args)
 
     def quit(self):
         return self.call("quit")

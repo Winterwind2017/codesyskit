@@ -41,7 +41,7 @@ research notes for the comparison table.
 | IDE commands | `commands` (870) `execute` |
 | libraries | `libraries` (537 available) `library.add` |
 | exchange | `export.xml` `import.xml` `export.native` `project.archive` `generate.runtime` |
-| online | `online.state/login/logout/start/stop/read/write/download` (needs gateway+PLC) |
+| online | `online.simulation` `online.state/login/logout/start/stop/read/write/monitor/download` — **simulation runs headless, no gateway, no admin** |
 
 ## Verified behaviour
 
@@ -77,6 +77,20 @@ Extended surface (`python tests/live_surface.py`, 22/22):
 | `project.doc` | honest `E_UNAVAILABLE` (silent no-op headless) |
 | `online.state` / `online.login` | `logged_in:false` / `E_CODESYS` with the gateway message |
 
+Online through **simulation** (`python tests/live_online.py`, 16/16):
+
+| step | result |
+| --- | --- |
+| `online.simulation(True)` | gateway auto-assigned (`164cdffe-…`, driver `SharedMemory`), address `0000` |
+| `online.login(autostart=True)` | `logged_in:true`, `application_state=run`, `operation_state=program_loaded` |
+| cyclic task really runs | `nCounter` 8 → 68 within 1.2 s |
+| `online.write(1000)` | readback 1007 |
+| `online.monitor(5 × 300 ms)` | 1016 → 1036 → 1056 → 1076 → 1096 |
+| `online.stop` / `online.start` | `stop` / `run` |
+| `online.download` | login with `update` + `create_boot_application` → True |
+| `online.logout` + `simulation(False)` | logged out; gateway back to `0000…`, address `""` |
+| login without gateway | honest `E_CODESYS` |
+
 ## Install
 
 ```powershell
@@ -106,6 +120,11 @@ codesyskit find nCounter              # search declarations + implementations
 codesyskit libs                       # referenced / available libraries
 codesyskit export-xml out.xml         # PLCopenXML of the active application
 codesyskit archive job.projectarchive
+codesyskit sim                     # enable device simulation (no gateway needed)
+codesyskit online-login --autostart
+codesyskit online-monitor PLC_PRG.nCounter --samples 5 --interval-ms 300
+codesyskit online-write PLC_PRG.nCounter 1000
+codesyskit online-stop
 codesyskit run script.py              # one-shot --runscript, no resident process
 codesyskit server-script [--out f]    # print the generated IronPython server
 codesyskit stop

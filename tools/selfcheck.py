@@ -77,6 +77,12 @@ def main():
         body = source.split("def %s(" % command, 1)[1].split("\ndef ", 1)[0]
         check("%s guards the project root" % command, "mutable_node(" in body)
     check("api inventory present", os.path.exists(os.path.join(ROOT, "docs", "API-SURFACE.md")))
+    check("online uses the device simulation flag",
+          "node.set_simulation_mode(bool(enabled))" in source)
+    check("online keeps one session per project", 'ONLINE = {"key": None, "app": None}' in source)
+    check("online monitoring exists", "def cmd_online_monitor(" in source)
+    check("online write stringifies values",
+          "online_app.set_prepared_value(expression, unicode(value))" in source)
 
     # 6. quoting helper is used everywhere a process is launched
     check("service uses build_command_line", "build_command_line(" in read(

@@ -114,8 +114,16 @@ def test_folder_create_computes_the_path_from_the_parent():
 
 def test_online_login_maps_engine_failure_to_e_codesys():
     source = render()
-    body = source.split("def cmd_online_login(", 1)[1].split("\ndef ", 1)[0]
+    body = source.split("def online_login_now(", 1)[1].split("\ndef ", 1)[0]
     assert 'CmdError("E_CODESYS"' in body
+
+
+def test_online_uses_the_device_simulation_flag():
+    """The working headless path is device.set_simulation_mode(True) -- no gateway service."""
+    source = render()
+    assert "node.set_simulation_mode(bool(enabled))" in source
+    assert "def device_node(" in source
+    assert "def cmd_online_monitor(" in source
 
 
 def test_path_walk_skips_a_leading_project_name():

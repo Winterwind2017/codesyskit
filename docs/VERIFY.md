@@ -45,13 +45,26 @@ behaving differently. `docs/PROTOCOL.md` §3 explains the fix (task + `task.pous
 * client-side timeout ⇒ `E_TIMEOUT` (asserted against a deliberately slow fake server);
 * batch keeps per-call codes, so a partial failure is never flattened into one boolean.
 
+## 4b. Online: judge by motion, not by `logged_in`
+
+`logged_in: true` only says the session exists. The online test therefore judges behaviour:
+
+1. **the task runs** — read `nCounter`, wait, read again, require `second > first` (8 → 68);
+2. **writes land** — write 1000, require the read-back `>= 1000` (1007);
+3. **monitoring is a series** — five samples 300 ms apart must all parse and differ (1016…1096);
+4. **state transitions** — `stop` ⇒ `application_state == "stop"`, `start` ⇒ `"run"`;
+5. **negative control** — with `simulation(False)` and no gateway the login must fail with
+   `E_CODESYS`, otherwise "success" is meaningless.
+
 ## 5. Gates
 
 | gate | command | expectation |
 | --- | --- | --- |
 | unit | `python -m pytest tests -q` | 31 passed, no CODESYS needed |
 | self-check | `python tools\selfcheck.py` | imports, verbs, docs, protocol constants |
-| live | `python tests\live_service.py` | 16/16 passed, or `[SKIP]` without CODESYS |
+| live (core) | `python tests\live_service.py` | 16/16 passed, or `[SKIP]` without CODESYS |
+| live (surface) | `python tests\live_surface.py` | 22/22 passed |
+| live (online) | `python tests\live_online.py` | 16/16 passed |
 
 Never run the live test twice in parallel: two headless IDEs will fight over the same project path
 and the same profile.

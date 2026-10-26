@@ -88,6 +88,33 @@ def main(argv=None):
     archive = sub.add_parser("archive", help="save the whole project as an archive")
     archive.add_argument("path")
 
+    sim = sub.add_parser("sim", help="enable/disable the device simulation mode (no gateway needed)")
+    sim.add_argument("--off", action="store_true")
+    sim.add_argument("--state", action="store_true")
+
+    login = sub.add_parser("online-login", help="log in (simulation by default)")
+    login.add_argument("--no-simulation", action="store_true")
+    login.add_argument("--change-option", default="never", choices=["never", "update", "ask"])
+    login.add_argument("--autostart", action="store_true")
+
+    sub.add_parser("online-state", help="login-independent online snapshot")
+    sub.add_parser("online-start", help="log in and start the application")
+    sub.add_parser("online-stop", help="log in and stop the application")
+    sub.add_parser("online-logout", help="log out")
+    sub.add_parser("download", help="download (login with change_option=update) + boot application")
+
+    read = sub.add_parser("online-read", help="read one or more expressions")
+    read.add_argument("expressions", nargs="+")
+
+    write = sub.add_parser("online-write", help="prepare, write and read back one expression")
+    write.add_argument("expression")
+    write.add_argument("value")
+
+    monitor = sub.add_parser("online-monitor", help="sample expressions over time")
+    monitor.add_argument("expressions", nargs="+")
+    monitor.add_argument("--samples", type=int, default=5)
+    monitor.add_argument("--interval-ms", type=int, default=500)
+
     batch = sub.add_parser("batch", help="run several commands in one request")
     batch.add_argument("--file", required=True, help="json file with [{\"cmd\":..,\"args\":{}}]")
 
@@ -220,6 +247,72 @@ def main(argv=None):
             client = service.client()
             try:
                 return emit(client.archive(args.path))
+            finally:
+                client.close()
+        if args.verb == "sim":
+            client = service.client()
+            try:
+                if args.state:
+                    return emit({"simulation": client.online_state().get("simulation")})
+                return emit(client.online_simulation(None if not args.off else False))
+            finally:
+                client.close()
+        if args.verb == "online-login":
+            client = service.client()
+            try:
+                return emit(client.online_login(
+                    simulation=not args.no_simulation, change_option=args.change_option,
+                    autostart=args.autostart))
+            finally:
+                client.close()
+        if args.verb == "online-state":
+            client = service.client()
+            try:
+                return emit(client.online_state())
+            finally:
+                client.close()
+        if args.verb == "online-start":
+            client = service.client()
+            try:
+                return emit(client.online_start())
+            finally:
+                client.close()
+        if args.verb == "online-stop":
+            client = service.client()
+            try:
+                return emit(client.online_stop())
+            finally:
+                client.close()
+        if args.verb == "online-logout":
+            client = service.client()
+            try:
+                return emit(client.online_logout())
+            finally:
+                client.close()
+        if args.verb == "download":
+            client = service.client(timeout=600.0)
+            try:
+                return emit(client.online_download())
+            finally:
+                client.close()
+        if args.verb == "online-read":
+            client = service.client()
+            try:
+                return emit(client.online_read(expressions=args.expressions))
+            finally:
+                client.close()
+        if args.verb == "online-write":
+            client = service.client()
+            try:
+                return emit(client.online_write(args.expression, args.value))
+            finally:
+                client.close()
+        if args.verb == "online-monitor":
+            client = service.client(timeout=600.0)
+            try:
+                return emit(client.online_monitor(expressions=args.expressions,
+                                                 samples=args.samples,
+                                                 interval_ms=args.interval_ms))
             finally:
                 client.close()
         if args.verb == "batch":
