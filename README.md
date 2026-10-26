@@ -35,7 +35,11 @@ research notes for the comparison table.
 | session | `ping` `version` `status` (service) |
 | devices | `devices` (1 562 shipped descriptions, filter by name/vendor) |
 | project | `project.create/open/save/close/info` `tree` `projects` |
-| code | `pou.create/read/write` `object.info/rename/delete/move` `folder.create` `find.text` |
+| code | `pou.create/create_typed/read/write/member/members` `object.info/rename/delete/move` `folder.create` `find.text` |
+| model | GVL / DUT / interface / FB / function, methods / properties / actions, `symbols.create`, `textlist.*` |
+| project | `project.meta` `project.save_as` `project.export_library` `project.clean` `project.users` `project.integrity` `project.io_export/import` |
+| app | `app.clean` `app.generate` `app.status` |
+| tasks | `task.info` `task.update` (priority / interval / watchdog) |
 | tasks | `task.create` `tasks` |
 | build | `build` (judged from the engine log) |
 | IDE commands | `commands` (870) `execute` |
@@ -76,6 +80,23 @@ Extended surface (`python tests/live_surface.py`, 22/22):
 | `export.native` / `project.archive` / `generate.runtime` | 23 KB / 5.4 MB / `surfaceItf.m4` |
 | `project.doc` | honest `E_UNAVAILABLE` (silent no-op headless) |
 | `online.state` / `online.login` | `logged_in:false` / `E_CODESYS` with the gateway message |
+
+Deep surface (`python tests/live_deep.py`, 36/36):
+
+| step | result |
+| --- | --- |
+| `pou.create_typed` × 5 | GVL, DUT, interface, function block, function (INT) — all created, text written |
+| `pou.member` × 3 | method / property / action under `FB_Motor`, 3 members listed |
+| compile after all that | 0 errors |
+| `task.info` / `task.update` | priority `1 → 20`, interval `20 → 10` ms |
+| `symbols.create` | symbol configuration created; after a build 138 datatypes / 69 signatures |
+| `textlist.*` | zh-CN + en + fr, `export` writes 238 B |
+| `project.meta` + `export_library` | 4 308 B compiled library (needs title **and** company) |
+| `project.save_as` | copy becomes primary, verified from file + renamed path |
+| `project.io_export` | 235 B I/O mapping CSV |
+| `project.users` / `project.integrity` | users/groups listed (creation refused as `(nobody)`); integrity check `false → true` |
+| `app.clean` / `app.generate` / `app.status` | `is_uptodate` false → true, online change possible |
+| `online.force(777)` | value pinned at 777 while the task runs; `unforce` resumes 790 → 888 |
 
 Online through **simulation** (`python tests/live_online.py`, 16/16):
 

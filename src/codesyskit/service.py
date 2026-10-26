@@ -23,13 +23,21 @@ DEFAULT_EXE = r"D:\Program Files\CODESYS 3.5.22.20\CODESYS\Common\CODESYS.exe"
 DEFAULT_PROFILE = "CODESYS V3.5 SP22 Patch 2"
 
 
-def build_command_line(exe, profile, script_path):
+def build_command_line(exe, profile, script_path, text_prompts=True):
     """CODESYS needs the profile name wrapped in literal quotes in --noUI mode.
 
     Measured: passing the profile through ``subprocess`` list form makes the engine print
     ``启动参数 --noUI 模式, 请使用 --profile="profile name" 指定配置文件`` and exit 1.
+
+    ``--textPrompts`` lets headless prompts use their default answer instead of raising:
+    without it ``save_as`` reports ``所选工程当前正由...使用`` *after* it already renamed the
+    project, and ``login`` reports ``...是否继续项目?``.
     """
-    return '"%s" --profile="%s" --noUI --runscript="%s"' % (exe, profile, script_path)
+    parts = ['"%s"' % exe, '--profile="%s"' % profile, "--noUI"]
+    if text_prompts:
+        parts.append("--textPrompts")
+    parts.append('--runscript="%s"' % script_path)
+    return " ".join(parts)
 
 
 def state_dir(explicit=None):

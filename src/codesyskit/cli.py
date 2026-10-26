@@ -115,6 +115,56 @@ def main(argv=None):
     monitor.add_argument("--samples", type=int, default=5)
     monitor.add_argument("--interval-ms", type=int, default=500)
 
+    sub.add_parser("clean", help="clean generated code")
+    sub.add_parser("generate", help="generate code")
+    sub.add_parser("app-status", help="application flags (active/uptodate/online-change)")
+
+    save_as = sub.add_parser("save-as", help="save the project under a new path")
+    save_as.add_argument("path")
+
+    info = sub.add_parser("proj-info", help="read or write project information")
+    info.add_argument("--title")
+    info.add_argument("--company")
+    info.add_argument("--version")
+    info.add_argument("--author")
+
+    library = sub.add_parser("export-library", help="save as a compiled library")
+    library.add_argument("path")
+    library.add_argument("--title")
+    library.add_argument("--version")
+
+    members = sub.add_parser("members", help="list members (methods/properties/actions)")
+    members.add_argument("path")
+
+    symbols = sub.add_parser("symbols", help="create or inspect a symbol configuration")
+    symbols.add_argument("--create", action="store_true")
+    symbols.add_argument("--path", default="")
+    symbols.add_argument("--opc-ua", action="store_true")
+
+    textlist = sub.add_parser("textlist", help="create a text list or manage its languages")
+    textlist.add_argument("--create", action="store_true")
+    textlist.add_argument("--path", default="")
+    textlist.add_argument("--languages", nargs="*")
+    textlist.add_argument("--add-language")
+    textlist.add_argument("--out")
+
+    task = sub.add_parser("task", help="read or update a task configuration")
+    task.add_argument("path")
+    task.add_argument("--priority")
+    task.add_argument("--interval")
+    task.add_argument("--interval-unit")
+    task.add_argument("--watchdog-time")
+
+    force = sub.add_parser("force", help="force an expression (simulation)")
+    force.add_argument("expression")
+    force.add_argument("value")
+    sub.add_parser("unforce", help="release all forced expressions")
+    sub.add_parser("forced", help="list forced and prepared expressions")
+
+    io_export = sub.add_parser("io-export", help="export device I/O mappings as CSV")
+    io_export.add_argument("path")
+    io_export.add_argument("--device", default=None)
+
     batch = sub.add_parser("batch", help="run several commands in one request")
     batch.add_argument("--file", required=True, help="json file with [{\"cmd\":..,\"args\":{}}]")
 
@@ -313,6 +363,87 @@ def main(argv=None):
                 return emit(client.online_monitor(expressions=args.expressions,
                                                  samples=args.samples,
                                                  interval_ms=args.interval_ms))
+            finally:
+                client.close()
+        if args.verb in ("clean", "generate", "app-status", "forced", "unforce"):
+            client = service.client()
+            try:
+                if args.verb == "clean":
+                    return emit(client.app_clean())
+                if args.verb == "generate":
+                    return emit(client.app_generate())
+                if args.verb == "app-status":
+                    return emit(client.app_status())
+                if args.verb == "forced":
+                    return emit(client.online_forced())
+                return emit(client.online_unforce())
+            finally:
+                client.close()
+        if args.verb == "save-as":
+            client = service.client(timeout=600.0)
+            try:
+                return emit(client.save_as(args.path))
+            finally:
+                client.close()
+        if args.verb == "proj-info":
+            client = service.client()
+            try:
+                return emit(client.project_meta(title=args.title, company=args.company,
+                                                version=args.version, author=args.author))
+            finally:
+                client.close()
+        if args.verb == "export-library":
+            client = service.client(timeout=600.0)
+            try:
+                return emit(client.export_library(args.path, title=args.title,
+                                                  version=args.version))
+            finally:
+                client.close()
+        if args.verb == "members":
+            client = service.client()
+            try:
+                return emit(client.members(args.path))
+            finally:
+                client.close()
+        if args.verb == "symbols":
+            client = service.client()
+            try:
+                if args.create:
+                    return emit(client.symbols_create(opc_ua=args.opc_ua))
+                return emit(client.symbols_info(args.path))
+            finally:
+                client.close()
+        if args.verb == "textlist":
+            client = service.client()
+            try:
+                if args.create:
+                    return emit(client.textlist_create(languages=args.languages))
+                if args.out:
+                    return emit(client.textlist_export(args.path, args.out))
+                return emit(client.textlist_languages(args.path, add=args.add_language))
+            finally:
+                client.close()
+        if args.verb == "task":
+            client = service.client()
+            try:
+                if any([args.priority, args.interval, args.interval_unit, args.watchdog_time]):
+                    return emit(client.task_update(args.path, priority=args.priority,
+                                                   interval=args.interval,
+                                                   interval_unit=args.interval_unit,
+                                                   watchdog_time=args.watchdog_time))
+                return emit(client.task_info(args.path))
+            finally:
+                client.close()
+        if args.verb == "force":
+            client = service.client()
+            try:
+                return emit(client.online_force(args.expression, args.value))
+            finally:
+                client.close()
+        if args.verb == "io-export":
+            client = service.client()
+            try:
+                return emit(client.io_export(args.path, device=args.device))
             finally:
                 client.close()
         if args.verb == "batch":

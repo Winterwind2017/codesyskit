@@ -137,6 +137,39 @@ Two traps found on the way:
 * **`set_prepared_value` wants a string** (`42` raises `TypeError: expected str, got int`), so
   `online.write` stringifies the value before preparing it.
 
+## 4d. What the second sweep found (offline, no PLC)
+
+* **The IDE command list is a map of the product**: 832 unique commands in 90 families
+  (`recon/commands.json`, `docs/COMMANDS.md`). Families with real weight: `network` 78,
+  `visual` 68, `online` 54, `cfc` 52, `ladder` 31, `sfc` 26, `recipes` 16, `textlist` 16,
+  `staticanalysis` 4, `iec6113110` 2, `OPC UA` 2.
+* **A whole IEC object model is scriptable**: `create_program/function/function_block/gvl/dut/
+  interface` plus `create_method/property/action`; a full FB with declaration text, a method body
+  and a property still compiles with 0 errors.
+* **Symbol configuration has a creation call after all**: `application.create_symbol_config(
+  export_comments, opc_ua, client_side_layout_calculator)` — the calculator must be a real
+  `System.Guid` (`Guid.Empty` works, `None` raises `TypeError`), and a second call on the same
+  application is refused (`父对象不接受符号配置对象`). After a build the object reports
+  `get_all_datatypes()` = 138 and `get_all_signatures()` = 69.
+* **Project metadata unlocks libraries**: `project.get_project_info()` + title/version/**company**
+  → `save_as_compiled_library` writes a 4 308 B `.compiled-library`. Without project info the
+  engine says `指定的库不是托管库 (原因: 未发现工程信息/没有指定'公司')`.
+* **Task timing is writable but string-typed**: `priority = 20` raises
+  `TypeError: expected str, got int`; `"20"` works. Enabling a watchdog without a time breaks the
+  build (`MainTask: 无效的看门狗时间`).
+* **GUI-only commands are silent no-ops headless**: `导出IEC61131-10...`, `导出OPC UANodeSet`,
+  `计算并导出标准指标`, `目标设置文档导出` all *execute without error*, write no file and emit no
+  message — they open a dialog. `execute` success alone is therefore never evidence.
+* **`save_as` leaves a claim behind**: the copy is complete and the project is renamed, but opening
+  the new file immediately raises `所选工程当前正由 '<user>' 上的 '<machine>' 使用`; success is
+  verified from the file and the renamed path instead.
+* **Project comparison is not scriptable headless**: `compare_to` wants an
+  `IExtendedObject[IScriptProject]` (a path raises `TypeError`) and opening a second project fails
+  with `A primary project is already open`.
+* **User management is readable but not writable as `(nobody)`**: `project.user_management` lists
+  `Owner` / `Everyone`, while `users.create("tester")` is refused with
+  `用户'(nobody)'未取得在'用户,组和权限'上操作'修改'的许可`.
+
 ## 5. Process model
 
 ```

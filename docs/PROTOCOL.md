@@ -72,6 +72,31 @@ error   : {"v":1,"id":"<same>","ok":false,"code":"E_STATE",
 | `project.archive` | `path` | `path`, `exists`, `size` |
 | `generate.runtime` | `directory` | `directory`, `files[]` |
 | `project.doc` | `path` | `E_UNAVAILABLE` in `--noUI` (measured no-op) |
+| `project.save_as` | `path` | `path`, `from`, `primary_path`, `is_primary`, `size`, `children` |
+| `project.meta` | `title?`, `company?`, `version?`, `author?` | `before`, `changed`, `has_project_info` |
+| `project.export_library` | `path`, `title?`, `version?`, `company?` | `path`, `size`, `project_info_defaulted` |
+| `project.clean` | — | `cleaned` |
+| `project.compare` | `path` | `E_UNAVAILABLE` (measured: needs two open projects) |
+| `project.io_export` | `path`, `device?` | `path`, `exists`, `size` |
+| `project.users` | `add_user?`, `add_group?` | `users[]`, `groups[]`, `count`, `created{}`, `refused[]?` |
+| `project.integrity` | `enable?` | `before`, `after`, `enabled` |
+| `project.io_import` | `path`, `device?` | `path`, `imported` |
+| `app.clean` | — | `cleaned`, `is_uptodate` |
+| `app.generate` | — | `generated`, `is_uptodate` |
+| `app.status` | — | `is_active_application`, `is_uptodate`, `is_online_change_possible` |
+| `pou.create_typed` | `kind`, `name`, `return_type?`, `text?`, `language?` | `path`, `kind`, `name`, `text_written?` |
+| `pou.member` | `parent`, `kind`, `name`, `return_type?`, `text?` | `path`, `kind`, `name`, `text_written?` |
+| `pou.members` | `path` | `count`, `items[{name,path,has_textual_*}]` |
+| `symbols.create` | `export_comments?`, `opc_ua?`, `layout_calculator?` | `path`, `name`, `opc_ua` |
+| `symbols.info` | `path` | `datatypes[]`, `signatures[]`, `content_feature_flags` |
+| `textlist.create` | `name?`, `languages?` | `path`, `languages[]`, `language_count` |
+| `textlist.languages` | `path`, `add?` | `count`, `languages[]` |
+| `textlist.export` | `path`, `out` | `out`, `exists`, `size` |
+| `task.info` | `path` | `priority`, `interval`, `interval_unit`, `kind_of_task`, `watchdog`, `pous` |
+| `task.update` | `path`, `priority?`, `interval?`, `interval_unit?`, `watchdog_time?`, `watchdog_enabled?` | `changed`, plus the `task.info` fields |
+| `online.force` | `expression`, `value` | `forced[]`, `value`, `simulation` |
+| `online.unforce` | — | `forced[]`, `unforced` |
+| `online.forced` | — | `forced[]`, `prepared[]` |
 | `online.simulation` | `enabled?` | `simulation`, `gateway`, `address` |
 | `online.state` | — | `logged_in`, `simulation`, `gateway`, `address`, `application_state`, `operation_state` |
 | `online.login` | `simulation?`, `change_option?` (`never`/`update`/`ask`), `delete_foreign?`, `autostart?` | snapshot (+ `start_error`) — or `E_CODESYS` |
@@ -191,6 +216,36 @@ download, so re-logging in for every read restarts the program and resets every 
 * `timeout_ms` in the request is **advisory**: the engine cannot be pre-empted mid-command, so the
   server compares elapsed time after the command finishes and answers `E_TIMEOUT` if it overran.
 * `build` on a large project can take minutes; pass `timeout_ms`/`timeout` accordingly.
+
+## 4e. The object model (code generation surface)
+
+Everything an IEC project needs can be created and filled head-less:
+
+| object | call | measured result |
+| --- | --- | --- |
+| program / function / function block | `pou.create_typed {kind}` | created, declaration text written |
+| GVL / DUT / interface | `pou.create_typed {kind: gvl\|dut\|interface}` | created, text written |
+| method / property / action | `pou.member {parent, kind}` | paths like `/PLC/Plc Logic/Application/FB_Motor/Start` |
+| member listing | `pou.members` | 3 members after creating method+property+action |
+| symbol configuration | `symbols.create` | `create_symbol_config(comments, opc_ua, **Guid.Empty**)`; after a build `get_all_datatypes` = 138, `get_all_signatures` = 69 |
+| text list (i18n) | `textlist.create {languages:[…]}` | zh-CN + en → 2, then fr → 3; `export` writes 238 B |
+| task timing | `task.update {priority, interval}` | priority `1 → 20`, interval `20 → 10` (ms) |
+| compiled library | `project.meta` then `project.export_library` | 4 308 B `.compiled-library` (needs title **and company**) |
+| I/O mapping | `project.io_export` | 235 B CSV for a fresh device |
+
+Measured quirks worth knowing before writing templates:
+
+* `create_function(name, return_type)` needs the return type; `create_method(name, return_type?)` does not.
+* `task.priority = 20` raises `TypeError: expected str, got int` — **strings only**.
+* enabling a task watchdog without a valid time makes the build fail with
+  `MainTask: 无效的看门狗时间`.
+* `symbols.create` needs a real `System.Guid` (`Guid.Empty` works); a second call on the same
+  application fails with `父对象不接受符号配置对象`.
+* `save_as` renames the open project; opening the new file immediately afterwards raises
+  `所选工程当前正由 '<user>' 上的 '<machine>' 使用` even though the copy is complete — the kit
+  verifies the file plus the renamed path instead of trusting that message.
+* `save_as_compiled_library` refuses a project without information:
+  `指定的库不是托管库 (原因: 在工程信息中没有指定'公司')`.
 
 ## 5c. Online states you will see
 

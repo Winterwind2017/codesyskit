@@ -245,7 +245,139 @@ class CodesysClient:
     def export_doc(self, path):
         return self.call("project.doc", path=path)
 
+    # -- IEC object model ---------------------------------------------------
+    def create_typed(self, kind, name, return_type=None, text=None, language=None):
+        args = {"kind": kind, "name": name}
+        for key, value in (("return_type", return_type), ("text", text),
+                           ("language", language)):
+            if value is not None:
+                args[key] = value
+        return self.call("pou.create_typed", **args)
+
+    def add_member(self, parent, kind, name, return_type=None, text=None):
+        args = {"parent": parent, "kind": kind, "name": name}
+        if return_type is not None:
+            args["return_type"] = return_type
+        if text is not None:
+            args["text"] = text
+        return self.call("pou.member", **args)
+
+    def members(self, path):
+        return self.call("pou.members", path=path)
+
+    def symbols_create(self, export_comments=True, opc_ua=False, layout_calculator=None):
+        args = {"export_comments": export_comments, "opc_ua": opc_ua}
+        if layout_calculator is not None:
+            args["layout_calculator"] = layout_calculator
+        return self.call("symbols.create", **args)
+
+    def symbols_info(self, path):
+        return self.call("symbols.info", path=path)
+
+    def textlist_create(self, name=None, languages=None):
+        args = {}
+        if name:
+            args["name"] = name
+        if languages:
+            args["languages"] = languages
+        return self.call("textlist.create", **args)
+
+    def textlist_languages(self, path, add=None):
+        args = {"path": path}
+        if add:
+            args["add"] = add
+        return self.call("textlist.languages", **args)
+
+    def textlist_export(self, path, out):
+        return self.call("textlist.export", path=path, out=out)
+
+    # -- application / project lifecycle -----------------------------------
+    def app_clean(self):
+        return self.call("app.clean")
+
+    def app_generate(self):
+        return self.call("app.generate")
+
+    def app_status(self):
+        return self.call("app.status")
+
+    def save_as(self, path):
+        return self.call("project.save_as", path=path, timeout_ms=600000)
+
+    def project_meta(self, **fields):
+        """Read (and optionally write) title/company/version/author/released/default_namespace."""
+        return self.call("project.meta", **fields)
+
+    def export_library(self, path, title=None, version=None, company=None):
+        args = {"path": path}
+        for key, value in (("title", title), ("version", version), ("company", company)):
+            if value is not None:
+                args[key] = value
+        return self.call("project.export_library", **args, timeout_ms=600000)
+
+    def project_clean(self):
+        return self.call("project.clean")
+
+    def compare(self, path):
+        return self.call("project.compare", path=path, timeout_ms=600000)
+
+    def project_users(self, add_user=None, add_group=None):
+        args = {}
+        if add_user:
+            args["add_user"] = add_user
+        if add_group:
+            args["add_group"] = add_group
+        return self.call("project.users", **args)
+
+    def project_integrity(self, enable=False):
+        return self.call("project.integrity", enable=enable)
+
+    def io_export(self, path, device=None):
+        args = {"path": path}
+        if device:
+            args["device"] = device
+        return self.call("project.io_export", **args)
+
+    def io_import(self, path, device=None):
+        args = {"path": path}
+        if device:
+            args["device"] = device
+        return self.call("project.io_import", **args)
+
+    # -- tasks -------------------------------------------------------------
+    def task_info(self, path):
+        return self.call("task.info", path=path)
+
+    def task_update(self, path, priority=None, interval=None, interval_unit=None,
+                    watchdog_time=None, watchdog_enabled=None):
+        args = {"path": path}
+        for key, value in (("priority", priority), ("interval", interval),
+                           ("interval_unit", interval_unit),
+                           ("watchdog_time", watchdog_time),
+                           ("watchdog_enabled", watchdog_enabled)):
+            if value is not None:
+                args[key] = value
+        return self.call("task.update", **args)
+
     # -- online (simulation works headless; a real PLC needs a gateway) -----
+    def online_force(self, expression, value, simulation=None):
+        args = {"expression": expression, "value": value}
+        if simulation is not None:
+            args["simulation"] = bool(simulation)
+        return self.call("online.force", **args)
+
+    def online_unforce(self, simulation=None):
+        args = {}
+        if simulation is not None:
+            args["simulation"] = bool(simulation)
+        return self.call("online.unforce", **args)
+
+    def online_forced(self, simulation=None):
+        args = {}
+        if simulation is not None:
+            args["simulation"] = bool(simulation)
+        return self.call("online.forced", **args)
+
     def online_simulation(self, enabled=None):
         args = {}
         if enabled is not None:

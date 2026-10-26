@@ -951,6 +951,10 @@ def cmd_online_logout(args):
     node, online_app = online_application(args)
     online_app.logout()
     snapshot = online_snapshot(node, online_app)
+    try:
+        online_app.Dispose()
+    except Exception:
+        pass
     ONLINE["app"] = None
     ONLINE["key"] = None
     return snapshot
@@ -1058,6 +1062,483 @@ def cmd_online_download(args):
         created = "error: %s" % unicode(exc)[:160]
     snapshot["boot_application"] = created
     return snapshot
+
+
+def iec_container(args):
+    _, application = active_application()
+    return application
+
+
+def member_kind(kind):
+    kind = (kind or "method").lower()
+    if kind not in ("method", "property", "action"):
+        raise CmdError("E_ARGS", "member kind must be method/property/action")
+    return kind
+
+
+def cmd_pou_create_typed(args):
+    application = iec_container(args)
+    name = args.get("name")
+    if not name:
+        raise CmdError("E_ARGS", "this command needs 'name'")
+    kind = (args.get("kind") or "function_block").lower()
+    language = args.get("language")
+    if kind == "function":
+        return_type = args.get("return_type")
+        if not return_type:
+            raise CmdError("E_ARGS", "create_function needs 'return_type'")
+        created = application.create_function(name, return_type)
+    elif kind == "function_block":
+        created = application.create_function_block(name)
+    elif kind == "gvl":
+        created = application.create_gvl(name)
+    elif kind == "dut":
+        created = application.create_dut(name)
+    elif kind == "interface":
+        created = application.create_interface(name)
+    elif kind == "program":
+        created = application.create_program(
+            name,
+            language=scriptengine.ImplementationLanguages.st if language == "st" else None)
+    else:
+        raise CmdError("E_ARGS", "unknown kind %r" % (kind,))
+    result = {"path": path_of(created, primary_project()), "kind": kind, "name": name}
+    if args.get("text"):
+        write_text(getattr(created, "textual_declaration"), args["text"])
+        result["text_written"] = True
+    return result
+
+
+def cmd_pou_create_member(args):
+    project = primary_project()
+    parent = walk(project, args.get("parent", ""))
+    kind = member_kind(args.get("kind"))
+    name = args.get("name")
+    if not name:
+        raise CmdError("E_ARGS", "pou.member needs 'name'")
+    if kind == "method":
+        created = parent.create_method(name, args.get("return_type"))
+    elif kind == "property":
+        created = parent.create_property(name, args.get("return_type") or "int")
+    else:
+        created = parent.create_action(name)
+    result = {"path": path_of(created, project), "kind": kind, "name": name}
+    if args.get("text"):
+        write_text(created.textual_implementation, args["text"])
+        result["text_written"] = True
+    return result
+
+
+def cmd_pou_members(args):
+    project = primary_project()
+    node = walk(project, args.get("path", ""))
+    members = []
+    for child in children(node):
+        entry = {"name": name_of(child), "path": path_of(child, project)}
+        for flag in ("has_textual_implementation", "has_textual_declaration"):
+            try:
+                entry[flag] = bool(getattr(child, flag))
+            except Exception:
+                entry[flag] = None
+        members.append(entry)
+    return {"count": len(members), "items": members}
+
+
+def cmd_symbols_create(args):
+    """create_symbol_config(export_comments, opc_ua, client_side_layout_calculator).
+
+    Measured: the calculator must be a real ``System.Guid`` (``Guid.Empty`` works, ``None``
+    raises TypeError) and one application carries at most one symbol configuration.
+    """
+    application = iec_container(args)
+    for child in children(application):
+        try:
+            if child.is_symbol_configuration:
+                raise CmdError("E_STATE", "application already has a symbol configuration",
+                               path_of(child, primary_project()))
+        except CmdError:
+            raise
+        except Exception:
+            continue
+    layout = args.get("layout_calculator")
+    if layout in (None, "") or not hasattr(layout, "ToString"):
+        guid = Guid.Empty
+    else:
+        guid = layout
+    created = application.create_symbol_config(
+        bool(args.get("export_comments", True)), bool(args.get("opc_ua", False)), guid)
+    return {"path": path_of(created, primary_project()), "name": name_of(created),
+            "opc_ua": bool(args.get("opc_ua", False))}
+
+
+def cmd_symbols_info(args):
+    project = primary_project()
+    node = walk(project, args.get("path", ""))
+    result = {"path": path_of(node, project)}
+    for attribute in ("content_feature_flags", "effective_content_feature_flags"):
+        try:
+            result[attribute] = utext(getattr(node, attribute))
+        except Exception:
+            result[attribute] = None
+    for method in ("get_all_signatures", "get_all_datatypes"):
+        try:
+            values = [utext(item) for item in list(getattr(node, method)())]
+        except Exception as exc:
+            values = ["error: %s" % utext(exc)[:80]]
+        result[method.replace("get_all_", "")] = values
+    return result
+
+
+def cmd_textlist_create(args):
+    application = iec_container(args)
+    created = application.create_textlist(args.get("name"))
+    path = path_of(created, primary_project())
+    languages = []
+    if args.get("languages"):
+        for code in args["languages"]:
+            try:
+                created.addlanguage(utext(code))
+                languages.append(utext(code))
+            except Exception:
+                continue
+    return {"path": path, "name": name_of(created), "languages": languages,
+            "language_count": created.languagecount()}
+
+
+def cmd_textlist_languages(args):
+    project = primary_project()
+    node = walk(project, args.get("path", ""))
+    if args.get("add"):
+        node.addlanguage(utext(args["add"]))
+    count = node.languagecount()
+    languages = []
+    for index in range(count):
+        try:
+            languages.append(utext(node.getlanguage(index)))
+        except Exception:
+            languages.append("?")
+    return {"path": path_of(node, project), "count": count, "languages": languages}
+
+
+def cmd_textlist_export(args):
+    project = primary_project()
+    node = walk(project, args.get("path", ""))
+    out = args.get("out")
+    if not out:
+        raise CmdError("E_ARGS", "textlist.export needs 'out'")
+    folder = os.path.dirname(out)
+    if folder and not os.path.isdir(folder):
+        os.makedirs(folder)
+    node.export(out)
+    return {"path": path_of(node, project), "out": out, "exists": os.path.exists(out),
+            "size": os.path.getsize(out) if os.path.exists(out) else 0}
+
+
+def cmd_app_clean(args):
+    _, application = active_application()
+    application.clean()
+    return {"cleaned": True, "is_uptodate": bool(application.is_uptodate)}
+
+
+def cmd_app_generate(args):
+    _, application = active_application()
+    application.generate_code()
+    return {"generated": True, "is_uptodate": bool(application.is_uptodate)}
+
+
+def cmd_app_status(args):
+    _, application = active_application()
+    result = {"path": path_of(application, primary_project())}
+    for attribute in ("is_active_application", "is_uptodate", "is_online_change_possible"):
+        try:
+            result[attribute] = bool(getattr(application, attribute))
+        except Exception:
+            result[attribute] = None
+    return result
+
+
+def cmd_project_save_as(args):
+    """save_as renames the open project; the same project object stays valid afterwards.
+
+    Measured: opening the new file right after the call raises
+    ``所选工程当前正由 '<user>' 上的 '<machine>' 使用`` (a claim file remains), even though the
+    copy is complete, so success is verified from the file and the renamed path instead.
+    """
+    project = primary_project()
+    path = args.get("path")
+    if not path:
+        raise CmdError("E_ARGS", "project.save_as needs 'path'")
+    folder = os.path.dirname(path)
+    if folder and not os.path.isdir(folder):
+        os.makedirs(folder)
+    before = utext(project.path)
+    current = ONLINE.get("app")
+    if current is not None:
+        for action in ("logout", "Dispose"):
+            try:
+                getattr(current, action)()
+            except Exception:
+                pass
+        ONLINE["app"] = None
+        ONLINE["key"] = None
+    warning = None
+    try:
+        project.save_as(path)
+    except Exception as exc:
+        message = utext(exc)
+        if "使用" not in message and "in use" not in message.lower():
+            raise CmdError("E_CODESYS", "save_as failed: %s" % message[:300])
+        warning = message[:300]
+    result = {"path": path, "from": before,
+              "exists": os.path.exists(path),
+              "size": os.path.getsize(path) if os.path.exists(path) else 0}
+    try:
+        result["primary_path"] = utext(project.path)
+    except Exception:
+        result["primary_path"] = None
+    result["is_primary"] = result["primary_path"] == path
+    try:
+        result["children"] = len(children(project))
+    except Exception:
+        result["children"] = None
+    if warning is not None:
+        result["engine_warning"] = warning
+        if not (result["exists"] and result["size"] and result["is_primary"]):
+            raise CmdError("E_CODESYS", "save_as did not produce the copy",
+                           "warning=%s exists=%r size=%r primary=%r"
+                           % (warning, result["exists"], result["size"],
+                              result["primary_path"]))
+        result["verified"] = True
+    return result
+
+
+def cmd_project_meta(args):
+    project = primary_project()
+    info = project.get_project_info()
+    fields = ("title", "company", "version", "author", "released", "default_namespace")
+    before = {}
+    for field in fields:
+        try:
+            before[field] = utext(getattr(info, field))
+        except Exception:
+            before[field] = None
+    changed = {}
+    for field in fields:
+        if args.get(field) is not None:
+            try:
+                setattr(info, field, utext(args[field]))
+                changed[field] = utext(getattr(info, field))
+            except Exception as exc:
+                changed[field] = "error: %s" % utext(exc)[:80]
+    return {"before": before, "changed": changed,
+            "has_project_info": bool(project.has_project_info)}
+
+
+def cmd_project_export_library(args):
+    project = primary_project()
+    path = args.get("path")
+    if not path:
+        raise CmdError("E_ARGS", "project.export_library needs 'path'")
+    folder = os.path.dirname(path)
+    if folder and not os.path.isdir(folder):
+        os.makedirs(folder)
+    defaulted = False
+    if not project.has_project_info:
+        info = project.get_project_info()
+        try:
+            info.title = utext(args.get("title") or "Library")
+            info.version = utext(args.get("version") or "1.0.0.0")
+            info.company = utext(args.get("company") or "")
+            defaulted = True
+        except Exception:
+            pass
+    project.save_as_compiled_library(path)
+    if not os.path.exists(path):
+        raise CmdError("E_CODESYS", "save_as_compiled_library produced no file",
+                       "measured: it needs project information, including 'company'")
+    return {"path": path, "size": os.path.getsize(path),
+            "project_info_defaulted": defaulted}
+
+
+def cmd_project_clean(args):
+    project = primary_project()
+    project.clean_all()
+    return {"cleaned": True}
+
+
+def cmd_project_compare(args):
+    """Measured wall: compare_to needs a second project object, and only one project can be open."""
+    raise CmdError("E_UNAVAILABLE",
+                   "project.compare needs a second open project, but only one project can be primary",
+                   "measured: compare_to(str) -> TypeError; open(second) -> 'A primary project is already open'")
+
+
+def cmd_project_io_export(args):
+    project = primary_project()
+    path = args.get("path")
+    if not path:
+        raise CmdError("E_ARGS", "project.io_export needs 'path'")
+    node = walk(project, args.get("device") or "/PLC")
+    folder = os.path.dirname(path)
+    if folder and not os.path.isdir(folder):
+        os.makedirs(folder)
+    node.export_io_mappings_as_csv(path)
+    return {"path": path, "exists": os.path.exists(path),
+            "size": os.path.getsize(path) if os.path.exists(path) else 0}
+
+
+def cmd_project_io_import(args):
+    project = primary_project()
+    path = args.get("path")
+    if not path:
+        raise CmdError("E_ARGS", "project.io_import needs 'path'")
+    if not os.path.exists(path):
+        raise CmdError("E_STATE", "no such csv: %s" % path)
+    node = walk(project, args.get("device") or "/PLC")
+    node.import_io_mappings_from_csv(path)
+    return {"path": path, "imported": True}
+
+
+def cmd_task_info(args):
+    project = primary_project()
+    node = walk(project, args.get("path", ""))
+    result = {"path": path_of(node, project), "name": name_of(node)}
+    for attribute in ("priority", "interval", "interval_unit", "kind_of_task"):
+        try:
+            result[attribute] = utext(getattr(node, attribute))
+        except Exception:
+            result[attribute] = None
+    try:
+        result["watchdog"] = {"enabled": bool(node.watchdog.enabled),
+                              "time": utext(node.watchdog.time),
+                              "unit": utext(node.watchdog.time_unit),
+                              "sensitivity": utext(node.watchdog.sensitivity)}
+    except Exception:
+        result["watchdog"] = None
+    try:
+        result["pous"] = [utext(pou) for pou in list(node.pous)]
+    except Exception:
+        result["pous"] = None
+    return result
+
+
+def cmd_task_update(args):
+    project = primary_project()
+    node = walk(project, args.get("path", ""))
+    changed = {}
+    for attribute in ("priority", "interval", "interval_unit"):
+        if args.get(attribute) is not None:
+            try:
+                # the engine wants strings here: priority = 20 raises TypeError
+                setattr(node, attribute, utext(args[attribute]))
+                changed[attribute] = utext(getattr(node, attribute))
+            except Exception as exc:
+                changed[attribute] = "error: %s" % utext(exc)[:80]
+    if args.get("watchdog_time") is not None:
+        try:
+            node.watchdog.time = utext(args["watchdog_time"])
+            changed["watchdog_time"] = utext(node.watchdog.time)
+        except Exception as exc:
+            changed["watchdog_time"] = "error: %s" % utext(exc)[:80]
+    if args.get("watchdog_enabled") is not None:
+        try:
+            node.watchdog.enabled = bool(args["watchdog_enabled"])
+            changed["watchdog_enabled"] = bool(node.watchdog.enabled)
+        except Exception as exc:
+            changed["watchdog_enabled"] = "error: %s" % utext(exc)[:80]
+    result = {"changed": changed}
+    result.update(cmd_task_info({"path": args.get("path", "")}))
+    return result
+
+
+def cmd_online_force(args):
+    node, online_app = online_login_now(args)
+    expression = args.get("expression")
+    if expression is None:
+        raise CmdError("E_ARGS", "online.force needs 'expression'")
+    online_app.set_prepared_value(expression, utext(args.get("value")))
+    online_app.force_prepared_values()
+    forced = []
+    try:
+        forced = [utext(item) for item in list(online_app.get_forced_expressions())]
+    except Exception:
+        pass
+    value = None
+    try:
+        value = utext(online_app.read_value(expression))
+    except Exception:
+        pass
+    return {"forced": forced, "expression": expression, "value": value,
+            "simulation": bool(node.get_simulation_mode())}
+
+
+def cmd_online_unforce(args):
+    node, online_app = online_login_now(args)
+    online_app.unforce_all_values()
+    forced = []
+    try:
+        forced = [utext(item) for item in list(online_app.get_forced_expressions())]
+    except Exception:
+        pass
+    return {"forced": forced, "unforced": True}
+
+
+def cmd_online_forced(args):
+    node, online_app = online_login_now(args)
+    forced = [utext(item) for item in list(online_app.get_forced_expressions())]
+    prepared = [utext(item) for item in list(online_app.get_prepared_expressions())]
+    return {"forced": forced, "prepared": prepared}
+
+
+def cmd_project_users(args):
+    """List project users/groups; creating them needs a logged-in user with rights.
+
+    Measured: the script runs as user ``(nobody)`` and creation fails with
+    "用户'(nobody)'未取得在'用户,组和权限'上操作'修改'的许可", so the listing is still returned
+    and the refusal is reported instead of raising.
+    """
+    project = primary_project()
+    management = project.user_management
+    created = {}
+    refused = []
+    for kind, key, bucket in (("users", "add_user", "user"), ("groups", "add_group", "group")):
+        name = args.get(key)
+        if not name:
+            continue
+        try:
+            getattr(management, kind).create(utext(name))
+            created[bucket] = utext(name)
+        except Exception as exc:
+            refused.append(utext(exc)[:200])
+    users = [utext(user) for user in list(management.users)]
+    groups = [utext(group) for group in list(management.groups)]
+    result = {"users": users, "groups": groups, "count": len(users), "created": created}
+    if refused:
+        result["refused"] = refused
+    return result
+
+
+def cmd_project_integrity(args):
+    project = primary_project()
+    before = False
+    try:
+        before = bool(project.is_integrity_check_enabled())
+    except Exception:
+        try:
+            before = bool(project.is_integrity_check_enabled)
+        except Exception:
+            before = None
+    if args.get("enable"):
+        project.enable_integrity_check()
+    after = None
+    try:
+        after = bool(project.is_integrity_check_enabled())
+    except Exception:
+        try:
+            after = bool(project.is_integrity_check_enabled)
+        except Exception:
+            after = None
+    return {"before": before, "after": after, "enabled": after}
 
 
 def cmd_build(args):
@@ -1185,6 +1666,31 @@ COMMANDS = {
     "online.write": cmd_online_write,
     "online.monitor": cmd_online_monitor,
     "online.download": cmd_online_download,
+    "pou.create_typed": cmd_pou_create_typed,
+    "pou.member": cmd_pou_create_member,
+    "pou.members": cmd_pou_members,
+    "symbols.create": cmd_symbols_create,
+    "symbols.info": cmd_symbols_info,
+    "textlist.create": cmd_textlist_create,
+    "textlist.languages": cmd_textlist_languages,
+    "textlist.export": cmd_textlist_export,
+    "app.clean": cmd_app_clean,
+    "app.generate": cmd_app_generate,
+    "app.status": cmd_app_status,
+    "project.save_as": cmd_project_save_as,
+    "project.meta": cmd_project_meta,
+    "project.export_library": cmd_project_export_library,
+    "project.clean": cmd_project_clean,
+    "project.compare": cmd_project_compare,
+    "project.io_export": cmd_project_io_export,
+    "project.io_import": cmd_project_io_import,
+    "task.info": cmd_task_info,
+    "task.update": cmd_task_update,
+    "online.force": cmd_online_force,
+    "online.unforce": cmd_online_unforce,
+    "online.forced": cmd_online_forced,
+    "project.users": cmd_project_users,
+    "project.integrity": cmd_project_integrity,
     "build": cmd_build,
     "messages": cmd_messages,
     "batch": cmd_batch,

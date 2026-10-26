@@ -1,0 +1,7326 @@
+{
+ "count": 832, 
+ "items": [
+  {
+   "description": "(DEBUG) Delete all hidden/transient devies", 
+   "guid": "4dcad734-fc5c-43c5-a2b5-596f2ff5219b", 
+   "name": "(DEBUG) Delete all hidden/transient devices", 
+   "tokens": [
+    ""
+   ]
+  }, 
+  {
+   "description": "Toggle child index visibility (DEBUG)", 
+   "guid": "4c0128e7-9ce6-4846-8abb-36a2be3676af", 
+   "name": "Toggle child index visibility (DEBUG)", 
+   "tokens": []
+  }, 
+  {
+   "description": "从目标上传跟踪配置", 
+   "guid": "9e374088-6236-44fc-b420-2597cc030bb8", 
+   "name": "上传跟踪", 
+   "tokens": []
+  }, 
+  {
+   "description": "将选择的模块实例或参考上移一个位置", 
+   "guid": "e8bad280-939d-4bd4-98ea-54b8578e7c95", 
+   "name": "上移", 
+   "tokens": []
+  }, 
+  {
+   "description": "将选择的模块实例或参考下移一个位置", 
+   "guid": "09b29d04-49f8-4e81-b74d-edbaf9249105", 
+   "name": "下移", 
+   "tokens": []
+  }, 
+  {
+   "description": "下载缺失的设备描述", 
+   "guid": "a3cb0388-da1d-40d7-8455-de494fb0e527", 
+   "name": "下载缺失的设备描述", 
+   "tokens": []
+  }, 
+  {
+   "description": "向目标加载跟踪", 
+   "guid": "1781907e-cf91-424e-a5b3-8a5b34a10194", 
+   "name": "下载跟踪", 
+   "tokens": []
+  }, 
+  {
+   "description": "逐个查看到断点的中心视图", 
+   "guid": "e4a50f87-08d7-45e5-ba05-d9b0800ae85e", 
+   "name": "中心视图到断点", 
+   "tokens": []
+  }, 
+  {
+   "description": "在之后在相同的层次结构中添加步", 
+   "guid": "1a10a0d9-deee-4a5b-9460-8e7b8534bd44", 
+   "name": "之后添加步", 
+   "tokens": []
+  }, 
+  {
+   "description": "尝试创建一个模块描述,文本列表,图象池和已选FB的接口.", 
+   "guid": "0c5ba7cf-2156-4b7c-bd4f-e365013d6f16", 
+   "name": "从已选FB创建模块", 
+   "tokens": []
+  }, 
+  {
+   "description": "开启或关闭仿真模式", 
+   "guid": "b74a8b9c-0335-4303-a2cc-27034ba12fb6", 
+   "name": "仿真", 
+   "tokens": []
+  }, 
+  {
+   "description": "停止跟踪", 
+   "guid": "33e0e114-0372-4ae2-b97f-2049c5f7b9e6", 
+   "name": "停止跟踪", 
+   "tokens": []
+  }, 
+  {
+   "description": "光标", 
+   "guid": "f9eb11a8-6afb-4b0c-b1df-163281879cd7", 
+   "name": "光标", 
+   "tokens": []
+  }, 
+  {
+   "description": "关闭子序列,并在可能封闭的序列步骤后添加步", 
+   "guid": "ad75e779-432d-442f-92c5-43077c17c7d6", 
+   "name": "关闭子序列后添加步", 
+   "tokens": []
+  }, 
+  {
+   "description": "切换断点开关", 
+   "guid": "4be620f9-7ed8-4b72-96a8-aa252c4c07a5", 
+   "name": "切换断点", 
+   "tokens": []
+  }, 
+  {
+   "description": "创建所有受模块引用但还不存在的文本列表和文本列表条目", 
+   "guid": "3df3488f-3f58-42c1-8d92-7f920fcd6603", 
+   "name": "创建丢失的文本列表条目", 
+   "tokens": []
+  }, 
+  {
+   "description": "创建宏模块要用当前选出来的模块实例作为根.", 
+   "guid": "8ba25795-3425-47e0-97db-c52fd683749b", 
+   "name": "创建宏模块", 
+   "tokens": []
+  }, 
+  {
+   "description": "为选择的槽创建一个扩展模块", 
+   "guid": "c359b64c-3121-4ec9-ac63-7935f9d6be9a", 
+   "name": "创建扩展板块", 
+   "tokens": []
+  }, 
+  {
+   "description": "创建一个持久性管理器的默认实例, 包括一个持久性通道和一个ASCII文件存储.", 
+   "guid": "6e9bb326-c01b-45ee-8df8-e686fe123def", 
+   "name": "创建持久性管理器", 
+   "tokens": []
+  }, 
+  {
+   "description": "创建一个数据日志管理器的默认实例, 包括数据日志通道和数据日志存储.", 
+   "guid": "542f125b-ccd7-4a60-8f01-6b63e6504d84", 
+   "name": "创建数据日志管理器", 
+   "tokens": []
+  }, 
+  {
+   "description": "创建图像池,图像池包含所有的被此模块引用的但是还不存在的图像.", 
+   "guid": "f8fd87a8-01c0-43ed-9dac-7d48838cb776", 
+   "name": "创建遗漏的全部图像池.", 
+   "tokens": []
+  }, 
+  {
+   "description": "删除应用程序编辑器生成的所有对象", 
+   "guid": "0acf1e77-4472-44ae-84ad-d348012ffd22", 
+   "name": "删除生成的对象", 
+   "tokens": []
+  }, 
+  {
+   "description": "删除自动生成的I/O", 
+   "guid": "cb199140-b2ad-4780-b313-d59fb5f087e1", 
+   "name": "删除自动生成的I/O", 
+   "tokens": []
+  }, 
+  {
+   "description": "选择模块树中的参考目标", 
+   "guid": "185c9b2f-890c-4e9d-8aa2-769c5442ee8d", 
+   "name": "前往目标", 
+   "tokens": []
+  }, 
+  {
+   "description": "压缩x轴", 
+   "guid": "83cf72a4-f49b-471d-b729-e5848575a8b3", 
+   "name": "压缩", 
+   "tokens": []
+  }, 
+  {
+   "description": "如果选中,即使代码处理异常,执行也会停止.", 
+   "guid": "63406a8b-dd43-4fb3-8f16-c270c15f5558", 
+   "name": "在异常处停止执行", 
+   "tokens": []
+  }, 
+  {
+   "description": "显示在目标上运行的跟踪", 
+   "guid": "29a319fe-0fd4-4858-89f8-df002919ee6f", 
+   "name": "在线列表 ...", 
+   "tokens": []
+  }, 
+  {
+   "description": "切换到在线配置模式", 
+   "guid": "e4e9aa66-6467-45be-a112-9086f990f4bc", 
+   "name": "在线配置模式...", 
+   "tokens": []
+  }, 
+  {
+   "description": "复位触发器", 
+   "guid": "f8dd345d-8324-432d-9243-5e4506bd20d2", 
+   "name": "复位触发器", 
+   "tokens": []
+  }, 
+  {
+   "description": "重算所有POU池中选择的模块声明对象的签名", 
+   "guid": "97e0dafc-9997-4dbf-ba07-932df6c9844c", 
+   "name": "对所有选择模块进行签名", 
+   "tokens": []
+  }, 
+  {
+   "description": "把实际设备导出为设备描述文件", 
+   "guid": "f78aa927-46c8-46a5-8925-776cc25877ff", 
+   "name": "导出设备...", 
+   "tokens": []
+  }, 
+  {
+   "description": "导出选中设备的描述文件", 
+   "guid": "cfc96d6c-103f-441f-a6df-263f1df0fbfe", 
+   "name": "导出设备描述文件", 
+   "tokens": []
+  }, 
+  {
+   "description": "将光标固定到值", 
+   "guid": "f9ace0fc-064e-4be6-afe6-1d1720edf388", 
+   "name": "将光标固定到值", 
+   "tokens": []
+  }, 
+  {
+   "description": "将所有变量移至单独的图表中", 
+   "guid": "fb328d82-b7c7-405f-b2ad-4bd1dfe3c8e3", 
+   "name": "将所有变量移至单独的图表中", 
+   "tokens": []
+  }, 
+  {
+   "description": "将所有变量移至第一个图图标中", 
+   "guid": "1caf4463-d319-486b-bd77-d55d051bc7f6", 
+   "name": "将所有变量移至第一个图图标中", 
+   "tokens": []
+  }, 
+  {
+   "description": "将模块程序库添加到项目POU池中", 
+   "guid": "d1479a9d-ba1c-4f99-ae10-924504b5d862", 
+   "name": "将模块程序库添加到项目中", 
+   "tokens": []
+  }, 
+  {
+   "description": "开始跟踪", 
+   "guid": "32f81dc9-4d2d-4059-aa2f-fa56e4a0e3ab", 
+   "name": "开始跟踪", 
+   "tokens": []
+  }, 
+  {
+   "description": "引用现有的模块实例", 
+   "guid": "88da4a12-ae27-4a2c-a89a-9884427899fc", 
+   "name": "引用模块实例", 
+   "tokens": []
+  }, 
+  {
+   "description": "拉伸X轴", 
+   "guid": "14b3a241-26e3-449f-95b7-c23a64508063", 
+   "name": "拉伸", 
+   "tokens": []
+  }, 
+  {
+   "description": "映射模块之间的通道和IO配置", 
+   "guid": "bd2b5bd3-d4a7-4106-8048-b1080bf254f2", 
+   "name": "映射I/O", 
+   "tokens": []
+  }, 
+  {
+   "description": "显示所有引用(调试)", 
+   "guid": "55f525eb-fa9b-402d-bbfb-47ce9394c46b", 
+   "name": "显示所有引用(调试)", 
+   "tokens": []
+  }, 
+  {
+   "description": "", 
+   "guid": "c68c34e5-e785-4a83-8c66-2d1ebc96b6e9", 
+   "name": "显示消息视图(从状态栏)", 
+   "tokens": []
+  }, 
+  {
+   "description": "显示隐藏的空白可选择槽", 
+   "guid": "71a572d0-95b0-4bd7-8e62-98e3185ba148", 
+   "name": "显示隐藏插槽", 
+   "tokens": []
+  }, 
+  {
+   "description": "将实例模块更新至新模块中", 
+   "guid": "ec0a0269-2ad0-447c-b553-8f799aeb97e6", 
+   "name": "更新模块实例", 
+   "tokens": []
+  }, 
+  {
+   "description": "执行命令检查所有池对象并扫描模块声明", 
+   "guid": "bcb37658-15e5-4cf7-90cb-ca5609d41d17", 
+   "name": "检查所有池对象并扫描", 
+   "tokens": []
+  }, 
+  {
+   "description": "检查未知条目的模块声明", 
+   "guid": "981c0825-b7de-4ec2-8e82-1ae092b5c28c", 
+   "name": "检查未知条目", 
+   "tokens": []
+  }, 
+  {
+   "description": "输入跟踪配置以添加跟踪变量", 
+   "guid": "863ff542-ae52-4596-aff3-3783f9d69685", 
+   "name": "添加变量", 
+   "tokens": []
+  }, 
+  {
+   "description": "创建新子模块实例,连接至选定插槽", 
+   "guid": "c503703d-87b9-4bc2-9135-687336c7e898", 
+   "name": "添加子模块实例", 
+   "tokens": []
+  }, 
+  {
+   "description": "添加注释到这一个步(模块实例)", 
+   "guid": "09b025b6-2bd0-4153-8f5b-affa3eda88fb", 
+   "name": "添加注释", 
+   "tokens": []
+  }, 
+  {
+   "description": "添加新顶层模块实例", 
+   "guid": "aeec5feb-245f-4bc9-a5a8-bcb56d19ca8c", 
+   "name": "添加顶层模块实例", 
+   "tokens": []
+  }, 
+  {
+   "description": "移动断点到行中的下一步", 
+   "guid": "511263bb-d091-40aa-b85d-3e97d17e84b6", 
+   "name": "激活断点到下一步", 
+   "tokens": []
+  }, 
+  {
+   "description": "生成当前应用程序组合器代码,建立并登录", 
+   "guid": "b91a3aa4-5445-480c-96c9-8e10b03378e1", 
+   "name": "生成,建立并登录", 
+   "tokens": []
+  }, 
+  {
+   "description": "触发确认指令.也可以多选", 
+   "guid": "c9272719-e5f3-46ba-aeff-c953c48ad586", 
+   "name": "确认诊断", 
+   "tokens": []
+  }, 
+  {
+   "description": "确认完整子树的诊断", 
+   "guid": "da0d023d-78ee-440a-8afd-e5461b6dbb57", 
+   "name": "确认诊断子树", 
+   "tokens": []
+  }, 
+  {
+   "description": "已禁用物理和逻辑设备间的同步", 
+   "guid": "6cd8e674-51d8-4302-a5a8-3d66f065cbfc", 
+   "name": "禁用LogicalIO同步", 
+   "tokens": []
+  }, 
+  {
+   "description": "使能或禁用设备", 
+   "guid": "53bb412d-8007-4439-9af9-5708da68aa48", 
+   "name": "禁用设备", 
+   "tokens": []
+  }, 
+  {
+   "description": "删除生成的 InstRef 映射。", 
+   "guid": "7355c454-85ac-4055-bad1-97b67b96f942", 
+   "name": "移除生成的 InstRefs", 
+   "tokens": []
+  }, 
+  {
+   "description": "计算跟踪样本的几个统计信息", 
+   "guid": "4b20a9fa-177b-4bc6-ba10-59ef28b9a7ca", 
+   "name": "统计", 
+   "tokens": []
+  }, 
+  {
+   "description": "切换自动滚动.", 
+   "guid": "16566b26-64e0-42d2-918a-fa565ec3429a", 
+   "name": "自动滚动", 
+   "tokens": []
+  }, 
+  {
+   "description": "自动缩放当前图的y轴,使其范围为可见区域", 
+   "guid": "abaaa310-da09-42b9-8cd7-5581d0e31c5f", 
+   "name": "自动调整", 
+   "tokens": []
+  }, 
+  {
+   "description": "自动缩放当前图的y轴,使其范围为可见区域", 
+   "guid": "dddddddd-f3fe-404b-b680-683bf0f956f0", 
+   "name": "自动调整", 
+   "tokens": []
+  }, 
+  {
+   "description": "将引用插槽设置为所需对象", 
+   "guid": "9732ea69-46ec-47a9-807e-c952d98426f6", 
+   "name": "设置引用", 
+   "tokens": []
+  }, 
+  {
+   "description": "使用显示的序列树设置一个跳转参考执行操作.", 
+   "guid": "4df7182d-b5a8-46aa-9452-e43f8838ea3f", 
+   "name": "设置跳转引用", 
+   "tokens": []
+  }, 
+  {
+   "description": "从 ioconfig.par 文件中读取PLC参数并进行配置", 
+   "guid": "f34abcf8-4944-41fc-a57e-d9a5efc1d00e", 
+   "name": "读取PLC参数文件到配置", 
+   "tokens": []
+  }, 
+  {
+   "description": "如如果可能,请转到表达式的定义.如果命令被禁用,则扫描模块.", 
+   "guid": "e7f85b26-3f14-44e0-9d95-d5690bbf2658", 
+   "name": "跳转到定义", 
+   "tokens": []
+  }, 
+  {
+   "description": "当上线的时候打开FB实例的编辑器视图,或者下线的时候FB和模块保持一致.", 
+   "guid": "8165a51a-a9d1-488f-b918-3862a2aac4d3", 
+   "name": "进入模块FB", 
+   "tokens": []
+  }, 
+  {
+   "description": "打开此源模板所属的模块实例.", 
+   "guid": "fae24103-e3d8-46c8-a23e-b1464cafd019", 
+   "name": "进入模块实例", 
+   "tokens": []
+  }, 
+  {
+   "description": "在设备树中选择映射的逻辑或物理设备", 
+   "guid": "27a23832-a3e3-459a-9629-d7d87c2dab7f", 
+   "name": "选择映射的设备", 
+   "tokens": []
+  }, 
+  {
+   "description": "选择序列步骤的模块实例", 
+   "guid": "3efc87a9-b0fb-43ff-aad3-fb71a32a781c", 
+   "name": "选择模块实例", 
+   "tokens": []
+  }, 
+  {
+   "description": "显示通配符选择对话框", 
+   "guid": "2f1a1d38-b8d9-4b73-824c-1737e859aa65", 
+   "name": "通配符选择", 
+   "tokens": [
+    ""
+   ]
+  }, 
+  {
+   "description": "打开跟踪配置", 
+   "guid": "aad586d7-8313-431d-a91c-052e5310b96f", 
+   "name": "配置", 
+   "tokens": []
+  }, 
+  {
+   "description": "将滚动和缩放设置重置为默认值", 
+   "guid": "296fd49a-40da-42d6-8a78-e37a440c4cc2", 
+   "name": "重置视图", 
+   "tokens": []
+  }, 
+  {
+   "description": "重置顶层标签的已经展示的文本.", 
+   "guid": "e559831b-9a4c-498d-b8f7-1a14b7bd1234", 
+   "name": "重置顶层的文本.", 
+   "tokens": []
+  }, 
+  {
+   "description": "隐藏可选空插槽", 
+   "guid": "b54e8177-8d3d-4b20-ac21-dd29f8d7c016", 
+   "name": "隐藏可选空插槽", 
+   "tokens": []
+  }, 
+  {
+   "description": "鼠标缩放", 
+   "guid": "f0762521-cc64-46a7-8af0-1badae2ac571", 
+   "name": "鼠标缩放", 
+   "tokens": []
+  }, 
+  {
+   "description": "导入报警至当前已编辑报警组", 
+   "guid": "1714ccd5-eccb-4dcc-b9a5-f2619b03bb06", 
+   "name": "导入报警", 
+   "tokens": [
+    "AlarmConfig", 
+    "importAlarms"
+   ]
+  }, 
+  {
+   "description": "导出报警存储至CSV文件", 
+   "guid": "38716407-76e2-4154-b993-0275057cd204", 
+   "name": "导出报警存储至CSV文件", 
+   "tokens": [
+    "AlarmConfig", 
+    "AlarmStorageCsvExport"
+   ]
+  }, 
+  {
+   "description": "导出当前已编辑报警组的所有报警", 
+   "guid": "7003635c-e8d3-4184-8a1b-4442522a3f9e", 
+   "name": "导出警告", 
+   "tokens": [
+    "AlarmConfig", 
+    "exportAlarms"
+   ]
+  }, 
+  {
+   "description": "添加信息列", 
+   "guid": "6676bf55-d697-4f23-98f6-9458ca36e91e", 
+   "name": "添加信息列", 
+   "tokens": [
+    "AlarmConfig", 
+    "AddMessageColumn"
+   ]
+  }, 
+  {
+   "description": "添加锁存变量列", 
+   "guid": "d883c5f7-2e05-4b16-b0c9-ca36f1da2b80", 
+   "name": "添加锁存变量列", 
+   "tokens": [
+    "AlarmConfig", 
+    "AddLatchVarColumn"
+   ]
+  }, 
+  {
+   "description": "移除信息列", 
+   "guid": "55ff7ef1-f578-4a3b-aebe-769818f63c3f", 
+   "name": "移除信息列", 
+   "tokens": [
+    "AlarmConfig", 
+    "RemoveMessageColumn"
+   ]
+  }, 
+  {
+   "description": "移除锁存变量列", 
+   "guid": "b418f669-2194-4f06-a388-a4b262893cd0", 
+   "name": "移除锁存变量列", 
+   "tokens": [
+    "AlarmConfig", 
+    "RemoveLatchVarColumn"
+   ]
+  }, 
+  {
+   "description": "选择/取消选择为所有选定行创建警报实例.", 
+   "guid": "fa3bd639-8f34-4b6b-ac68-7d86402305bd", 
+   "name": "创建", 
+   "tokens": [
+    "AlarmInstance", 
+    "ToggleCreateAlarmCommand"
+   ]
+  }, 
+  {
+   "description": "更改所有选定行的警报组。", 
+   "guid": "33206d5b-b4f3-4bc2-b19a-9bd3446c4bbe", 
+   "name": "改变报警组", 
+   "tokens": [
+    "AlarmInstance", 
+    "ChangeAlarmGroup"
+   ]
+  }, 
+  {
+   "description": "Toggles whether applications on the server should be automatically assigned when updating a boot application.", 
+   "guid": "81818e3b-0e99-4840-bfa4-6dd3cc4c91ab", 
+   "name": "Assign Server Applications on Download", 
+   "tokens": [
+    "CAS", 
+    "assignserverbootappsondownloadenabled"
+   ]
+  }, 
+  {
+   "description": "Command to get the target identification of a device", 
+   "guid": "8bcfbc76-bc7e-4629-ada3-3703d11b5c9e", 
+   "name": "Check Device Identification", 
+   "tokens": [
+    "CAS", 
+    "checkdeviceidentification"
+   ]
+  }, 
+  {
+   "description": "Checkout the existing project from the Automation Server", 
+   "guid": "9b9de1de-8476-4dd5-a649-f28c4f660520", 
+   "name": "Checkout from Server...", 
+   "tokens": [
+    "CAS", 
+    "checkoutfromserver"
+   ]
+  }, 
+  {
+   "description": "Compare the project to a version on the server", 
+   "guid": "33964a9c-98ad-4c83-9271-d92f47628ed9", 
+   "name": "Compare with Server", 
+   "tokens": [
+    "CAS", 
+    "comparetoserver"
+   ]
+  }, 
+  {
+   "description": "Connect or disconnect an Edge Gateway to a CODESYS Automation Server, or change or repair the configuration.", 
+   "guid": "dec140d6-1ac2-4707-a34a-69f00b024300", 
+   "name": "Connect Edge Gateway", 
+   "tokens": [
+    "CAS", 
+    "connectedgegateway"
+   ]
+  }, 
+  {
+   "description": "Connect the local project to the Automation Server", 
+   "guid": "d8b9d886-eeb7-4434-bdca-0f9484710293", 
+   "name": "Connect Project to Server...", 
+   "tokens": [
+    "CAS", 
+    "connecttoserver"
+   ]
+  }, 
+  {
+   "description": "Creates a boot application archive for debugging/testing purposes", 
+   "guid": "11879d1b-1ef4-4f78-b5ec-6806da5c2ade", 
+   "name": "Create BootAppArchive (testing only)", 
+   "tokens": [
+    "CAS", 
+    "createbootapplicationarchive"
+   ]
+  }, 
+  {
+   "description": "Delete all credentials which were saved locally. These credentials were used to connect to the Automation Server multiple times without retyping them.", 
+   "guid": "3145a569-79f9-4e08-954c-9fb6e1618d75", 
+   "name": "Delete Cached Credentials", 
+   "tokens": [
+    "CAS", 
+    "deletelocallystoredusercredentials"
+   ]
+  }, 
+  {
+   "description": "Disable URL handler for any CODESYS installation", 
+   "guid": "9d803c94-1a32-4afe-8435-415bcbc4a280", 
+   "name": "Disable URL handler (requires admin permissions)", 
+   "tokens": [
+    "CAS", 
+    "disableurlhandler"
+   ]
+  }, 
+  {
+   "description": "Disconnect the project by dropping the server reference information.", 
+   "guid": "40d8a9c3-04fa-4997-8f77-8175c78ad3cb", 
+   "name": "Disconnect project", 
+   "tokens": [
+    "CAS", 
+    "disconnectproject"
+   ]
+  }, 
+  {
+   "description": "Enable URL handler for this CODESYS installation", 
+   "guid": "8806e7c0-6c96-494c-8d99-1f61499d3c5d", 
+   "name": "Enable URL handler (requires admin permissions)", 
+   "tokens": [
+    "CAS", 
+    "enableurlhandler"
+   ]
+  }, 
+  {
+   "description": "Logout from the Automation Server", 
+   "guid": "8457ddcc-247e-427b-a408-b814e3ff921a", 
+   "name": "Logout", 
+   "tokens": [
+    "CAS", 
+    "logout"
+   ]
+  }, 
+  {
+   "description": "Log out from the current server 'current server', and delete stored passwords.", 
+   "guid": "6a5a9d93-3c0d-4123-b11c-5c2211806da5", 
+   "name": "Logout from 'current server'", 
+   "tokens": [
+    "CAS", 
+    "logoutfromcurrentserver"
+   ]
+  }, 
+  {
+   "description": "Allows to select a gateway", 
+   "guid": "69cd1837-1546-4689-aa44-f881366fce2a", 
+   "name": "Select a Gateway", 
+   "tokens": [
+    "CAS", 
+    "selectgateway"
+   ]
+  }, 
+  {
+   "description": "Synchronize the current project with the Automation Server", 
+   "guid": "b5742453-9036-4d18-ad69-ae508b4ffbec", 
+   "name": "Synchronize", 
+   "tokens": [
+    "CAS", 
+    "synchronize"
+   ]
+  }, 
+  {
+   "description": "Synchronizes the remote gateways for the automation server to which this project is connected", 
+   "guid": "b762daf0-08b2-46f0-b8ca-7ab0ba44ea2e", 
+   "name": "Synchronize Remote Gateways", 
+   "tokens": [
+    "CAS", 
+    "synchronizeremotegateways"
+   ]
+  }, 
+  {
+   "description": "Get the latest updates for the current project from the Automation Server", 
+   "guid": "9526eae9-ca19-4cba-9971-7a22871f861e", 
+   "name": "Update from Server...", 
+   "tokens": [
+    "CAS", 
+    "updatefromserver"
+   ]
+  }, 
+  {
+   "description": "清除掉电保持型变量内部排序.如果希望保存当前值,请先将它们保存到配方,然后从该配方中恢复.", 
+   "guid": "e6fd1bfd-16e8-4b72-8674-cbf23a018243", 
+   "name": "列表重新排序并清除间隙", 
+   "tokens": [
+    "Clear"
+   ]
+  }, 
+  {
+   "description": "导出条件 Ids", 
+   "guid": "0b21fe6a-6da4-48ac-8447-3d9100e60413", 
+   "name": "导出条件 Ids", 
+   "tokens": [
+    "CommunicationManager", 
+    "OPC UA Server", 
+    "SymbolSet", 
+    "Alarm Groups", 
+    "ExportConditionIds"
+   ]
+  }, 
+  {
+   "description": "在信息栏里展示所有不同的参数值", 
+   "guid": "43f6f72b-cf2b-4f2d-85ef-6d05e91d6e1f", 
+   "name": "不同的参数值", 
+   "tokens": [
+    "Composer", 
+    "ShowDifferingOnlineValues"
+   ]
+  }, 
+  {
+   "description": "使用所有模块的在线值作为新参数值", 
+   "guid": "b92ee892-f3da-4a88-9f71-a9a2cca2a387", 
+   "name": "使用在线值", 
+   "tokens": [
+    "Composer", 
+    "UseOnlineValues"
+   ]
+  }, 
+  {
+   "description": "搜索项目中的模块声明", 
+   "guid": "32b0eb92-ce70-43b8-83d8-1aeacd8181e2", 
+   "name": "扫描", 
+   "tokens": [
+    "Composer", 
+    "ReadModules"
+   ]
+  }, 
+  {
+   "description": "更新所有异于其模块的模块实例", 
+   "guid": "d7716e93-8620-433e-bcb4-e0e2c5fb9ed9", 
+   "name": "更新所有实例", 
+   "tokens": [
+    "Composer", 
+    "UpdateAll"
+   ]
+  }, 
+  {
+   "description": "检查模块树和模块实例", 
+   "guid": "4b18da15-770b-4a6b-b463-455e9ab67d72", 
+   "name": "检查模块树", 
+   "tokens": [
+    "Composer", 
+    "CheckTree"
+   ]
+  }, 
+  {
+   "description": "从模块树中生成项目", 
+   "guid": "917acb80-e8a4-4c60-b3c5-c6289b9b9687", 
+   "name": "生成", 
+   "tokens": [
+    "Composer", 
+    "Generate"
+   ]
+  }, 
+  {
+   "description": "配置生成器", 
+   "guid": "dd6b0770-eadf-4a04-be59-e7fbbe928da8", 
+   "name": "生成器配置...", 
+   "tokens": [
+    "Composer", 
+    "GeneratorConfig"
+   ]
+  }, 
+  {
+   "description": "显示使用了多少模块实例以及当前激活许授权的限制信息。", 
+   "guid": "b6b3663e-ec3f-4f7a-b31f-1d88921f35b0", 
+   "name": "获取授权信息", 
+   "tokens": [
+    "Composer", 
+    "GetLicenseInfo"
+   ]
+  }, 
+  {
+   "description": "用于选择和安装当前缺少的插件的对话框", 
+   "guid": "4a7684a8-e0f8-4b99-92a5-0cdea133bc87", 
+   "name": "安装所需的附加组件", 
+   "tokens": [
+    "Installer集成", 
+    "Install Add-ons"
+   ]
+  }, 
+  {
+   "description": "导出包含所有信息的配置,以重新创建安装", 
+   "guid": "9bc6ecef-a7ca-49cf-9076-ea56f12344ee", 
+   "name": "导出安装配置...", 
+   "tokens": [
+    "None", 
+    "installationconfigurationexport"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "151c6053-ab75-47dc-b8f8-cb54b759c8b8", 
+   "name": "导出OPC UANodeSet", 
+   "tokens": [
+    "OPC UA", 
+    "Node Set Export"
+   ]
+  }, 
+  {
+   "description": "为所选安全应用程序下的所有 PROFISAFE 设备设置 F-Source", 
+   "guid": "94604712-e56f-4519-8450-b15918bb6979", 
+   "name": "设置 PROFISAFE F 源地址", 
+   "tokens": [
+    "PROFINET", 
+    "SetFSourceAddress"
+   ]
+  }, 
+  {
+   "description": "从配方中恢复掉电保持型变量的值", 
+   "guid": "9fbe59ca-5228-4342-9118-b73cbb065ea4", 
+   "name": "从配方中恢复变量值", 
+   "tokens": [
+    "Restore", 
+    "values"
+   ]
+  }, 
+  {
+   "description": "将保持变量的当前值保存到配方", 
+   "guid": "88b99e55-2d0d-4385-8329-104da9403895", 
+   "name": "保存当前值到配方", 
+   "tokens": [
+    "Save", 
+    "acutal", 
+    "values"
+   ]
+  }, 
+  {
+   "description": "TCIEntryPoint0", 
+   "guid": "a72f722e-5b29-4449-a6ea-d6280c2a2ed4", 
+   "name": "TCIEntryPoint0", 
+   "tokens": [
+    "TCIEntryPoint0", 
+    "command"
+   ]
+  }, 
+  {
+   "description": "TCIEntryPoint1", 
+   "guid": "1f74e700-bb1e-46e7-8ea1-7e57b79bc8fc", 
+   "name": "TCIEntryPoint1", 
+   "tokens": [
+    "TCIEntryPoint1", 
+    "command"
+   ]
+  }, 
+  {
+   "description": "TCIEntryPoint2", 
+   "guid": "f6c593be-2a58-4000-a0eb-ab9d9d708836", 
+   "name": "TCIEntryPoint2", 
+   "tokens": [
+    "TCIEntryPoint2", 
+    "command"
+   ]
+  }, 
+  {
+   "description": "TCIEntryPoint3", 
+   "guid": "23a896fd-d307-4fe3-9117-500f9efaddbb", 
+   "name": "TCIEntryPoint3", 
+   "tokens": [
+    "TCIEntryPoint3", 
+    "command"
+   ]
+  }, 
+  {
+   "description": "TCIEntryPoint4", 
+   "guid": "cbeb757c-ccc6-4e1b-be49-d3bf443901ed", 
+   "name": "TCIEntryPoint4", 
+   "tokens": [
+    "TCIEntryPoint4", 
+    "command"
+   ]
+  }, 
+  {
+   "description": "从平面视图切换到树形视图", 
+   "guid": "d15fc5a3-4cf4-4004-b76e-6f950cd9e81b", 
+   "name": "切换到树视图", 
+   "tokens": [
+    "VariableListView", 
+    "SwitchToTreeView"
+   ]
+  }, 
+  {
+   "description": "停止使用所有未使用的可视化", 
+   "guid": "ae0dd382-4634-442d-96bb-5af683fbabe3", 
+   "name": "停用未使用的的可视化", 
+   "tokens": [
+    "VisualManagerEditor", 
+    "Visualizations", 
+    "DeactivateUnusedVisualizations"
+   ]
+  }, 
+  {
+   "description": "在可视化中使用的所有标签的视图", 
+   "guid": "fb3a809b-309b-471b-885b-ed83bd7c525c", 
+   "name": "可视化标签视图", 
+   "tokens": [
+    "VisualManagerEditor", 
+    "VariableList"
+   ]
+  }, 
+  {
+   "description": "设置颜色变量为完全不透明", 
+   "guid": "b047c96d-79cc-4186-87db-155d942507e8", 
+   "name": "设置颜色变量为完全不透明", 
+   "tokens": [
+    "VisualManagerEditor", 
+    "setcolorvariablesfullopaque"
+   ]
+  }, 
+  {
+   "description": "删除语言", 
+   "guid": "dd791567-8ac4-4c9a-912e-a382320b8d7a", 
+   "name": "删除语言", 
+   "tokens": [
+    "VisualManagerTextlistSettings", 
+    "deletelanguage"
+   ]
+  }, 
+  {
+   "description": "复制语言设置", 
+   "guid": "5c2f7c99-f95e-4d18-84fd-f30cc8f4a356", 
+   "name": "复制语言设置", 
+   "tokens": [
+    "VisualManagerTextlistSettings", 
+    "copylanguagesetting"
+   ]
+  }, 
+  {
+   "description": "粘贴语言设置", 
+   "guid": "b1279d33-fc9a-41fe-872e-2abd59a51799", 
+   "name": "粘贴语言设置", 
+   "tokens": [
+    "VisualManagerTextlistSettings", 
+    "pastelanguagesetting"
+   ]
+  }, 
+  {
+   "description": "打开对话框以声明变量", 
+   "guid": "a0d49995-418d-4935-bf03-7803e7d1ec06", 
+   "name": "自动声明...", 
+   "tokens": [
+    "autodeclare"
+   ]
+  }, 
+  {
+   "description": "进入上一个书签", 
+   "guid": "f08f50f2-4ba5-47c6-90df-9b7ed495e34a", 
+   "name": "上一个书签", 
+   "tokens": [
+    "bookmark", 
+    "previousglobal"
+   ]
+  }, 
+  {
+   "description": "在活动编辑器返回前一个书签", 
+   "guid": "d349ba1c-bd27-4ede-88f2-e0f7bc0a4def", 
+   "name": "上一个书签(活动编辑器)", 
+   "tokens": [
+    "bookmark", 
+    "previous"
+   ]
+  }, 
+  {
+   "description": "进入下一个书签", 
+   "guid": "8cd4adb4-ed58-4f39-b44a-e8067dbde106", 
+   "name": "下一个书签", 
+   "tokens": [
+    "bookmark", 
+    "nextglobal"
+   ]
+  }, 
+  {
+   "description": "在活动编辑器进入下一个书签", 
+   "guid": "407ec07a-080d-498b-9e03-b1e79c7a1034", 
+   "name": "下一个书签(活动编辑器)", 
+   "tokens": [
+    "bookmark", 
+    "next"
+   ]
+  }, 
+  {
+   "description": "在当前编辑器位置切换书签", 
+   "guid": "487bb961-3672-4ece-ae9d-32afb6fc5f9a", 
+   "name": "切换书签", 
+   "tokens": [
+    "bookmark", 
+    "toggle"
+   ]
+  }, 
+  {
+   "description": "清除激活的编辑器中的所有书签", 
+   "guid": "f6c56795-bf5e-4973-8291-71ba66597c16", 
+   "name": "清除所有书签", 
+   "tokens": [
+    "bookmark", 
+    "clearallglobal"
+   ]
+  }, 
+  {
+   "description": "清除激活的编辑器中的所有书签", 
+   "guid": "80c4e466-e5cf-47ff-8c13-05966527a04c", 
+   "name": "清除所有书签(活动编辑器)", 
+   "tokens": [
+    "bookmark", 
+    "clearall"
+   ]
+  }, 
+  {
+   "description": "在当前光标处使能断点", 
+   "guid": "54cbcd5f-8edb-4261-90c2-9d3b83758b58", 
+   "name": "使能断点", 
+   "tokens": [
+    "breakpoints", 
+    "enable"
+   ]
+  }, 
+  {
+   "description": "创建一个新断点", 
+   "guid": "48764ee6-13fc-4fbb-9d39-a0acc26fbf41", 
+   "name": "新建断点...", 
+   "tokens": [
+    "breakpoints", 
+    "new"
+   ]
+  }, 
+  {
+   "description": "在激活应用中选取当前语句位置.", 
+   "guid": "0d232328-c966-41a2-9869-b86ed063b225", 
+   "name": "显示当前语句", 
+   "tokens": [
+    "breakpoints", 
+    "showcurrentstatement"
+   ]
+  }, 
+  {
+   "description": "在当前光标处禁用断点", 
+   "guid": "79f0a788-5e37-4f60-8c12-a320b09194c1", 
+   "name": "禁用断点", 
+   "tokens": [
+    "breakpoints", 
+    "enable"
+   ]
+  }, 
+  {
+   "description": "打开编辑器更改断点属性.如:实例路径,触发计数条件或条件.", 
+   "guid": "8de52f68-1388-4fc5-b2e1-d640c4c5a3d6", 
+   "name": "编辑断点...", 
+   "tokens": [
+    "breakpoints", 
+    "edit"
+   ]
+  }, 
+  {
+   "description": "设置执行到当前光标位置", 
+   "guid": "d7690922-1594-4dfa-8260-8a14213cf7f2", 
+   "name": "设置下一条语句", 
+   "tokens": [
+    "breakpoints", 
+    "setnextstatement"
+   ]
+  }, 
+  {
+   "description": "在当前光标所在位置设置或清除断点", 
+   "guid": "16992649-ce8c-42ab-8650-1fc941f95afe", 
+   "name": "设置或清除断点", 
+   "tokens": [
+    "breakpoints", 
+    "toggle"
+   ]
+  }, 
+  {
+   "description": "如果当前语句是调用语句,跳入所调用的POU.否则跳过语句.", 
+   "guid": "12289edb-4f13-400c-9e9d-35aa46946c51", 
+   "name": "跳入", 
+   "tokens": [
+    "breakpoints", 
+    "stepinto"
+   ]
+  }, 
+  {
+   "description": "语句被调用后,运行到此语句处.", 
+   "guid": "417b5c5c-2bb4-4eb6-b19d-4513281bacb0", 
+   "name": "跳出", 
+   "tokens": [
+    "breakpoints", 
+    "stepout"
+   ]
+  }, 
+  {
+   "description": "跳过下一条语句.", 
+   "guid": "0e79e9b0-7516-456f-b201-c056a02c4876", 
+   "name": "跳过", 
+   "tokens": [
+    "breakpoints", 
+    "stepover"
+   ]
+  }, 
+  {
+   "description": "在当前光标位置设置临时断点并开始执行", 
+   "guid": "3040e1af-a3d0-444f-8905-db5643f7bfbc", 
+   "name": "运行到光标处", 
+   "tokens": [
+    "breakpoints", 
+    "runtocursor"
+   ]
+  }, 
+  {
+   "description": "在消息视图中显示所选标识符的所有交叉引用.此为经典视图.", 
+   "guid": "94201411-71c8-4a93-a861-a2887db6bc1e", 
+   "name": "在经典视图中浏览交叉引用", 
+   "tokens": [
+    "browse", 
+    "legacycrossreferences"
+   ]
+  }, 
+  {
+   "description": "在消息窗口中显示所选标识符的所有交叉引用.", 
+   "guid": "2d499d13-af93-43b4-afda-e98349935b51", 
+   "name": "显示交叉引用", 
+   "tokens": [
+    "browse", 
+    "crossreferences"
+   ]
+  }, 
+  {
+   "description": "显示全局交叉参考", 
+   "guid": "41fb3bef-9268-4671-9964-193fe5427dca", 
+   "name": "显示全局交叉参考", 
+   "tokens": [
+    "browse", 
+    "globalcrossreferences"
+   ]
+  }, 
+  {
+   "description": "在交叉引用视图中显示所选标识符声明的所有交叉引用.", 
+   "guid": "da4f9f18-e708-412d-8fb0-a8bbd6bd242f", 
+   "name": "显示声明交叉引用", 
+   "tokens": [
+    "browse", 
+    "declarationcrossreferences"
+   ]
+  }, 
+  {
+   "description": "在调用树视图中显示所选方法的调用树.", 
+   "guid": "3f4567d6-13e3-463c-8c7c-6edfefe488a4", 
+   "name": "显示调用树", 
+   "tokens": [
+    "browse", 
+    "calltree"
+   ]
+  }, 
+  {
+   "description": "跳转到所选标识符的类型定义处", 
+   "guid": "deffdeff-2ce9-4e58-9701-4925710616c0", 
+   "name": "跳转到 类型 的定义处", 
+   "tokens": [
+    "browse", 
+    "gotodefinitionoftype"
+   ]
+  }, 
+  {
+   "description": "缩放到所选标识符的定义处", 
+   "guid": "d19a9182-fc62-4ea5-bd01-cad58e092281", 
+   "name": "转到定义", 
+   "tokens": [
+    "browse", 
+    "gotodefinition"
+   ]
+  }, 
+  {
+   "description": "在新窗口中打开所选功能块实例", 
+   "guid": "017b821e-e365-4bb6-9585-e45ba4d33dba", 
+   "name": "转到实例", 
+   "tokens": [
+    "browse", 
+    "gotoinstance"
+   ]
+  }, 
+  {
+   "description": "在新窗口中打开功能块实例的所选方法/属性的实现", 
+   "guid": "224c5075-a190-4d7c-af49-f2351e2e8b4a", 
+   "name": "转到实现", 
+   "tokens": [
+    "browse", 
+    "gotoimplementation"
+   ]
+  }, 
+  {
+   "description": "缩放到变量已选的指针或参考的引用", 
+   "guid": "ba061b2b-1f0a-40c8-88bf-f139afdc3191", 
+   "name": "转到引用", 
+   "tokens": [
+    "browse", 
+    "gotoreference"
+   ]
+  }, 
+  {
+   "description": "切换所选运算块的EN/ENO标志", 
+   "guid": "67e38578-22ca-42a3-a6cd-de9d32b71362", 
+   "name": "EN/ENO", 
+   "tokens": [
+    "cfc", 
+    "eneno"
+   ]
+  }, 
+  {
+   "description": "为当前选择的输入引脚做复位处理(R)", 
+   "guid": "ae8b8369-9a02-4114-b1dd-dc5d4f5fe820", 
+   "name": "R (复位)", 
+   "tokens": [
+    "cfc", 
+    "setreset", 
+    "reset"
+   ]
+  }, 
+  {
+   "description": "为所选输入引脚设置REF=(引用赋值)的修饰符", 
+   "guid": "4c60a44c-2aa9-477d-b20e-af08a6fd1eb5", 
+   "name": "REF= (引用赋值)", 
+   "tokens": [
+    "cfc", 
+    "setreset", 
+    "ref"
+   ]
+  }, 
+  {
+   "description": "为当前选择的输入引脚做置位处理 S(置位)", 
+   "guid": "818368cb-9be2-4fd4-b5c2-7b38820b304e", 
+   "name": "S (置位)", 
+   "tokens": [
+    "cfc", 
+    "setreset", 
+    "set"
+   ]
+  }, 
+  {
+   "description": "在前一步执行所选条目", 
+   "guid": "780b7875-6e64-4843-8edc-8fce2808a6c5", 
+   "name": "上移", 
+   "tokens": [
+    "cfc", 
+    "moveup"
+   ]
+  }, 
+  {
+   "description": "在下一步执行所选条目", 
+   "guid": "9ceabf91-60be-4711-a0be-ce7e75a0fd4b", 
+   "name": "下移", 
+   "tokens": [
+    "cfc", 
+    "movedown"
+   ]
+  }, 
+  {
+   "description": "打开输入助手以选择随后可以插入的块.", 
+   "guid": "8a5014f3-8888-4842-8344-02726d3dddf2", 
+   "name": "从输入助手插入块", 
+   "tokens": [
+    "cfc", 
+    "insert", 
+    "boxfrominputassitant"
+   ]
+  }, 
+  {
+   "description": "打开输入助手，选择一个框，之后可以插入激活的EN/ENO。", 
+   "guid": "0665ceda-b7df-46bb-bdb1-e9eca57cb91c", 
+   "name": "从输入助手插入带有EN/ENO的块", 
+   "tokens": [
+    "cfc", 
+    "insert", 
+    "boxenenofrominputassitant"
+   ]
+  }, 
+  {
+   "description": "如果一个结构成员已经定义了 'ProcessValue'属性, 这个变量会被连接到标量输入", 
+   "guid": "dd8275f0-be78-4432-81d9-54cd01e71b3a", 
+   "name": "使用归属成员作为输入", 
+   "tokens": [
+    "cfc", 
+    "useattributedmemberasinput"
+   ]
+  }, 
+  {
+   "description": "准备运算块用于在在线模式下强制输入值.", 
+   "guid": "5ea86f85-21ab-427f-b927-654b649463ad", 
+   "name": "准备强制运算块", 
+   "tokens": [
+    "cfc", 
+    "prepareforce"
+   ]
+  }, 
+  {
+   "description": "在现有连接上创建一个新的控制点.", 
+   "guid": "af46eb34-b5d0-4226-a30a-cd4b08aad3ab", 
+   "name": "创建控制点", 
+   "tokens": [
+    "cfc", 
+    "createcheckpoint"
+   ]
+  }, 
+  {
+   "description": "在所选元素中创建一个元素组.", 
+   "guid": "edc96a5c-81ef-4c64-8808-7d879543a929", 
+   "name": "创建组", 
+   "tokens": [
+    "cfc", 
+    "createelementgroup"
+   ]
+  }, 
+  {
+   "description": "切换所选输入/输出引脚的取反标志", 
+   "guid": "6d149712-6c0a-4585-a2f4-12cd3e9f2b35", 
+   "name": "取反", 
+   "tokens": [
+    "cfc", 
+    "negate"
+   ]
+  }, 
+  {
+   "description": "取消组合所选元素", 
+   "guid": "c162f204-c7e0-4e1c-bc04-95d7aab64d09", 
+   "name": "取消组", 
+   "tokens": [
+    "cfc", 
+    "ungroupelements"
+   ]
+  }, 
+  {
+   "description": "使所选条目的引脚适应当前接口定义", 
+   "guid": "e254a5b9-46b4-4e09-95d2-1cba49fb7929", 
+   "name": "复位引脚", 
+   "tokens": [
+    "cfc", 
+    "resetpins"
+   ]
+  }, 
+  {
+   "description": "将当前选中对象准备的参数值集成到工程中", 
+   "guid": "59be6273-9882-4656-b832-92a1f57bbfe1", 
+   "name": "将准备的参数值保存到当前工程中", 
+   "tokens": [
+    "cfc", 
+    "incurparametervalues"
+   ]
+  }, 
+  {
+   "description": "将所有对象的预设参数值整合到项目中", 
+   "guid": "904eb0a0-5cb0-45fb-b0ad-e3e84ff04cc0", 
+   "name": "将所有对象的预处理参数保存至项目", 
+   "tokens": [
+    "cfc", 
+    "incurparametervaluesallobjects"
+   ]
+  }, 
+  {
+   "description": "从选定的输入引脚更改S (set)或R (reset)或Ref(引用赋值)修饰符或删除它", 
+   "guid": "ecdd86f5-af74-46fa-990e-2bffdc0e8f3b", 
+   "name": "开关S/R/Ref/None", 
+   "tokens": [
+    "cfc", 
+    "setreset", 
+    "switchtonext"
+   ]
+  }, 
+  {
+   "description": "用定义的值强制一个功能块的输入", 
+   "guid": "730a3273-d2f8-48a7-8fab-b2ff64d83e52", 
+   "name": "强制功能块输入...", 
+   "tokens": [
+    "cfc", 
+    "forcevalue"
+   ]
+  }, 
+  {
+   "description": "展开当前活动编辑器的所有折叠的内联监视字段.", 
+   "guid": "1a7d20d1-686a-4049-9bc1-f514d1ab7ed5", 
+   "name": "折叠所有内联监视字段", 
+   "tokens": [
+    "cfc", 
+    "expandallwatches"
+   ]
+  }, 
+  {
+   "description": "折叠当前活动编辑器的所有展开的内联监视字段.", 
+   "guid": "6941cf71-174f-416f-9123-9f3c38bec1ce", 
+   "name": "折叠所有内联监视字段", 
+   "tokens": [
+    "cfc", 
+    "collapseallwatches"
+   ]
+  }, 
+  {
+   "description": "按拓扑顺序排列所有的执行顺序", 
+   "guid": "31a3f1e1-57d8-4c4c-8777-e78117f272df", 
+   "name": "按拓扑排序", 
+   "tokens": [
+    "cfc", 
+    "order", 
+    "topology"
+   ]
+  }, 
+  {
+   "description": "按照数据流排列全部执行顺序", 
+   "guid": "48ecdf88-05ec-4b1f-8c25-4259cbfdcd75", 
+   "name": "按照数据流排序", 
+   "tokens": [
+    "cfc", 
+    "order", 
+    "dataflow"
+   ]
+  }, 
+  {
+   "description": "有EN/ENO的块", 
+   "guid": "52ef591b-8274-4529-b92f-a8d5185a42ab", 
+   "name": "插入有EN/ENO的块", 
+   "tokens": [
+    "cfc", 
+    "insert", 
+    "BoxWithEnEno"
+   ]
+  }, 
+  {
+   "description": "插入跳转元素", 
+   "guid": "87e69d23-3e1c-4753-9b54-ffca17ac1f97", 
+   "name": "插入跳转", 
+   "tokens": [
+    "cfc", 
+    "insert", 
+    "jump"
+   ]
+  }, 
+  {
+   "description": "插入输入元素", 
+   "guid": "4b0036ce-653c-41ef-adec-e74aa72b5f36", 
+   "name": "插入输入", 
+   "tokens": [
+    "cfc", 
+    "insert", 
+    "input"
+   ]
+  }, 
+  {
+   "description": "输出", 
+   "guid": "8e8c2f88-3999-44e8-8f9e-7b59dd637b6e", 
+   "name": "插入输出", 
+   "tokens": [
+    "cfc", 
+    "insert", 
+    "output"
+   ]
+  }, 
+  {
+   "description": "插入运算块元素", 
+   "guid": "5ba54744-a0a0-4c7a-91fb-bfc657225352", 
+   "name": "插入运算块", 
+   "tokens": [
+    "cfc", 
+    "insert", 
+    "emptybox"
+   ]
+  }, 
+  {
+   "description": "删除所选输入引脚的S(置位)或者R(复位)修饰符", 
+   "guid": "b67d035f-4f87-4e69-bcb8-ed7807df818d", 
+   "name": "无", 
+   "tokens": [
+    "cfc", 
+    "setreset", 
+    "none"
+   ]
+  }, 
+  {
+   "description": "临时激活执行顺序标志的显示.", 
+   "guid": "a332a8e0-b119-4b72-9b6f-705014f6082b", 
+   "name": "显示执行顺序", 
+   "tokens": [
+    "cfc", 
+    "activate_execution_overlay"
+   ]
+  }, 
+  {
+   "description": "显示此对象作出的语言模型贡献", 
+   "guid": "2ab34d33-e8d6-48f6-85a0-22954b4efde9", 
+   "name": "显示语言模型...", 
+   "tokens": [
+    "cfc", 
+    "viewlanguagemodel"
+   ]
+  }, 
+  {
+   "description": "添加一个输入引脚到现有元素.", 
+   "guid": "ffa7cb58-c0bc-4ac1-8d6a-6670891945b9", 
+   "name": "添加输入引脚", 
+   "tokens": [
+    "cfc", 
+    "addinputpin"
+   ]
+  }, 
+  {
+   "description": "添加一个输出引脚到现有元素.", 
+   "guid": "d308ab34-8d2b-4dfd-abf5-de7fc3da39b1", 
+   "name": "添加输出引脚", 
+   "tokens": [
+    "cfc", 
+    "addoutputpin"
+   ]
+  }, 
+  {
+   "description": "在路径列表中清除所有用户创建的控制点.", 
+   "guid": "4cf0815a-85e8-4a9c-aee6-fb7621c1eb83", 
+   "name": "清除控制点", 
+   "tokens": [
+    "cfc", 
+    "clearcheckpoints"
+   ]
+  }, 
+  {
+   "description": "移除现有控制点", 
+   "guid": "28e7cac5-babe-4996-af04-ea8159a8c4c3", 
+   "name": "移除控制点", 
+   "tokens": [
+    "cfc", 
+    "removecheckpoint"
+   ]
+  }, 
+  {
+   "description": "移除所选条目的未连接引脚", 
+   "guid": "c812f0ee-5f4e-4de8-bbea-0c620eff4a96", 
+   "name": "移除未使用的引脚", 
+   "tokens": [
+    "cfc", 
+    "removeunusedpins"
+   ]
+  }, 
+  {
+   "description": "编辑所选功能块的参数", 
+   "guid": "ec69198b-62cc-4fc8-bf25-9d9b5fe0cf5e", 
+   "name": "编辑参数...", 
+   "tokens": [
+    "cfc", 
+    "editparameters"
+   ]
+  }, 
+  {
+   "description": "编辑工作表设置,并使表内全部内容作相对运动.", 
+   "guid": "607b5a49-16bf-4948-812d-33b24ccd20ea", 
+   "name": "编辑工作表...", 
+   "tokens": [
+    "cfc", 
+    "editworkingsheet"
+   ]
+  }, 
+  {
+   "description": "编辑CFC对象的页面尺寸和边距宽度.", 
+   "guid": "26d06a2d-442e-42a1-af76-0343579319cc", 
+   "name": "编辑页面尺寸...", 
+   "tokens": [
+    "cfc", 
+    "editpagesize"
+   ]
+  }, 
+  {
+   "description": "在结束时执行所选择的条目", 
+   "guid": "ce0330c5-aca3-4d2c-92d6-19bf906fa145", 
+   "name": "置尾", 
+   "tokens": [
+    "cfc", 
+    "sendtoback"
+   ]
+  }, 
+  {
+   "description": "在开始时执行所选择的条目", 
+   "guid": "e10d8193-fce7-4685-a814-98845abd5655", 
+   "name": "置首", 
+   "tokens": [
+    "cfc", 
+    "sendtofront"
+   ]
+  }, 
+  {
+   "description": "解锁用户拖动的连接.", 
+   "guid": "89b3df8c-9456-4b60-a1dc-36eb3a1ae2ff", 
+   "name": "解锁连接", 
+   "tokens": [
+    "cfc", 
+    "unlockconnection"
+   ]
+  }, 
+  {
+   "description": "为所选元素设置反馈的开始.", 
+   "guid": "2dfc6860-e72f-46c0-9764-8fa22b4f62e7", 
+   "name": "设置反馈的开始", 
+   "tokens": [
+    "cfc", 
+    "set_start_feedback"
+   ]
+  }, 
+  {
+   "description": "为所选元素直接输入执行顺序索引", 
+   "guid": "dcf1cb68-c372-4898-afe5-abedc50ba9c8", 
+   "name": "设置执行顺序...", 
+   "tokens": [
+    "cfc", 
+    "setexecutionorder"
+   ]
+  }, 
+  {
+   "description": "自动路由所有现有连接.", 
+   "guid": "08ea4856-29fd-40ad-a1dd-090070662cf3", 
+   "name": "路由所有连接", 
+   "tokens": [
+    "cfc", 
+    "routeallconnections"
+   ]
+  }, 
+  {
+   "description": "插入返回元素", 
+   "guid": "aeffd87a-9b55-41cb-9778-b46d205cdc31", 
+   "name": "返回", 
+   "tokens": [
+    "cfc", 
+    "insert", 
+    "return"
+   ]
+  }, 
+  {
+   "description": "将一个或多个所选的输入引脚连接到一个所选的输出引脚上.", 
+   "guid": "8ba75516-d455-48d6-a26b-3007a11baf2b", 
+   "name": "连接所选引脚", 
+   "tokens": [
+    "cfc", 
+    "connectselectedpins"
+   ]
+  }, 
+  {
+   "description": "在线和标记间切换连接显示", 
+   "guid": "46ae2ab9-c159-427a-a903-99c241109a94", 
+   "name": "连接标记", 
+   "tokens": [
+    "cfc", 
+    "connectionmark"
+   ]
+  }, 
+  {
+   "description": "选择命令调用位置下面的所有编辑器内容", 
+   "guid": "f367e02e-6e77-4c32-88fa-d8d91256e516", 
+   "name": "选择下面的所有内容", 
+   "tokens": [
+    "cfc", 
+    "selecteverythingbelow"
+   ]
+  }, 
+  {
+   "description": "选择所有条目", 
+   "guid": "f851aae4-d6b6-4337-a73f-19e44b67c39b", 
+   "name": "选择全部", 
+   "tokens": [
+    "cfc", 
+    "selectAll"
+   ]
+  }, 
+  {
+   "description": "选择连接到当前引脚的所有引脚", 
+   "guid": "9ab88d68-4791-4f8b-92d3-d7252e4895f8", 
+   "name": "选择连接的引脚", 
+   "tokens": [
+    "cfc", 
+    "selectconnectedpins"
+   ]
+  }, 
+  {
+   "description": "用这个命令来展示或者隐藏文本中的命名空间.", 
+   "guid": "c4263ef4-9c5f-4b23-92b0-2694cdf59161", 
+   "name": "隐藏命名空间", 
+   "tokens": [
+    "cfc", 
+    "hide_namespaces"
+   ]
+  }, 
+  {
+   "description": "发布", 
+   "guid": "7403e5af-0dcf-424a-ba08-e76783c2ea3d", 
+   "name": "发布", 
+   "tokens": [
+    "communication", 
+    "publish_symbol"
+   ]
+  }, 
+  {
+   "description": "显示与上次显示相比有关已编辑代码当前状态的详细信息", 
+   "guid": "6ff9ffdb-8572-4b73-96f3-9f9404d11bcf", 
+   "name": "显示离线代码更改的细节", 
+   "tokens": [
+    "compile", 
+    "ShowCompileChangeDetails"
+   ]
+  }, 
+  {
+   "description": "加载和显示核心转储设备日志", 
+   "guid": "777fa26b-dbe6-434e-a72d-00ca7ff0907f", 
+   "name": "从核心转储加载设备日志", 
+   "tokens": [
+    "coredump", 
+    "loadlog"
+   ]
+  }, 
+  {
+   "description": "使用核心转储停止调试", 
+   "guid": "7b3bd753-4e10-4dfa-a71a-a4b2e640a5bc", 
+   "name": "关闭核心转储", 
+   "tokens": [
+    "coredump", 
+    "close"
+   ]
+  }, 
+  {
+   "description": "创建一个包含所有相关信息的工程来调试PLC崩溃问题", 
+   "guid": "c06cef7e-739c-4e19-9c3f-66792bea703b", 
+   "name": "创建PLC崩溃报告", 
+   "tokens": [
+    "coredump", 
+    "create_plc_crash_report"
+   ]
+  }, 
+  {
+   "description": "为当前应用状态推迟调试创建核心转储", 
+   "guid": "98e47539-7806-42d2-80a2-3a052944d468", 
+   "name": "创建核心转储", 
+   "tokens": [
+    "coredump", 
+    "create"
+   ]
+  }, 
+  {
+   "description": "加载核心转储文件用于调试.", 
+   "guid": "09378f3a-5156-4ef1-85ae-9d06b5e5a6ef", 
+   "name": "加载核心转储", 
+   "tokens": [
+    "coredump", 
+    "load"
+   ]
+  }, 
+  {
+   "description": "从选定内容创建新项目", 
+   "guid": "b3334122-912a-419f-8ac4-7b1cc423c0fc", 
+   "name": "从选定内容创建新项目", 
+   "tokens": [
+    "csttoolbox", 
+    "csttoolboxcreateitem"
+   ]
+  }, 
+  {
+   "description": "创建文件夹", 
+   "guid": "a9a10f09-7b17-4913-ad05-40139c218506", 
+   "name": "创建文件夹", 
+   "tokens": [
+    "csttoolbox", 
+    "csttooltoxcreatefolder"
+   ]
+  }, 
+  {
+   "description": "编辑项目", 
+   "guid": "964e0f61-db40-4f38-96de-dd33f6aa4ade", 
+   "name": "编辑项目", 
+   "tokens": [
+    "csttoolbox", 
+    "csttoolboxedititem"
+   ]
+  }, 
+  {
+   "description": "进入可自定义工具箱的快速插入模式，即可通过其快捷方式在当前编辑器位置插入项目。", 
+   "guid": "7ea5e51b-7446-42c0-bc39-3eeba915effa", 
+   "name": "进入快速插入模式", 
+   "tokens": [
+    "csttoolbox", 
+    "csttoolboxquickinsert"
+   ]
+  }, 
+  {
+   "description": "创建一个新的数据断点", 
+   "guid": "a7189c5b-c8da-42c5-8e21-903286a5d471", 
+   "name": "新建数据断点...", 
+   "tokens": [
+    "databreakpoints", 
+    "new"
+   ]
+  }, 
+  {
+   "description": "缩放到所选映射的定义", 
+   "guid": "cb7c20d0-19b8-45f5-ae50-0f2f806efeab", 
+   "name": "转到映射", 
+   "tokens": [
+    "datasourceseditor", 
+    "gototypedefinition"
+   ]
+  }, 
+  {
+   "description": "添加当前选择的表达式到监视视图", 
+   "guid": "5728f0bb-f39a-4892-a23a-5ee1b76ae095", 
+   "name": "添加查看", 
+   "tokens": [
+    "debug", 
+    "addwatch"
+   ]
+  }, 
+  {
+   "description": "从CSV文件导入所有I/O映射", 
+   "guid": "6aa1fb55-612d-4295-af34-77ffd904fa44", 
+   "name": "从CSV导入映射...", 
+   "tokens": [
+    "device", 
+    "importcsv"
+   ]
+  }, 
+  {
+   "description": "把所有I/O映射作为CSV文件导出", 
+   "guid": "e898828e-47a5-4e5c-bc0f-4008ff1999eb", 
+   "name": "导出映射到CSV...", 
+   "tokens": [
+    "device", 
+    "exportcsv"
+   ]
+  }, 
+  {
+   "description": "扫描实际设备以查找子设备", 
+   "guid": "73b2ca6f-8b4e-45cb-9533-eaa108aaf7f7", 
+   "name": "扫描设备...", 
+   "tokens": [
+    "device", 
+    "scan"
+   ]
+  }, 
+  {
+   "description": "在所选对象之前添加新设备.", 
+   "guid": "99c26731-71f6-42cd-8184-434991a5bbc2", 
+   "name": "插入设备...", 
+   "tokens": [
+    "device", 
+    "insert"
+   ]
+  }, 
+  {
+   "description": "将设备插入插槽来替换现有的设备", 
+   "guid": "3c9bacd6-cc7d-4ae7-90a6-d35fe7685028", 
+   "name": "插入设备...", 
+   "tokens": [
+    "device", 
+    "plug"
+   ]
+  }, 
+  {
+   "description": "用其它设备替换现有设备,复用大部分的配置.", 
+   "guid": "361c88a2-559e-4893-9fc5-c2fc635dcbc4", 
+   "name": "更新设备...", 
+   "tokens": [
+    "device", 
+    "replace"
+   ]
+  }, 
+  {
+   "description": "添加占位设备", 
+   "guid": "18dc3ab3-034f-471c-962d-b0ed59341e54", 
+   "name": "添加占位符", 
+   "tokens": [
+    "device", 
+    "addplaceholder"
+   ]
+  }, 
+  {
+   "description": "在所选对象之下添加子设备.", 
+   "guid": "b3ffc7be-394a-4e9c-8e85-2fe445849ef6", 
+   "name": "添加设备...", 
+   "tokens": [
+    "device", 
+    "add"
+   ]
+  }, 
+  {
+   "description": "编辑大量设备的所有IO映射", 
+   "guid": "778be21d-a863-415b-a19b-cb8c432980db", 
+   "name": "编辑IO映射", 
+   "tokens": [
+    "device", 
+    "simplemapping"
+   ]
+  }, 
+  {
+   "description": "从设备中删除应用程序", 
+   "guid": "f6818f3a-4bb9-43e5-98b9-f122ee191717", 
+   "name": "从设备中删除应用程序", 
+   "tokens": [
+    "devicecommunication", 
+    "removeapplications"
+   ]
+  }, 
+  {
+   "description": "删除所选设备或网关", 
+   "guid": "6245bbb6-d3ff-447d-a4ac-f4fc9c2b0b64", 
+   "name": "删除所选设备", 
+   "tokens": [
+    "devicecommunication", 
+    "deletedevice"
+   ]
+  }, 
+  {
+   "description": "发送Echo服务...", 
+   "guid": "a3e5a0d0-32d6-49de-8823-2aec8e7f1a24", 
+   "name": "发送Echo服务...", 
+   "tokens": [
+    "devicecommunication", 
+    "send_echo_service"
+   ]
+  }, 
+  {
+   "description": "在所选网关触发网络扫描", 
+   "guid": "ddee7c46-285a-447d-a1f2-7957e324dea5", 
+   "name": "扫描网络", 
+   "tokens": [
+    "devicecommunication", 
+    "scannetwork"
+   ]
+  }, 
+  {
+   "description": "扫描网络查找给定名称对应的设备", 
+   "guid": "35628516-e52e-47c3-a189-cb21fd417380", 
+   "name": "按照名称扫描设备", 
+   "tokens": [
+    "devicecommunication", 
+    "resolvename"
+   ]
+  }, 
+  {
+   "description": "打开一个对话框改变节点名称", 
+   "guid": "a101e9ea-181f-4f34-b417-59e36089bf09", 
+   "name": "改变设备名称...", 
+   "tokens": [
+    "devicecommunication", 
+    "changedevicename"
+   ]
+  }, 
+  {
+   "description": "打开一个对话框添加网关", 
+   "guid": "6fe816a8-5b43-48b0-9020-5061d0a97647", 
+   "name": "添加网关...", 
+   "tokens": [
+    "devicecommunication", 
+    "addgateway"
+   ]
+  }, 
+  {
+   "description": "打开对话框添加一个设备", 
+   "guid": "4879aa57-2806-4e89-b881-2a9a021a0e8c", 
+   "name": "添加设备...", 
+   "tokens": [
+    "devicecommunication", 
+    "adddevice"
+   ]
+  }, 
+  {
+   "description": "移除设备应用", 
+   "guid": "03178cc9-c563-4066-9d26-3f374adbbae4", 
+   "name": "移除设备应用", 
+   "tokens": [
+    "devicecommunication", 
+    "removeapplication"
+   ]
+  }, 
+  {
+   "description": "打开一个对话框设置网关参数(例如:TCP端口)", 
+   "guid": "284b1a83-0ed5-48ba-9b3d-12d1616d2f5d", 
+   "name": "编辑网关...", 
+   "tokens": [
+    "devicecommunication", 
+    "editgateway"
+   ]
+  }, 
+  {
+   "description": "设置所选设备的激活路径", 
+   "guid": "9f63b399-3ea1-4e38-afc2-a7b042bc29df", 
+   "name": "设置激活路径", 
+   "tokens": [
+    "devicecommunication", 
+    "setactivepath"
+   ]
+  }, 
+  {
+   "description": "通过给定的IP地址在网络中查找设备", 
+   "guid": "7393b1f2-ee94-46ae-b58f-d93a24c2b847", 
+   "name": "通过IP扫描设置", 
+   "tokens": [
+    "devicecommunication", 
+    "resolveipaddress"
+   ]
+  }, 
+  {
+   "description": "扫描网络查找给定地址对应的设备.", 
+   "guid": "a7b4adcf-98fe-4f29-aacd-f23422cde222", 
+   "name": "通过地址扫描设备", 
+   "tokens": [
+    "devicecommunication", 
+    "resolveaddress"
+   ]
+  }, 
+  {
+   "description": "连接到网关进行配置(例如:波特率)", 
+   "guid": "cd05dc11-af96-4815-b6bc-ae2739f9be9f", 
+   "name": "配置本地网关...", 
+   "tokens": [
+    "devicecommunication", 
+    "connectgateway"
+   ]
+  }, 
+  {
+   "description": "从DBC文件导入一个J1939网络（ECU和PG）。", 
+   "guid": "b5913c86-3868-4e4e-9313-f5ff06b79ad5", 
+   "name": "导入DBC文件...", 
+   "tokens": [
+    "devices", 
+    "import_dbc_network"
+   ]
+  }, 
+  {
+   "description": "删除活动编辑器的全部内容", 
+   "guid": "1c36ca5e-e26d-4edc-9ab7-c7d87690c328", 
+   "name": "全选", 
+   "tokens": [
+    "edit", 
+    "selectall"
+   ]
+  }, 
+  {
+   "description": "删除当前的选择", 
+   "guid": "c5aaecf0-f55a-4864-871e-4584d1ccc9af", 
+   "name": "删除", 
+   "tokens": [
+    "edit", 
+    "delete"
+   ]
+  }, 
+  {
+   "description": "剪切当前选中的内容并将其移动到剪贴板", 
+   "guid": "586fb001-60ca-4dd1-a2f9-f9319ee13c95", 
+   "name": "剪切", 
+   "tokens": [
+    "edit", 
+    "cut"
+   ]
+  }, 
+  {
+   "description": "查找当前工程中某个字符串的出现", 
+   "guid": "bb8cc53c-9f28-46ea-a8df-0db140c2b325", 
+   "name": "在工程中查找", 
+   "tokens": [
+    "edit", 
+    "find", 
+    "project"
+   ]
+  }, 
+  {
+   "description": "将当前的选中的内容复制到剪贴板", 
+   "guid": "e76b8e0b-9247-41e7-93d5-80fe36af9449", 
+   "name": "复制", 
+   "tokens": [
+    "edit", 
+    "copy"
+   ]
+  }, 
+  {
+   "description": "将当前工程中某个字符串的出现替换为另一个", 
+   "guid": "0d375192-1cd8-4207-8f2a-3640f4f2d031", 
+   "name": "工程内替换", 
+   "tokens": [
+    "edit", 
+    "replace", 
+    "project"
+   ]
+  }, 
+  {
+   "description": "撤消编辑器的最后一次操作", 
+   "guid": "871b29a1-9e9f-47f9-a5ce-d56c40976743", 
+   "name": "恢复", 
+   "tokens": [
+    "edit", 
+    "redo"
+   ]
+  }, 
+  {
+   "description": "撤消编辑器的最后一次操作", 
+   "guid": "9eccaf22-3293-4165-943e-88c2c40b4a58", 
+   "name": "撤消", 
+   "tokens": [
+    "edit", 
+    "undo"
+   ]
+  }, 
+  {
+   "description": "在活动编辑器中将某个字符串替换为另一个", 
+   "guid": "1b03871f-4700-48c4-904f-adcaa4a5bc6d", 
+   "name": "替换", 
+   "tokens": [
+    "edit", 
+    "replace"
+   ]
+  }, 
+  {
+   "description": "查找活动编辑器中某个字符串", 
+   "guid": "6e684418-bfb4-4ff0-ab89-385aa724bb03", 
+   "name": "查找", 
+   "tokens": [
+    "edit", 
+    "find"
+   ]
+  }, 
+  {
+   "description": "查找下一个当前搜索的字符串", 
+   "guid": "ed3f69cc-af4f-431b-9f41-9edad09e4734", 
+   "name": "查找下一个", 
+   "tokens": [
+    "edit", 
+    "findnext"
+   ]
+  }, 
+  {
+   "description": "查找下一个当前选择的字符串", 
+   "guid": "fee78da4-bcd3-47db-885d-286af5c6dab7", 
+   "name": "查找下一个(选择的)", 
+   "tokens": [
+    "edit", 
+    "findnextselected"
+   ]
+  }, 
+  {
+   "description": "查找前一个当前搜索的字符串", 
+   "guid": "e62ddd24-032b-4928-84ab-f4fa9fe6da02", 
+   "name": "查找前一个", 
+   "tokens": [
+    "edit", 
+    "findprevious"
+   ]
+  }, 
+  {
+   "description": "查找前一个当前选择的字符串", 
+   "guid": "f7e547e5-2c17-4988-af2a-4b8ba566e8ea", 
+   "name": "查找前一个(选择的)", 
+   "tokens": [
+    "edit", 
+    "findpreviousselected"
+   ]
+  }, 
+  {
+   "description": "将剪贴板内容粘贴到插入位置", 
+   "guid": "73a7678b-2707-44f6-963b-8a4b3c05a331", 
+   "name": "粘贴", 
+   "tokens": [
+    "edit", 
+    "paste"
+   ]
+  }, 
+  {
+   "description": "添加文本列表支持", 
+   "guid": "592ad39b-097b-47f2-83e6-b59e8c590c3d", 
+   "name": "添加文本列表支持", 
+   "tokens": [
+    "enum", 
+    "convert_to_text_list_enum"
+   ]
+  }, 
+  {
+   "description": "供其它EtherCAT堆栈的使用", 
+   "guid": "4f4611ee-4a7f-4d83-b59b-ad0469b2e32b", 
+   "name": "生成EtherCAT XML", 
+   "tokens": [
+    "export", 
+    "xml"
+   ]
+  }, 
+  {
+   "description": "保存工程和工程依赖至单一存档文件.", 
+   "guid": "8184767e-1ae4-4071-a04d-a7e9d5a678f1", 
+   "name": "保存存档...", 
+   "tokens": [
+    "file", 
+    "archive", 
+    "save"
+   ]
+  }, 
+  {
+   "description": "保存当前工程", 
+   "guid": "0e1415d3-e28c-46ec-93b1-10a1d470f9df", 
+   "name": "保存工程", 
+   "tokens": [
+    "file", 
+    "save"
+   ]
+  }, 
+  {
+   "description": "保存当前的库工程并将其安装到本地库存储库中。", 
+   "guid": "aa561b90-e851-48a8-9fed-bc7669c5e1d3", 
+   "name": "保存工程并安装到库存储库中", 
+   "tokens": [
+    "file", 
+    "saveandinstall"
+   ]
+  }, 
+  {
+   "description": "关闭当前工程", 
+   "guid": "7b7d5056-5cd3-4132-9e49-d64781bf4a7c", 
+   "name": "关闭工程", 
+   "tokens": [
+    "file", 
+    "close"
+   ]
+  }, 
+  {
+   "description": "将当前库工程保存为编译库", 
+   "guid": "82d40622-dcc1-414c-ade2-2068c2c1808a", 
+   "name": "将工程另存为编译库...", 
+   "tokens": [
+    "file", 
+    "saveascompiledlibrary"
+   ]
+  }, 
+  {
+   "description": "编辑关于工程的用户自定义信息,并显示工程统计信息", 
+   "guid": "4581a3ae-8888-4afa-8c65-4db81cb66597", 
+   "name": "工程信息...", 
+   "tokens": [
+    "file", 
+    "projectinfo"
+   ]
+  }, 
+  {
+   "description": "使用新的文件路径保存当前工程", 
+   "guid": "6d0d9cc5-67a2-46fd-9d29-fdfa326321e5", 
+   "name": "工程另存为...", 
+   "tokens": [
+    "file", 
+    "saveas"
+   ]
+  }, 
+  {
+   "description": "显示和编辑当前工程的特定设置.", 
+   "guid": "f97dfcb1-28a0-4af5-ac78-d20e8f17249a", 
+   "name": "工程设置...", 
+   "tokens": [
+    "file", 
+    "projectsettings"
+   ]
+  }, 
+  {
+   "description": "打开已经存在的工程", 
+   "guid": "9d09e965-6254-46fd-9c21-b27fd2e97b52", 
+   "name": "打开工程...", 
+   "tokens": [
+    "file", 
+    "open"
+   ]
+  }, 
+  {
+   "description": "创建新的空工程.", 
+   "guid": "142063ff-039a-46ff-afd8-16c0c4afaacd", 
+   "name": "新建工程...", 
+   "tokens": [
+    "file", 
+    "new"
+   ]
+  }, 
+  {
+   "description": "精简项目", 
+   "guid": "b741d3f6-484f-4c17-9fb0-762c5dc8e866", 
+   "name": "精简项目", 
+   "tokens": [
+    "file", 
+    "compact"
+   ]
+  }, 
+  {
+   "description": "解压指定的工程存档.", 
+   "guid": "82cfec92-88b8-4c43-803d-839d2905e589", 
+   "name": "解压存档...", 
+   "tokens": [
+    "file", 
+    "archive", 
+    "extract"
+   ]
+  }, 
+  {
+   "description": "退出应用", 
+   "guid": "caa0ef1f-6563-49ae-b0e0-80095fb233ef", 
+   "name": "退出", 
+   "tokens": [
+    "file", 
+    "exit"
+   ]
+  }, 
+  {
+   "description": "当登录应用时, 显示带有全部强制表达式的监视列表", 
+   "guid": "d2cc2ad7-fc8d-49a4-aeed-c8cf9f5a8ccf", 
+   "name": "监视全部强制", 
+   "tokens": [
+    "forcelist", 
+    "watchallforces"
+   ]
+  }, 
+  {
+   "description": "激活'0'的编辑器", 
+   "guid": "2da43148-03ab-46bc-a4df-48dcc4c838f9", 
+   "name": "1   (Window 1)", 
+   "tokens": [
+    "frame", 
+    "window0"
+   ]
+  }, 
+  {
+   "description": "激活'9'的编辑器", 
+   "guid": "b3b523d5-cc57-45a4-ac2d-d1d2d640f1d9", 
+   "name": "10   (Window 10)", 
+   "tokens": [
+    "frame", 
+    "window9"
+   ]
+  }, 
+  {
+   "description": "激活'1'的编辑器", 
+   "guid": "5888f929-8a48-465a-89ac-c30e3d3aa095", 
+   "name": "2   (Window 2)", 
+   "tokens": [
+    "frame", 
+    "window1"
+   ]
+  }, 
+  {
+   "description": "激活'2'的编辑器", 
+   "guid": "42c24446-d49a-4333-90fd-035bbc0e07ae", 
+   "name": "3   (Window 3)", 
+   "tokens": [
+    "frame", 
+    "window2"
+   ]
+  }, 
+  {
+   "description": "激活'3'的编辑器", 
+   "guid": "82c8af46-39b0-454d-a717-ca5225442809", 
+   "name": "4   (Window 4)", 
+   "tokens": [
+    "frame", 
+    "window3"
+   ]
+  }, 
+  {
+   "description": "激活'4'的编辑器", 
+   "guid": "fc7d0415-bfd8-4a33-8d27-b1b132836f09", 
+   "name": "5   (Window 5)", 
+   "tokens": [
+    "frame", 
+    "window4"
+   ]
+  }, 
+  {
+   "description": "激活'5'的编辑器", 
+   "guid": "ec945740-b20b-42c7-bb5a-5fc6850df60f", 
+   "name": "6   (Window 6)", 
+   "tokens": [
+    "frame", 
+    "window5"
+   ]
+  }, 
+  {
+   "description": "激活'6'的编辑器", 
+   "guid": "8581325c-3240-4c5e-9368-ae0b18dc6a4f", 
+   "name": "7   (Window 7)", 
+   "tokens": [
+    "frame", 
+    "window6"
+   ]
+  }, 
+  {
+   "description": "激活'7'的编辑器", 
+   "guid": "e2067782-932d-4db2-8c06-c2283edfd1ee", 
+   "name": "8   (Window 8)", 
+   "tokens": [
+    "frame", 
+    "window7"
+   ]
+  }, 
+  {
+   "description": "激活'8'的编辑器", 
+   "guid": "cfd7252f-7a73-4980-a75d-1cf80d9889f4", 
+   "name": "9   (Window 9)", 
+   "tokens": [
+    "frame", 
+    "window8"
+   ]
+  }, 
+  {
+   "description": "激活活动编辑器中的上一个窗格", 
+   "guid": "1be534fc-2cba-43d3-a9a6-f925d9b6fe5c", 
+   "name": "上一个子窗口", 
+   "tokens": [
+    "frame", 
+    "previouspane"
+   ]
+  }, 
+  {
+   "description": "激活上一个打开的编辑器视图", 
+   "guid": "5df425b5-cad5-4277-9613-fec44ae43f52", 
+   "name": "上一个编辑器", 
+   "tokens": [
+    "frame", 
+    "previouseditor"
+   ]
+  }, 
+  {
+   "description": "激活活动编辑器中的下一个窗格", 
+   "guid": "7b061d57-120e-4897-b840-7e3251ec70a2", 
+   "name": "下一个窗格", 
+   "tokens": [
+    "frame", 
+    "nextpane"
+   ]
+  }, 
+  {
+   "description": "激活下一个打开的编辑器视图", 
+   "guid": "488224f9-d71a-47a6-8d7b-aa9116ab3b7a", 
+   "name": "下一个编辑器", 
+   "tokens": [
+    "frame", 
+    "nexteditor"
+   ]
+  }, 
+  {
+   "description": "停靠活动视图", 
+   "guid": "09018b75-686e-4371-bf94-a4c6939fdff5", 
+   "name": "停靠", 
+   "tokens": [
+    "frame", 
+    "dock"
+   ]
+  }, 
+  {
+   "description": "从普通模式切换到全屏模式或反之", 
+   "guid": "d156c692-3203-40a4-958b-fe14bd80edad", 
+   "name": "全屏", 
+   "tokens": [
+    "frame", 
+    "togglefullscreen"
+   ]
+  }, 
+  {
+   "description": "显示版本和版权信息", 
+   "guid": "ec181567-c559-445f-b629-77e6752d12da", 
+   "name": "关于...", 
+   "tokens": [
+    "frame", 
+    "about"
+   ]
+  }, 
+  {
+   "description": "关闭当前打开的所有编辑器窗口", 
+   "guid": "7053192d-1cfa-40ad-b4b2-6e838c362b6a", 
+   "name": "关闭所有编辑器", 
+   "tokens": [
+    "frame", 
+    "closealleditors"
+   ]
+  }, 
+  {
+   "description": "关闭不属于活动应用程序的对象的所有编辑器窗口", 
+   "guid": "0172e873-4b9e-407e-8707-045498e24c3d", 
+   "name": "关闭所有非活动应用程序的编辑器", 
+   "tokens": [
+    "frame", 
+    "closealleditorsofinactiveapplications"
+   ]
+  }, 
+  {
+   "description": "关闭当前活动的编辑器窗口", 
+   "guid": "6c40286f-cfb5-414f-b204-04a8cc91f403", 
+   "name": "关闭编辑器", 
+   "tokens": [
+    "frame", 
+    "closeeditor"
+   ]
+  }, 
+  {
+   "description": "关闭所有编辑器窗口, 但当前处于活动状态的窗口除外", 
+   "guid": "e689224f-106c-4145-b788-b2f66ac66a20", 
+   "name": "关闭除此之外的编辑器", 
+   "tokens": [
+    "frame", 
+    "closealleditorsbutthis"
+   ]
+  }, 
+  {
+   "description": "恢复或最小化活动视图的第一窗格", 
+   "guid": "edc5891d-22c6-460f-9d58-6f7d30d5f928", 
+   "name": "切换第一窗格", 
+   "tokens": [
+    "frame", 
+    "togglefirstpane"
+   ]
+  }, 
+  {
+   "description": "恢复或最小化活动视图的第二个窗格", 
+   "guid": "a43ebcfc-17a2-40c1-82b5-0cfeec258f4e", 
+   "name": "切换第二窗格", 
+   "tokens": [
+    "frame", 
+    "togglesecondpane"
+   ]
+  }, 
+  {
+   "description": "在导航器中选择当前活动的编辑器编辑的对象", 
+   "guid": "40456f7f-b524-4d0b-a554-44504113965c", 
+   "name": "在导航器中选择对象", 
+   "tokens": [
+    "frame", 
+    "selectobjectinnavigator"
+   ]
+  }, 
+  {
+   "description": "在导航器中选择当前活动的编辑器编辑的对象的父对象", 
+   "guid": "64f5ee05-fa53-4dd3-9f90-70b813442f4c", 
+   "name": "在导航器中选择父对象", 
+   "tokens": [
+    "frame", 
+    "selectparentobjectinnavigator"
+   ]
+  }, 
+  {
+   "description": "导入或导出文件选项", 
+   "guid": "73c3e5ee-5d7e-425f-880d-04934c7cb323", 
+   "name": "导入与导出选项...", 
+   "tokens": [
+    "frame", 
+    "options", 
+    "import_export"
+   ]
+  }, 
+  {
+   "description": "显示所选对象的属性", 
+   "guid": "748e63e2-68e6-4364-b7dc-8c09a4891a15", 
+   "name": "属性...", 
+   "tokens": [
+    "frame", 
+    "properties"
+   ]
+  }, 
+  {
+   "description": "打开一个新的垂直选项卡组, 其中包含活动的编辑器视图", 
+   "guid": "53e779a9-4d53-4999-a7b8-e5a88a5a6b34", 
+   "name": "新建垂直序列组", 
+   "tokens": [
+    "frame", 
+    "newverttabgroup"
+   ]
+  }, 
+  {
+   "description": "打开一个新的水平选项卡组,其中包含活动的编辑器视图", 
+   "guid": "6123d86d-029c-402e-8a33-fc823e57d02b", 
+   "name": "新建水平序列组", 
+   "tokens": [
+    "frame", 
+    "newhorztabgroup"
+   ]
+  }, 
+  {
+   "description": "使活动视图浮动", 
+   "guid": "7fec924d-b521-4a4f-9d1a-07d23c774f33", 
+   "name": "浮动", 
+   "tokens": [
+    "frame", 
+    "float"
+   ]
+  }, 
+  {
+   "description": "显示当前打开的所有编辑器视图的列表", 
+   "guid": "9561d563-8bf4-42f5-bcea-82dbab9f85fa", 
+   "name": "窗口...", 
+   "tokens": [
+    "frame", 
+    "windows"
+   ]
+  }, 
+  {
+   "description": "如果不使用, 则自动隐藏活动视图", 
+   "guid": "51c48cf0-0e09-4533-aa10-502150eb4d9d", 
+   "name": "自动隐藏", 
+   "tokens": [
+    "frame", 
+    "autohide"
+   ]
+  }, 
+  {
+   "description": "自定义菜单栏和工具栏的外观以及全局键盘绑定", 
+   "guid": "98f9e1bd-125f-4590-96a9-24150e53c5bf", 
+   "name": "自定义...", 
+   "tokens": [
+    "frame", 
+    "customize"
+   ]
+  }, 
+  {
+   "description": "自定义绑定到用户或本地机器的编程系统的设置", 
+   "guid": "3e80809e-1bbe-4f49-8667-74991e16fe82", 
+   "name": "选项...", 
+   "tokens": [
+    "frame", 
+    "options"
+   ]
+  }, 
+  {
+   "description": "添加接口...", 
+   "guid": "4ce6d9ee-fa9f-4674-885f-0b095c6ad30c", 
+   "name": "添加接口...", 
+   "tokens": [
+    "gw_config_form", 
+    "add_main_net"
+   ]
+  }, 
+  {
+   "description": "添加配置设置...", 
+   "guid": "3dcff463-8241-4096-9a2c-4447417832e9", 
+   "name": "添加配置设置...", 
+   "tokens": [
+    "gw_config_form", 
+    "add_setting"
+   ]
+  }, 
+  {
+   "description": "显示帮助", 
+   "guid": "c77b06ec-960b-41b7-b53a-66fd0b835665", 
+   "name": "CODESYS帮助", 
+   "tokens": [
+    "help", 
+    "contents"
+   ]
+  }, 
+  {
+   "description": "给我们反馈", 
+   "guid": "3ad5e516-3892-4c78-8d6d-c5a6a9240859", 
+   "name": "反馈...", 
+   "tokens": [
+    "help", 
+    "usersurvey", 
+    "feedback"
+   ]
+  }, 
+  {
+   "description": "展示第三方内容添加的帮助", 
+   "guid": "5afc9df7-ca9c-48e8-b580-b62fc3321ce8", 
+   "name": "帮助安装第三方软件包", 
+   "tokens": [
+    "help", 
+    "additional"
+   ]
+  }, 
+  {
+   "description": "参与用户调查", 
+   "guid": "d783654d-7cdb-45e5-9416-565b4c4b3b35", 
+   "name": "用户调查", 
+   "tokens": [
+    "help", 
+    "usersurvey"
+   ]
+  }, 
+  {
+   "description": "将 lecXchange文件或其中的一部分导入到当前项目中.", 
+   "guid": "eb1e1cad-288f-4f19-8ad1-9e006f0154e8", 
+   "name": "导入IEC-61132-10...", 
+   "tokens": [
+    "iec6113110", 
+    "import"
+   ]
+  }, 
+  {
+   "description": "以lecXchange格式导出项目或项目的一部分.", 
+   "guid": "3d32bd12-9ebb-4153-94c6-415c4537dfb4", 
+   "name": "导出IEC61131-10...", 
+   "tokens": [
+    "iec6113110", 
+    "export"
+   ]
+  }, 
+  {
+   "description": "在当前位置插入一个新的图片", 
+   "guid": "19a6b56e-424a-40bf-a954-0e3da6ae917e", 
+   "name": "插入图片", 
+   "tokens": [
+    "imagepool", 
+    "insertimage"
+   ]
+  }, 
+  {
+   "description": "显示输入助手用于浏览变量,调用,操作符和关键字.", 
+   "guid": "1c74f00c-6a9b-47b9-99be-e74b1d767545", 
+   "name": "输入助手...", 
+   "tokens": [
+    "inputassistant"
+   ]
+  }, 
+  {
+   "description": "显示APInstaller", 
+   "guid": "7d20f8e2-a557-47ff-abab-70d417887ac3", 
+   "name": "CODESYS 安装程序...", 
+   "tokens": [
+    "installation", 
+    "packagemanager"
+   ]
+  }, 
+  {
+   "description": "显示一个用于使用OPC UA信息模型的存储库的对话框", 
+   "guid": "e50b347d-4ec8-470c-8257-e4f13227569c", 
+   "name": "OPC UA信息模型存储库..", 
+   "tokens": [
+    "installation", 
+    "informationmodelrepository"
+   ]
+  }, 
+  {
+   "description": "显示带有视图元素库工作的对话框.", 
+   "guid": "3841219e-e84b-4c48-bc1d-1384b84a4dc6", 
+   "name": "可视元素库", 
+   "tokens": [
+    "installation", 
+    "visualelementrepository"
+   ]
+  }, 
+  {
+   "description": "显示一个对话框用于可视化样式库的工作", 
+   "guid": "90fc44e5-75a1-474f-9385-e829baab7b53", 
+   "name": "可视化样式库...", 
+   "tokens": [
+    "installation", 
+    "visualizationstylesrepository"
+   ]
+  }, 
+  {
+   "description": "显示,安装和卸载库", 
+   "guid": "c748310a-0784-46c2-8475-0439c495869b", 
+   "name": "库存储...", 
+   "tokens": [
+    "installation", 
+    "libraryrepository"
+   ]
+  }, 
+  {
+   "description": "显示,安装和卸载设备", 
+   "guid": "9790ad8b-5ecd-4840-8cce-be68aaf1d5e9", 
+   "name": "设备存储库...", 
+   "tokens": [
+    "installation", 
+    "devicerepository"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "c89df5c4-a431-4d10-9dc4-ae705685e78f", 
+   "name": "Auto Declare for Ladder...", 
+   "tokens": [
+    "ladder", 
+    "autodeclare"
+   ]
+  }, 
+  {
+   "description": "EN", 
+   "guid": "81a1ac72-15bb-4172-8841-778300e73a2b", 
+   "name": "EN", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "toggleen"
+   ]
+  }, 
+  {
+   "description": "ENO", 
+   "guid": "056ffe1d-0155-4bd3-be79-ba1324a37145", 
+   "name": "ENO", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "toggleeno"
+   ]
+  }, 
+  {
+   "description": "上升沿", 
+   "guid": "18921635-ef44-448d-ae86-818e5bfdc9b6", 
+   "name": "上升沿", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "toggleedgerising"
+   ]
+  }, 
+  {
+   "description": "下降沿", 
+   "guid": "dce67817-6078-4ce7-b57c-cbd8bc9100c7", 
+   "name": "下降沿", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "toggleedgefalling"
+   ]
+  }, 
+  {
+   "description": "关闭平行分支", 
+   "guid": "98361014-f6e0-4a1f-84f7-0dae5abaa0ee", 
+   "name": "关闭平行分支", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "closebranch"
+   ]
+  }, 
+  {
+   "description": "切换插入有或没有 EN/ENO的新块", 
+   "guid": "c43b24ad-1da3-4e82-a3df-d6774b7e1a22", 
+   "name": "切换插入有或没有 EN/ENO的新块", 
+   "tokens": [
+    "ladder", 
+    "insertblockswithenenotogglecommand"
+   ]
+  }, 
+  {
+   "description": "否定", 
+   "guid": "12043cee-b272-48a7-bb63-21d4df9e3e0a", 
+   "name": "否定", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "setnegation"
+   ]
+  }, 
+  {
+   "description": "增加输入引脚", 
+   "guid": "0148723d-9411-4536-96b7-b5200cef41a2", 
+   "name": "增加输入引脚", 
+   "tokens": [
+    "ladder", 
+    "insert", 
+    "addinputpin"
+   ]
+  }, 
+  {
+   "description": "复位", 
+   "guid": "7970e6d1-5e4b-431e-814e-148b35a7ad7b", 
+   "name": "复位", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "togglestoragereset"
+   ]
+  }, 
+  {
+   "description": "已作评论", 
+   "guid": "e918a4a3-6f30-4959-abf6-12e6409132d3", 
+   "name": "已作评论", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "toggleoutcommented"
+   ]
+  }, 
+  {
+   "description": "开关置位/复位修改器", 
+   "guid": "6f4f8870-625e-4cc2-8869-99f178e660a9", 
+   "name": "开关置位/复位修改器", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "switchstorage"
+   ]
+  }, 
+  {
+   "description": "开关边缘检测", 
+   "guid": "e42ee942-525e-4ff0-b2dd-2242e68d41ef", 
+   "name": "开关边缘检测", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "switchedgedetection"
+   ]
+  }, 
+  {
+   "description": "打开并行分支", 
+   "guid": "9f910a89-bc41-40a9-b0b7-027a96800f7d", 
+   "name": "打开并行分支", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "openbranch"
+   ]
+  }, 
+  {
+   "description": "插入 ST块", 
+   "guid": "a853bd84-48f5-4e14-bf9e-8a9cda277bbd", 
+   "name": "插入 ST块", 
+   "tokens": [
+    "ladder", 
+    "insert", 
+    "structuredtextblock"
+   ]
+  }, 
+  {
+   "description": "插入 块", 
+   "guid": "ab199a90-ba8f-4aa9-bc70-77d4cb8388cb", 
+   "name": "插入 块", 
+   "tokens": [
+    "ladder", 
+    "insert", 
+    "block"
+   ]
+  }, 
+  {
+   "description": "插入 线圈", 
+   "guid": "49f35960-e385-4606-8697-5e5cac11778f", 
+   "name": "插入 线圈", 
+   "tokens": [
+    "ladder", 
+    "insert", 
+    "coil"
+   ]
+  }, 
+  {
+   "description": "插入 网络", 
+   "guid": "65e894b7-f128-4736-93cb-d9c24e5712ab", 
+   "name": "插入 网络", 
+   "tokens": [
+    "ladder", 
+    "insert", 
+    "network"
+   ]
+  }, 
+  {
+   "description": "插入 触点", 
+   "guid": "ce9b8bd1-189c-42fa-9ccf-7157036ea2e2", 
+   "name": "插入 触点", 
+   "tokens": [
+    "ladder", 
+    "insert", 
+    "contact"
+   ]
+  }, 
+  {
+   "description": "插入 跳转", 
+   "guid": "c7a37c40-f284-4fc8-9323-8cf4b99b0ee9", 
+   "name": "插入 跳转", 
+   "tokens": [
+    "ladder", 
+    "insert", 
+    "jump"
+   ]
+  }, 
+  {
+   "description": "插入 输入", 
+   "guid": "f1ed1127-d15c-4bc8-8e9e-0b3312837116", 
+   "name": "插入 输入", 
+   "tokens": [
+    "ladder", 
+    "insert", 
+    "invariable"
+   ]
+  }, 
+  {
+   "description": "插入 输出", 
+   "guid": "016a0fd2-eb81-4071-acd6-ac1165847345", 
+   "name": "插入 输出", 
+   "tokens": [
+    "ladder", 
+    "insert", 
+    "outvariable"
+   ]
+  }, 
+  {
+   "description": "插入 返回", 
+   "guid": "5f269ab4-43a8-4bc6-bf8c-729abbf19a18", 
+   "name": "插入 返回", 
+   "tokens": [
+    "ladder", 
+    "insert", 
+    "return"
+   ]
+  }, 
+  {
+   "description": "无边缘检测", 
+   "guid": "b526f3d2-4226-442d-8a99-09ca0ff8a2e3", 
+   "name": "无边缘检测", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "edgenone"
+   ]
+  }, 
+  {
+   "description": "更新参数", 
+   "guid": "992fc6f5-ecc1-4fbe-910f-6ddd3e7999c8", 
+   "name": "更新参数", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "updateparameters"
+   ]
+  }, 
+  {
+   "description": "没有", 
+   "guid": "94c889b8-63aa-42f4-80a9-5d812c3005a1", 
+   "name": "没有", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "storagenone"
+   ]
+  }, 
+  {
+   "description": "移除未使用的插针", 
+   "guid": "0e7bf2b1-7831-4d3b-87bc-66e1c8dbaa49", 
+   "name": "移除未使用的插针", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "Removeunusedfbcallparameters"
+   ]
+  }, 
+  {
+   "description": "设置", 
+   "guid": "2a65e2ed-4dce-4954-a7b0-0033e9ac9fed", 
+   "name": "设置", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "togglestorageset"
+   ]
+  }, 
+  {
+   "description": "设置输出连接", 
+   "guid": "5595b245-a4eb-451f-966f-a4e56a823ba2", 
+   "name": "设置输出连接", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "setoutputconnection"
+   ]
+  }, 
+  {
+   "description": "转换为新的梯形图", 
+   "guid": "39487d94-5276-477d-9866-fc22dab08063", 
+   "name": "转换为新的梯形图", 
+   "tokens": [
+    "ladder", 
+    "legacyconversion"
+   ]
+  }, 
+  {
+   "description": "通过变量链接", 
+   "guid": "ffdd8aa4-7bba-4b8b-93dc-3648d99e2d10", 
+   "name": "通过变量链接", 
+   "tokens": [
+    "ladder", 
+    "modify", 
+    "linkviavariable"
+   ]
+  }, 
+  {
+   "description": "打开对话框以下载缺少的库", 
+   "guid": "0ae00f1a-9483-402b-96bd-54b568fd2520", 
+   "name": "下载缺失的库...", 
+   "tokens": [
+    "libman", 
+    "opendownloadmissinglibrariesdialog"
+   ]
+  }, 
+  {
+   "description": "信任所选库的自签名证书", 
+   "guid": "8eaf44e7-f2ac-4cbe-bf6c-3fd93388f9d8", 
+   "name": "信任证书", 
+   "tokens": [
+    "libman", 
+    "trustcertificate"
+   ]
+  }, 
+  {
+   "description": "显示并重定向占位符解析", 
+   "guid": "c8d936b4-32b6-47ca-bafd-ead29338deb4", 
+   "name": "占位符...", 
+   "tokens": [
+    "libman", 
+    "placeholders"
+   ]
+  }, 
+  {
+   "description": "从资源库里复制选定的库到磁盘的任意位置", 
+   "guid": "4ff87f84-9524-45e9-a19f-a6b3c55c59fa", 
+   "name": "导出库...", 
+   "tokens": [
+    "libman", 
+    "export"
+   ]
+  }, 
+  {
+   "description": "尝试重新加载所选库", 
+   "guid": "73d6ea58-232c-47dd-ad9e-7f608518ec27", 
+   "name": "尝试重新加载库", 
+   "tokens": [
+    "libman", 
+    "reload"
+   ]
+  }, 
+  {
+   "description": "修改所选库引用的属性", 
+   "guid": "074427ab-e05a-4680-92c4-86b069ae881c", 
+   "name": "属性...", 
+   "tokens": [
+    "libman", 
+    "properties"
+   ]
+  }, 
+  {
+   "description": "打开编辑库参数的对话框", 
+   "guid": "44444444-53d1-4baa-8ad2-b428e2ce831b", 
+   "name": "库参数...", 
+   "tokens": [
+    "libman", 
+    "openparameterdialog"
+   ]
+  }, 
+  {
+   "description": "在当前库管理器中添加库", 
+   "guid": "4f2952df-747f-4c91-9f8d-46f87680faa2", 
+   "name": "添加库...", 
+   "tokens": [
+    "libman", 
+    "add"
+   ]
+  }, 
+  {
+   "description": "将没有占位符解析的库添加到当前库管理器", 
+   "guid": "2271ea68-3562-4f41-bd93-557fd37592d8", 
+   "name": "添加没有占位符解析的库...", 
+   "tokens": [
+    "libman", 
+    "addwithoutplaceholder"
+   ]
+  }, 
+  {
+   "description": "创建本地化模板文件.", 
+   "guid": "a8e7e21b-fb2b-41fb-954e-f52a8347971a", 
+   "name": "创建本地化模板...", 
+   "tokens": [
+    "localize", 
+    "createfile"
+   ]
+  }, 
+  {
+   "description": "本地化当前工程", 
+   "guid": "05446ccf-ca2d-4812-8901-12c42b85b7f9", 
+   "name": "本地化工程...", 
+   "tokens": [
+    "localize", 
+    "project"
+   ]
+  }, 
+  {
+   "description": "打开管理窗口", 
+   "guid": "7c7cff1c-730f-4273-8cd2-ff3fe8d1d6c1", 
+   "name": "管理本地化...", 
+   "tokens": [
+    "manage", 
+    "localization"
+   ]
+  }, 
+  {
+   "description": "显示所选应用程序的内存使用情况", 
+   "guid": "16139e35-ad35-4f9d-82f3-aac94786b446", 
+   "name": "查看内存使用情况", 
+   "tokens": [
+    "memory_tools", 
+    "view_memory_usage"
+   ]
+  }, 
+  {
+   "description": "对运行中的应用程序进行内存正确性检查", 
+   "guid": "3372a6bc-1a2e-4c87-b229-e2e28c0d2818", 
+   "name": "检查活动应用程序的内存", 
+   "tokens": [
+    "memory_tools", 
+    "check_active_application"
+   ]
+  }, 
+  {
+   "description": "选择下一个消息.", 
+   "guid": "126cbd4c-05da-4ac8-94e8-8b6f8bff23a7", 
+   "name": "下一个消息", 
+   "tokens": [
+    "messages", 
+    "next"
+   ]
+  }, 
+  {
+   "description": "选择前一个消息.", 
+   "guid": "213cee13-e457-468b-9313-4279fc8e7134", 
+   "name": "前一个消息", 
+   "tokens": [
+    "messages", 
+    "prev"
+   ]
+  }, 
+  {
+   "description": "选择与所选消息对应的源位置.", 
+   "guid": "15d4c1ab-a1f4-44f4-bb71-a46b8b7355db", 
+   "name": "转到源代码处", 
+   "tokens": [
+    "messages", 
+    "gotosourcepos"
+   ]
+  }, 
+  {
+   "description": "修复不一致的POU程序", 
+   "guid": "c88fce6e-76b5-41d3-982d-07e7aeabfff5", 
+   "name": "修复POU", 
+   "tokens": [
+    "network", 
+    "repair"
+   ]
+  }, 
+  {
+   "description": "以显式命令修改所选元素的文本", 
+   "guid": "1675e063-0eb0-400c-9d13-eb22410abcc3", 
+   "name": "修改文本", 
+   "tokens": [
+    "network", 
+    "changetext"
+   ]
+  }, 
+  {
+   "description": "无论网络是否有注释, 切换其状态", 
+   "guid": "147c903a-e420-40b4-9146-8a8b043e907e", 
+   "name": "切换网络注释状态", 
+   "tokens": [
+    "network", 
+    "togglenetworkoutcomment"
+   ]
+  }, 
+  {
+   "description": "从IL中删除当前行", 
+   "guid": "ed36be20-2e35-46de-a1e9-939c104be5b5", 
+   "name": "删除IL行", 
+   "tokens": [
+    "network", 
+    "deleteilline"
+   ]
+  }, 
+  {
+   "description": "在FB调用中删除未使用的全部参数", 
+   "guid": "8ee67f5c-1758-405c-b94c-60b2577d2364", 
+   "name": "删除未使用的FB调用参数", 
+   "tokens": [
+    "network", 
+    "removeunusedfbparams"
+   ]
+  }, 
+  {
+   "description": "输入或输出取反", 
+   "guid": "f749f995-845e-440c-985b-d5d96480aec2", 
+   "name": "取反", 
+   "tokens": [
+    "network", 
+    "negate"
+   ]
+  }, 
+  {
+   "description": "在此分支上面插入一个分支", 
+   "guid": "7906b723-7ca2-4353-85ca-ecd91011b1db", 
+   "name": "在上面插入分支", 
+   "tokens": [
+    "network", 
+    "insertbranchabove"
+   ]
+  }, 
+  {
+   "description": "在当前行后的网络中插入指令表新行", 
+   "guid": "e0a53b0f-161c-4119-93d8-ffbeec57ee63", 
+   "name": "在下方插入 IL 行", 
+   "tokens": [
+    "network", 
+    "insertilline"
+   ]
+  }, 
+  {
+   "description": "在此分支下面插入一个分支", 
+   "guid": "d9f255d2-cd6f-4fc5-b720-d780965f1a91", 
+   "name": "在下面插入分支", 
+   "tokens": [
+    "network", 
+    "insertbranchbelow"
+   ]
+  }, 
+  {
+   "description": "插入一个ADD功能块", 
+   "guid": "8d411c80-2911-41e8-ae58-f57ab45b3cce", 
+   "name": "插入ADD功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox0"
+   ]
+  }, 
+  {
+   "description": "插入一个CTD功能块", 
+   "guid": "00b6ddb3-c26d-4034-a42c-6fe999305614", 
+   "name": "插入CTD功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox13"
+   ]
+  }, 
+  {
+   "description": "插入一个CTUD功能块", 
+   "guid": "18c9ff01-8217-498f-be41-130608f3711e", 
+   "name": "插入CTUD功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox14"
+   ]
+  }, 
+  {
+   "description": "插入一个CTU功能块", 
+   "guid": "b4b8fad8-b5fa-4899-a513-fb9459b60bc2", 
+   "name": "插入CTU功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox12"
+   ]
+  }, 
+  {
+   "description": "插入一个CustomBox20功能块", 
+   "guid": "fa03ba14-0b13-4df5-b5a5-aab8c45d165b", 
+   "name": "插入CustomBox20功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox20"
+   ]
+  }, 
+  {
+   "description": "插入一个CustomBox21功能块", 
+   "guid": "2c5bb3fe-b457-4c00-9b46-80c1542ca4ae", 
+   "name": "插入CustomBox21功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox21"
+   ]
+  }, 
+  {
+   "description": "插入一个CustomBox22功能块", 
+   "guid": "136b3fae-c2b5-470a-9438-3ffdc341da61", 
+   "name": "插入CustomBox22功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox22"
+   ]
+  }, 
+  {
+   "description": "插入一个CustomBox23功能块", 
+   "guid": "13b4c840-3b4f-4ddc-aaf7-c12c02860901", 
+   "name": "插入CustomBox23功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox23"
+   ]
+  }, 
+  {
+   "description": "插入一个CustomBox24功能块", 
+   "guid": "59c4d9d8-687d-42c0-ad7c-b8cc23bb9184", 
+   "name": "插入CustomBox24功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox24"
+   ]
+  }, 
+  {
+   "description": "插入一个CustomBox25功能块", 
+   "guid": "903b5b63-be4a-4653-b6e5-5bb1b3091eba", 
+   "name": "插入CustomBox25功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox25"
+   ]
+  }, 
+  {
+   "description": "插入一个CustomBox26功能块", 
+   "guid": "f777d452-8ff8-4aba-b4b0-cbc4a27fb72b", 
+   "name": "插入CustomBox26功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox26"
+   ]
+  }, 
+  {
+   "description": "插入一个CustomBox27功能块", 
+   "guid": "ca9f10e2-c53d-40d3-a92c-6e2f6e077b6d", 
+   "name": "插入CustomBox27功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox27"
+   ]
+  }, 
+  {
+   "description": "插入一个CustomBox28功能块", 
+   "guid": "a86fc6e8-0b02-4644-938b-d30ffd4a1657", 
+   "name": "插入CustomBox28功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox28"
+   ]
+  }, 
+  {
+   "description": "插入一个CustomBox29功能块", 
+   "guid": "3d0fd931-0da6-4198-9ba9-c9259d483f5e", 
+   "name": "插入CustomBox29功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox29"
+   ]
+  }, 
+  {
+   "description": "插入一个CustomBox30功能块", 
+   "guid": "db016884-1ba9-418c-98a5-6b49d9f06f6d", 
+   "name": "插入CustomBox30功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox30"
+   ]
+  }, 
+  {
+   "description": "插入一个CustomBox31功能块", 
+   "guid": "ab2e1fdd-efcd-44e3-becc-a781eeb4fd06", 
+   "name": "插入CustomBox31功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox31"
+   ]
+  }, 
+  {
+   "description": "插入一个DIV功能块", 
+   "guid": "ebad8acf-6fe7-4255-8db6-d01fe7459583", 
+   "name": "插入DIV功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox3"
+   ]
+  }, 
+  {
+   "description": "插入一个EQ功能块", 
+   "guid": "8d0e714d-8f1f-408d-8cde-738e23699403", 
+   "name": "插入EQ功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox6"
+   ]
+  }, 
+  {
+   "description": "插入一个F_TRIG功能块", 
+   "guid": "9e917516-ca6b-499b-83dd-5b3f82a09ae4", 
+   "name": "插入F_TRIG功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox18"
+   ]
+  }, 
+  {
+   "description": "插入一个GE功能块", 
+   "guid": "b9678884-1ee9-4179-adcb-f6d501330f73", 
+   "name": "插入GE功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox7"
+   ]
+  }, 
+  {
+   "description": "插入一个GT功能块", 
+   "guid": "95bac5f2-356c-4d79-8e6a-b72b6962cbd1", 
+   "name": "插入GT功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox8"
+   ]
+  }, 
+  {
+   "description": "插入一个LE功能块", 
+   "guid": "a49bd0ff-9522-4ea3-b9dc-ee263bc53822", 
+   "name": "插入LE功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox5"
+   ]
+  }, 
+  {
+   "description": "插入一个LT功能块", 
+   "guid": "1344c07c-4910-4b89-aacd-2be569a5a21f", 
+   "name": "插入LT功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox4"
+   ]
+  }, 
+  {
+   "description": "插入一个MUL功能块", 
+   "guid": "a7bd4d8e-9307-4ab3-a391-8516f3c33989", 
+   "name": "插入MUL功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox2"
+   ]
+  }, 
+  {
+   "description": "插入一个NE功能块", 
+   "guid": "d5f6ceb4-e426-4d77-9f84-26ecbf415139", 
+   "name": "插入NE功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox9"
+   ]
+  }, 
+  {
+   "description": "插入一个RS功能块", 
+   "guid": "acd2ef91-4eb2-4130-b350-0556dffc8438", 
+   "name": "插入RS功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox11"
+   ]
+  }, 
+  {
+   "description": "插入一个R_TRIG功能块", 
+   "guid": "e5eb885d-1461-45c3-84bb-cd73e5cacafb", 
+   "name": "插入R_TRIG功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox19"
+   ]
+  }, 
+  {
+   "description": "插入一个SR功能块", 
+   "guid": "06e97d7f-15d7-4d95-a80c-da4479909d1e", 
+   "name": "插入SR功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox10"
+   ]
+  }, 
+  {
+   "description": "插入一个SUB功能块", 
+   "guid": "7c44f816-1be6-4338-a1c7-08bc2d5ef85e", 
+   "name": "插入SUB功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox1"
+   ]
+  }, 
+  {
+   "description": "插入一个TOF功能块", 
+   "guid": "ee6c0373-e4de-4b29-b7db-b5f5585f5282", 
+   "name": "插入TOF功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox16"
+   ]
+  }, 
+  {
+   "description": "插入一个TON功能块", 
+   "guid": "73f6fd46-20c7-4e90-b578-2115eb66740e", 
+   "name": "插入TON功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox15"
+   ]
+  }, 
+  {
+   "description": "插入一个TP功能块", 
+   "guid": "79cdbf56-bb69-4c8c-a5cd-7fbeb0f25505", 
+   "name": "插入TP功能块", 
+   "tokens": [
+    "network", 
+    "insertcustombox17"
+   ]
+  }, 
+  {
+   "description": "插入一个触点到所选元素右边(之后)", 
+   "guid": "8c389d15-902b-4694-825e-1eb9ec36a1a0", 
+   "name": "插入串联右触点", 
+   "tokens": [
+    "network", 
+    "insertcontactright"
+   ]
+  }, 
+  {
+   "description": "插入信号分支", 
+   "guid": "d56fefd5-f979-4f09-8d4e-51f1b6ecb70a", 
+   "name": "插入分支", 
+   "tokens": [
+    "network", 
+    "insertbranch"
+   ]
+  }, 
+  {
+   "description": "在所选元素下边插入一个取反触点", 
+   "guid": "6429bc1b-164b-48ae-adc1-c41d837d5dbf", 
+   "name": "插入取反并联触点(下方)", 
+   "tokens": [
+    "network", 
+    "insertnegatedcontactparallelbelow"
+   ]
+  }, 
+  {
+   "description": "在选定元素左边插入一个取反触点", 
+   "guid": "3aed1635-6d8a-4d26-b062-256e61aaf943", 
+   "name": "插入取反触点", 
+   "tokens": [
+    "network", 
+    "insertnegatedcontact"
+   ]
+  }, 
+  {
+   "description": "在梯形图的网络中插入复位线圈", 
+   "guid": "a8c3e6b3-3a14-4a9b-a3ea-f47ae446c824", 
+   "name": "插入复位线圈 ", 
+   "tokens": [
+    "network", 
+    "insertresetcoil"
+   ]
+  }, 
+  {
+   "description": "插入EN/ENO连接的新运算块", 
+   "guid": "fa85edd6-a520-4f44-8427-0ed1d370952b", 
+   "name": "插入带EN/ENO的运算块", 
+   "tokens": [
+    "network", 
+    "insertboxeneno"
+   ]
+  }, 
+  {
+   "description": "在PDB网格中插入一个带有EN/ENO使能的空功能块", 
+   "guid": "3e1a1cde-f53d-4761-a144-aeb0d3089786", 
+   "name": "插入带有EN/ENO的功能块", 
+   "tokens": [
+    "network", 
+    "insertemptyboxeneno"
+   ]
+  }, 
+  {
+   "description": "在下方插入平行块", 
+   "guid": "01f3425e-f0d3-4f45-be69-1228a9f2219a", 
+   "name": "插入平行块(下方)", 
+   "tokens": [
+    "network", 
+    "insertboxparallel"
+   ]
+  }, 
+  {
+   "description": "在所选择的元素上插入与之并联的触点.", 
+   "guid": "57f76100-3afa-4631-8d4c-244c02d4eed2", 
+   "name": "插入并联触点(上方)", 
+   "tokens": [
+    "network", 
+    "insertcontactparallel"
+   ]
+  }, 
+  {
+   "description": "在所选择的元素下插入与之并联的触点", 
+   "guid": "df2a16c4-c74a-42d9-931c-2a009269c353", 
+   "name": "插入并联触点(向下)", 
+   "tokens": [
+    "network", 
+    "insertcontactparallelbelow"
+   ]
+  }, 
+  {
+   "description": "在网络中插入一个新的执行", 
+   "guid": "133c60c9-905c-48d2-a19f-e99a38954ba9", 
+   "name": "插入执行块", 
+   "tokens": [
+    "network", 
+    "insertexecutebox"
+   ]
+  }, 
+  {
+   "description": "在所选网络中插入标号", 
+   "guid": "e37fc81a-2694-408e-aea7-95a6440346da", 
+   "name": "插入标号", 
+   "tokens": [
+    "network", 
+    "insertlabel"
+   ]
+  }, 
+  {
+   "description": "在FBD网络中插入一个空运算块", 
+   "guid": "5ba28864-e061-472b-86eb-6e056f990f09", 
+   "name": "插入空运算块", 
+   "tokens": [
+    "network", 
+    "insertemptybox"
+   ]
+  }, 
+  {
+   "description": "在梯形图网络中插入线圈", 
+   "guid": "8049e5bc-5777-440a-991a-ceb553ee83e5", 
+   "name": "插入线圈", 
+   "tokens": [
+    "network", 
+    "insertcoil"
+   ]
+  }, 
+  {
+   "description": "在所选网络前插入新网络", 
+   "guid": "30e83ee9-fc64-4a97-894a-c861b60334d1", 
+   "name": "插入网络", 
+   "tokens": [
+    "network", 
+    "insertnetwork"
+   ]
+  }, 
+  {
+   "description": "在所选网络后插入新网络", 
+   "guid": "31d4a564-01c1-4c05-b3c5-1855409261a0", 
+   "name": "插入网络(在下方)", 
+   "tokens": [
+    "network", 
+    "insertnetworkbelow"
+   ]
+  }, 
+  {
+   "description": "在梯形图的网络中插入置位线圈", 
+   "guid": "e9d08357-25be-4b20-a312-198f879462b6", 
+   "name": "插入置位线圈 ", 
+   "tokens": [
+    "network", 
+    "insertsetcoil"
+   ]
+  }, 
+  {
+   "description": "插入一个触点到所选元素左边", 
+   "guid": "0f4655b0-906c-4c58-8c20-47417af9a4a4", 
+   "name": "插入触点", 
+   "tokens": [
+    "network", 
+    "insertcontact"
+   ]
+  }, 
+  {
+   "description": "在网络中插入跳转", 
+   "guid": "075b228e-f28a-4cb0-8d71-818e86cb9213", 
+   "name": "插入跳转", 
+   "tokens": [
+    "network", 
+    "insertjump"
+   ]
+  }, 
+  {
+   "description": "插入转换操作符", 
+   "guid": "e73ed671-b674-4513-8b07-2ec380ab02b9", 
+   "name": "插入转换操作符", 
+   "tokens": [
+    "network", 
+    "insertconversionbox"
+   ]
+  }, 
+  {
+   "description": "在现有的功能块插入或者添加新的引脚", 
+   "guid": "971eeac5-e8e6-45ae-8c70-1c657e4ef38b", 
+   "name": "插入输入", 
+   "tokens": [
+    "network", 
+    "insertinput"
+   ]
+  }, 
+  {
+   "description": "在FBD网络中插入输出", 
+   "guid": "03d27e8b-f285-4463-a986-f5e9b262338d", 
+   "name": "插入输出", 
+   "tokens": [
+    "network", 
+    "insertassign"
+   ]
+  }, 
+  {
+   "description": "在FBD网络中插入新运算块", 
+   "guid": "1a674948-25a4-4420-8669-3660b1b9b51d", 
+   "name": "插入运算块", 
+   "tokens": [
+    "network", 
+    "insertbox"
+   ]
+  }, 
+  {
+   "description": "在网络中插入返回", 
+   "guid": "855887f9-51c7-4517-a9e1-c844e9dc040f", 
+   "name": "插入返回", 
+   "tokens": [
+    "network", 
+    "insertreturn"
+   ]
+  }, 
+  {
+   "description": "以功能块图显示网络", 
+   "guid": "13e3c3bf-8a66-4bf3-afde-69e6a3b09c53", 
+   "name": "显示为功能块图", 
+   "tokens": [
+    "network", 
+    "viewasfbd"
+   ]
+  }, 
+  {
+   "description": "以指令表显示网络", 
+   "guid": "f2d9d994-7393-43c4-9283-538c8f219761", 
+   "name": "显示为指令表", 
+   "tokens": [
+    "network", 
+    "viewasil"
+   ]
+  }, 
+  {
+   "description": "将网络显示为梯形逻辑", 
+   "guid": "e3245d0e-49bc-4272-9d6a-a49c7c65fbd9", 
+   "name": "显示为梯形图逻辑", 
+   "tokens": [
+    "network", 
+    "viewasladder"
+   ]
+  }, 
+  {
+   "description": "更新FB调用的参数", 
+   "guid": "e52c8a1c-6cd3-4215-a65c-3ca0b0fcf8dc", 
+   "name": "更新参数", 
+   "tokens": [
+    "network", 
+    "updatefbparams"
+   ]
+  }, 
+  {
+   "description": "对于FB调用,添加或删除EN/ENO连接.", 
+   "guid": "c149bb3a-494f-48fa-a3bb-0de28140fbe8", 
+   "name": "添加/删除 EN/ENO", 
+   "tokens": [
+    "network", 
+    "adden"
+   ]
+  }, 
+  {
+   "description": "在当前选择的上方粘贴触点", 
+   "guid": "60574203-d998-4709-8af5-996bb8133f65", 
+   "name": "粘贴到上方", 
+   "tokens": [
+    "network", 
+    "pasteabove"
+   ]
+  }, 
+  {
+   "description": "在当前选择的下方粘贴触点", 
+   "guid": "1b56dd12-8853-4946-bfb2-acd130c29e79", 
+   "name": "粘贴到下方", 
+   "tokens": [
+    "network", 
+    "pastebelow"
+   ]
+  }, 
+  {
+   "description": "在当前选择的右侧粘贴触点(之后)", 
+   "guid": "182eeb9a-1b55-4e6d-b1d7-bc7319d0f196", 
+   "name": "粘贴在右侧(之后)", 
+   "tokens": [
+    "network", 
+    "pasteright"
+   ]
+  }, 
+  {
+   "description": "将置位或复位运算符设置为输出", 
+   "guid": "eb93457f-ca4e-4454-9227-26fba297a10d", 
+   "name": "置位/复位", 
+   "tokens": [
+    "network", 
+    "set"
+   ]
+  }, 
+  {
+   "description": "设置并行分支的起始点和结束点", 
+   "guid": "8559f03a-8929-4ce9-8c8e-0289960b9342", 
+   "name": "设置分支开始/结束点", 
+   "tokens": [
+    "network", 
+    "setbranchpoint"
+   ]
+  }, 
+  {
+   "description": "将输出连接设置为备用输出", 
+   "guid": "97ff5a07-94e9-4e01-b9f1-b40929fb83ad", 
+   "name": "设置输出连接", 
+   "tokens": [
+    "network", 
+    "setoutput"
+   ]
+  }, 
+  {
+   "description": "去指定编号或标签的网络", 
+   "guid": "cfe30982-951a-4e58-a2ce-14a8e547cb60", 
+   "name": "转到...", 
+   "tokens": [
+    "network", 
+    "goto"
+   ]
+  }, 
+  {
+   "description": "对输入设置上升沿或下降沿触发器", 
+   "guid": "bbefd975-2bce-4e70-959f-8ff2d29e9d96", 
+   "name": "边缘检测", 
+   "tokens": [
+    "network", 
+    "trigger"
+   ]
+  }, 
+  {
+   "description": "显示本对象的语言模型贡献", 
+   "guid": "7391dd33-08d9-4644-94bd-bd9895bcf41d", 
+   "name": "显示语言模式...", 
+   "tokens": [
+    "nwl", 
+    "viewlanguagemodel"
+   ]
+  }, 
+  {
+   "description": "给所有未实现的继承方法和属性添加实现", 
+   "guid": "33a0dd76-f43a-4e2c-bbc6-113810643a0a", 
+   "name": "实现接口...", 
+   "tokens": [
+    "object", 
+    "implementinterfaces"
+   ]
+  }, 
+  {
+   "description": "添加一个新对象到当前工程.", 
+   "guid": "a960311a-5fd0-4db6-8368-bd1caf82e967", 
+   "name": "添加对象", 
+   "tokens": [
+    "object", 
+    "addlist"
+   ]
+  }, 
+  {
+   "description": "添加一个新对象到当前工程.", 
+   "guid": "c03a1a6f-d66e-4bca-8866-e281f901cce6", 
+   "name": "添加对象...", 
+   "tokens": [
+    "object", 
+    "add"
+   ]
+  }, 
+  {
+   "description": "创建文件夹对象.", 
+   "guid": "10de7ed7-34fe-4ac3-97d1-97ed66e7874e", 
+   "name": "添加文件夹...", 
+   "tokens": [
+    "object", 
+    "addfolder"
+   ]
+  }, 
+  {
+   "description": "用可选编辑器打开所选对象.", 
+   "guid": "27d7527d-cfe3-485a-83b4-fa64b7b7a29e", 
+   "name": "用...编辑对象", 
+   "tokens": [
+    "object", 
+    "editwith"
+   ]
+  }, 
+  {
+   "description": "用默认的编辑器打开所选对象.", 
+   "guid": "42f6acb9-bd6e-42e7-94bb-6e2a03973b83", 
+   "name": "编辑对象", 
+   "tokens": [
+    "object", 
+    "edit"
+   ]
+  }, 
+  {
+   "description": "在离线模式下,使用默认编辑器编辑被选对象", 
+   "guid": "72a2f7c2-a650-4feb-ada4-a8a9beff1291", 
+   "name": "编辑对象(离线)", 
+   "tokens": [
+    "object", 
+    "editoffline"
+   ]
+  }, 
+  {
+   "description": "执行当前活动应用的完整下载.", 
+   "guid": "cc9ad1e5-fe78-4dc6-a4be-b1991bf068ea", 
+   "name": "下载", 
+   "tokens": [
+    "online", 
+    "downloadactiveapp"
+   ]
+  }, 
+  {
+   "description": "下载完整的工程源代码到连接设备.", 
+   "guid": "42545c70-5715-41de-b98d-cc3fec79f536", 
+   "name": "下载源代码到连接设备上", 
+   "tokens": [
+    "online", 
+    "sourcedownload"
+   ]
+  }, 
+  {
+   "description": "以二进制格式显示监控值", 
+   "guid": "5f5ed4ad-72e1-4d7c-b638-2dc19ecfa5bc", 
+   "name": "二进制", 
+   "tokens": [
+    "online", 
+    "display", 
+    "bin"
+   ]
+  }, 
+  {
+   "description": "从设备断开连接", 
+   "guid": "99ff1305-c130-43dc-9fe6-ac5ecb436359", 
+   "name": "从[]断开连接", 
+   "tokens": [
+    "online", 
+    "disconnectDevice"
+   ]
+  }, 
+  {
+   "description": "从设备上删除应用程序", 
+   "guid": "ec0de984-12e7-462c-b2f4-1dd7c5ac7537", 
+   "name": "从设备上删除应用程序", 
+   "tokens": [
+    "online", 
+    "removeapplicationfromdevice"
+   ]
+  }, 
+  {
+   "description": "开启或关闭仿真模式", 
+   "guid": "515e05ec-aece-47d7-98a6-5c582ba392fb", 
+   "name": "仿真", 
+   "tokens": [
+    "online", 
+    "simulate_active_app"
+   ]
+  }, 
+  {
+   "description": "停止当前活动的应用", 
+   "guid": "fd2ae898-05a5-478c-9b31-20c0c112cab1", 
+   "name": "停止", 
+   "tokens": [
+    "online", 
+    "stopactiveapp"
+   ]
+  }, 
+  {
+   "description": "停止全部所选应用", 
+   "guid": "d8ee4c28-e09b-4ace-ad55-600a8a3c906f", 
+   "name": "停止", 
+   "tokens": [
+    "online", 
+    "stopMultiapp"
+   ]
+  }, 
+  {
+   "description": "将准备值写入控制器.", 
+   "guid": "975591c7-7bc5-46ee-9b49-2940d6c13003", 
+   "name": "写入值", 
+   "tokens": [
+    "online", 
+    "writeactiveapplication"
+   ]
+  }, 
+  {
+   "description": "写入所选择应用的所有值", 
+   "guid": "e0e61d96-c56d-4129-a041-8a9768426da7", 
+   "name": "写入所有值[所选应用]", 
+   "tokens": [
+    "online", 
+    "writeselectedaplication"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "c25ccb8f-a743-4cbb-9ff9-697838f49e62", 
+   "name": "冷复位", 
+   "tokens": [
+    "online", 
+    "resetcoldactiveapp"
+   ]
+  }, 
+  {
+   "description": "使能或禁用激活应用的流控制", 
+   "guid": "3e908575-08b7-4d45-a7e0-3a74a456c403", 
+   "name": "切换流控制模式", 
+   "tokens": [
+    "online", 
+    "flowcontrolactiveapp"
+   ]
+  }, 
+  {
+   "description": "为活动应用创建启动应用", 
+   "guid": "cf46872e-7cf6-484e-acee-f8b9da763449", 
+   "name": "创建启动应用", 
+   "tokens": [
+    "online", 
+    "createbootproject"
+   ]
+  }, 
+  {
+   "description": "移除现有的设备用户", 
+   "guid": "81fc1dbd-081a-4027-ae70-182c55192798", 
+   "name": "删除设备用户...", 
+   "tokens": [
+    "online", 
+    "removeonlineuser"
+   ]
+  }, 
+  {
+   "description": "以十六进制格式显示监控值", 
+   "guid": "b8b0b06c-daf4-4fa8-9ec2-5826bd8e15c6", 
+   "name": "十六进制", 
+   "tokens": [
+    "online", 
+    "display", 
+    "hex"
+   ]
+  }, 
+  {
+   "description": "以十进制格式显示监控值", 
+   "guid": "6a2e1650-7459-4a0f-8e38-45ee2e80cd95", 
+   "name": "十进制", 
+   "tokens": [
+    "online", 
+    "display", 
+    "dec"
+   ]
+  }, 
+  {
+   "description": "在此活动应用上执行单步循环", 
+   "guid": "285207b7-3503-4338-9c8d-b73c42d99ee3", 
+   "name": "单循环", 
+   "tokens": [
+    "online", 
+    "singlecycleactiveapp"
+   ]
+  }, 
+  {
+   "description": "将设备设置为操作模式,以防止断点,强制等.", 
+   "guid": "12434183-b7b6-4e9b-b754-81e2c13b2dd2", 
+   "name": "可操作", 
+   "tokens": [
+    "online", 
+    "modeoperational"
+   ]
+  }, 
+  {
+   "description": "启动活动应用", 
+   "guid": "b534bc77-e731-47a3-8a5e-93c57ed3e2a2", 
+   "name": "启动", 
+   "tokens": [
+    "online", 
+    "startactiveapp"
+   ]
+  }, 
+  {
+   "description": "启动全部所选应用", 
+   "guid": "a8c25d44-4b83-4d05-8bcb-574e64eae4a1", 
+   "name": "启动", 
+   "tokens": [
+    "online", 
+    "startMultiapp"
+   ]
+  }, 
+  {
+   "description": "执行与上一次下载/在线修改不同的在线修改", 
+   "guid": "f6b049e7-6c27-4736-9a45-4cc93c3e8c9d", 
+   "name": "在线修改", 
+   "tokens": [
+    "online", 
+    "onlinechangeactiveapp"
+   ]
+  }, 
+  {
+   "description": "在所选应用上实现与上一次下载/在线修改不同的在线修改", 
+   "guid": "c6fccd24-b0db-4eab-a4b4-c9068340fac2", 
+   "name": "在线修改", 
+   "tokens": [
+    "online", 
+    "onlinechangeselectedapp"
+   ]
+  }, 
+  {
+   "description": "执行当前活动应用的复位原点.", 
+   "guid": "ecc6fbeb-d37f-4171-887b-c07635bb6302", 
+   "name": "复位原点", 
+   "tokens": [
+    "online", 
+    "resetoriginactiveapp"
+   ]
+  }, 
+  {
+   "description": "复位所选设备的原点", 
+   "guid": "ec20a2f0-fa6f-488d-8b1b-3fe5fafac6b5", 
+   "name": "复位原点设备[<无>]", 
+   "tokens": [
+    "online", 
+    "resetorigindevice"
+   ]
+  }, 
+  {
+   "description": "同时下载(可选择启动)多个应用", 
+   "guid": "fe09b175-5f71-413a-b5ed-253520184b64", 
+   "name": "多重下载...", 
+   "tokens": [
+    "online", 
+    "multidownload"
+   ]
+  }, 
+  {
+   "description": "对全部在线应用强制用预置值", 
+   "guid": "4344c8cf-1db3-4bf8-a609-6ac6f7c6aeaa", 
+   "name": "对全部在线应用强制值", 
+   "tokens": [
+    "online", 
+    "forcevalues"
+   ]
+  }, 
+  {
+   "description": "对全部在线应用中写入预置值", 
+   "guid": "dcea4a16-b0ea-476b-9e44-1eb7569ca360", 
+   "name": "对所有在线应用中写入值", 
+   "tokens": [
+    "online", 
+    "writevalues"
+   ]
+  }, 
+  {
+   "description": "对所有在线应用中释放全部强制变量,并保持当前值.", 
+   "guid": "311e81c3-c31a-48f9-b48b-0f6b6ea99713", 
+   "name": "对所有在线应用中释放全部强制变量", 
+   "tokens": [
+    "online", 
+    "unforcevalues"
+   ]
+  }, 
+  {
+   "description": "将设备设置为锁定模式以冻结所有当前断点,强制等.", 
+   "guid": "c39db5b0-9e3e-463c-9fbe-ea760895a195", 
+   "name": "已锁定", 
+   "tokens": [
+    "online", 
+    "modelocked"
+   ]
+  }, 
+  {
+   "description": "将准备值强制写入至控制器.", 
+   "guid": "dcda7402-d805-460d-ab87-48c4a3d31c37", 
+   "name": "强制值", 
+   "tokens": [
+    "online", 
+    "forceactiveaplication"
+   ]
+  }, 
+  {
+   "description": "强制所选应用的所有预设值", 
+   "guid": "92bd0446-3916-48cc-a50b-9e445ea4f21d", 
+   "name": "强制所有值[所选应用]", 
+   "tokens": [
+    "online", 
+    "forceselectedaplication"
+   ]
+  }, 
+  {
+   "description": "打开设备活动应用的在线日志页面", 
+   "guid": "d0b4ff00-397f-48ac-82b6-2c2fd4b63579", 
+   "name": "打开日志页面...", 
+   "tokens": [
+    "online", 
+    "open_logger_page"
+   ]
+  }, 
+  {
+   "description": "改变当前设备用户密码", 
+   "guid": "b2d833cc-c429-4305-8a62-4effeea604e5", 
+   "name": "改变设备用户密码...", 
+   "tokens": [
+    "online", 
+    "changepasswordonlineuser"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "b099ed07-d6d3-4e2b-aed2-bf15b59c2f35", 
+   "name": "文件上传", 
+   "tokens": [
+    "online", 
+    "fileUpload"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "ede62c94-9e06-4d0e-b713-01c9c66351eb", 
+   "name": "文件下载", 
+   "tokens": [
+    "online", 
+    "fileDownload"
+   ]
+  }, 
+  {
+   "description": "注销当前在线用户并与设备断开连接", 
+   "guid": "ab1f8435-ce2e-4a75-af9e-26e3dfbd9e2c", 
+   "name": "注销当前在线用户", 
+   "tokens": [
+    "online", 
+    "logoffuser"
+   ]
+  }, 
+  {
+   "description": "添加一个新的设备用户", 
+   "guid": "0de2be1f-b649-4b00-a3e9-aa1ac6209806", 
+   "name": "添加设备用户...", 
+   "tokens": [
+    "online", 
+    "addonlineuser"
+   ]
+  }, 
+  {
+   "description": "源代码上传指令", 
+   "guid": "5637cd44-cb3d-4f7c-ba9a-80e81482cd7b", 
+   "name": "源代码上传...", 
+   "tokens": [
+    "online", 
+    "sourceupload"
+   ]
+  }, 
+  {
+   "description": "下载全部源码至可选择的设备.", 
+   "guid": "9904594c-7a74-4da7-9efb-1918cad98b3f", 
+   "name": "源代码下载...", 
+   "tokens": [
+    "online", 
+    "sourcedownloadex"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "d887b9d2-d1ed-4dd9-9aba-dd796ec80b4b", 
+   "name": "热复位", 
+   "tokens": [
+    "online", 
+    "resetwarmactiveapp"
+   ]
+  }, 
+  {
+   "description": "连接到当前活动应用程序,并切换到在线模式.", 
+   "guid": "c7a2dcea-d175-45b1-a85b-4d589bcdbcbe", 
+   "name": "登录", 
+   "tokens": [
+    "online", 
+    "loginactiveapp"
+   ]
+  }, 
+  {
+   "description": "连接到全部当前所选应用.", 
+   "guid": "d796bf41-64f2-400d-bff7-6ac496ba2ffc", 
+   "name": "登录", 
+   "tokens": [
+    "online", 
+    "loginmultiapp"
+   ]
+  }, 
+  {
+   "description": "向设备发送在线信息触发LED闪烁以进行识别.", 
+   "guid": "b5b39990-da62-4568-9c64-d27a0c89680f", 
+   "name": "眨眼", 
+   "tokens": [
+    "online", 
+    "wink"
+   ]
+  }, 
+  {
+   "description": "选择的用于自动流控任务的命令", 
+   "guid": "5571fe23-fea9-40af-9c96-896b038cc42e", 
+   "name": "自动选择任务", 
+   "tokens": [
+    "online", 
+    "flowcontrol_autoselecttask"
+   ]
+  }, 
+  {
+   "description": "将设备设置为调试模式,以允许断点,强制等.", 
+   "guid": "f1957746-e8f9-43d4-91f0-5edd7c57e38e", 
+   "name": "调试", 
+   "tokens": [
+    "online", 
+    "modedebug"
+   ]
+  }, 
+  {
+   "description": "连接到所选设备", 
+   "guid": "f112e292-5944-49c0-bf7f-e67658573eb9", 
+   "name": "连接到[]", 
+   "tokens": [
+    "online", 
+    "connectDevice"
+   ]
+  }, 
+  {
+   "description": "断开当前所有所选应用的连接.", 
+   "guid": "ad6955d2-2713-4828-9d6c-1c0cf20abdbe", 
+   "name": "退出", 
+   "tokens": [
+    "online", 
+    "logoutMultiapp"
+   ]
+  }, 
+  {
+   "description": "从当前活动应用断开连接,并切换到离线模式", 
+   "guid": "87cf633b-c70d-4e11-b40a-61bd7008fc78", 
+   "name": "退出", 
+   "tokens": [
+    "online", 
+    "logoutactiveapp"
+   ]
+  }, 
+  {
+   "description": "选择活跃应用", 
+   "guid": "1389e61c-be22-4df5-a5ce-9dc3e72421de", 
+   "name": "选择活跃应用", 
+   "tokens": [
+    "online", 
+    "activeapplicationselector"
+   ]
+  }, 
+  {
+   "description": "定义当前选择的用于流控任务的命令", 
+   "guid": "92006760-db8c-4c05-ad5b-5be5f3497fa9", 
+   "name": "选择该任务", 
+   "tokens": [
+    "online", 
+    "flowcontrol_selectthistask"
+   ]
+  }, 
+  {
+   "description": "释放当前所有强制变量,保持它们的当前值.", 
+   "guid": "e2427937-56d2-4699-a2e8-1007d9620ce4", 
+   "name": "释放值", 
+   "tokens": [
+    "online", 
+    "unforceactiveapplication"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "e7ee1ac1-2e71-4465-aa6b-3a808cd4d78d", 
+   "name": "释放强制列表", 
+   "tokens": [
+    "online", 
+    "releaseforcelistactiveapp"
+   ]
+  }, 
+  {
+   "description": "释放所选应用的所有值", 
+   "guid": "fcd3d68c-509a-4c36-8925-d9422c68c437", 
+   "name": "释放所有值[所选应用]", 
+   "tokens": [
+    "online", 
+    "unforceselectedaplication"
+   ]
+  }, 
+  {
+   "description": "启动安全设备的在线设备名称的变更.", 
+   "guid": "d7ddca02-efaf-461f-8f9a-2239e4fa955e", 
+   "name": "重命名安全在线设备", 
+   "tokens": [
+    "online", 
+    "renamesafetydevice"
+   ]
+  }, 
+  {
+   "description": "在标准'OR'和SCE分支之间切换并行分支的操作模式.", 
+   "guid": "305efbbe-d6bb-4e36-a849-aa2bad95d840", 
+   "name": "切换并行模式", 
+   "tokens": [
+    "parallel", 
+    "togglemode"
+   ]
+  }, 
+  {
+   "description": "导入全部或部分PLCopenXML文件到当前工程.", 
+   "guid": "9d207f52-78c1-4325-9e6a-1ba7cef5c42a", 
+   "name": "导入 PLCopenXML...", 
+   "tokens": [
+    "plcopenxml", 
+    "import"
+   ]
+  }, 
+  {
+   "description": "以 PLCopenXML 格式导出工程或工程的一部分.", 
+   "guid": "b1550f09-29a6-4547-b460-f5619f66b82c", 
+   "name": "导出PLCopenXML...", 
+   "tokens": [
+    "plcopenxml", 
+    "export"
+   ]
+  }, 
+  {
+   "description": "打印活动编辑器视图中的内容", 
+   "guid": "7d2665c9-3f4a-4df1-a514-899fb70df440", 
+   "name": "打印...", 
+   "tokens": [
+    "print", 
+    "print"
+   ]
+  }, 
+  {
+   "description": "打开活动编辑窗口的打印预览", 
+   "guid": "4dae020b-79a4-4cde-af3d-0fd1d276e887", 
+   "name": "打印预览...", 
+   "tokens": [
+    "print", 
+    "printpreview"
+   ]
+  }, 
+  {
+   "description": "打印当前工程的内容", 
+   "guid": "06af8574-32ba-4ef2-a9fa-da024e0a9311", 
+   "name": "文档...", 
+   "tokens": [
+    "print", 
+    "document"
+   ]
+  }, 
+  {
+   "description": "调整此工程的纸张大小和打印参数", 
+   "guid": "85e0c017-3844-4550-9668-09cc4baf5611", 
+   "name": "页面设置...", 
+   "tokens": [
+    "print", 
+    "pagesetup"
+   ]
+  }, 
+  {
+   "description": "为库中的活动应用程序生成代码", 
+   "guid": "331bbd71-97ed-4035-99a4-f64c3b78c698", 
+   "name": "为活动应用程序生成代码", 
+   "tokens": [
+    "project", 
+    "generatecodeactiveappinlib"
+   ]
+  }, 
+  {
+   "description": "将XML文档导入到当前工程.", 
+   "guid": "97f08523-ff6e-4c15-a0c3-c0084fc5fe55", 
+   "name": "从XML导入...", 
+   "tokens": [
+    "project", 
+    "import"
+   ]
+  }, 
+  {
+   "description": "将XML文档导入到当前工程.", 
+   "guid": "10d76368-2418-4935-b52e-4eea72cedbe8", 
+   "name": "从XML导入...", 
+   "tokens": [
+    "project", 
+    "import2"
+   ]
+  }, 
+  {
+   "description": "将全部工程或部分工程导出至XML文档.", 
+   "guid": "2b5ca59b-ba1d-457d-8f49-0016a3f0e4d7", 
+   "name": "以XML导出...", 
+   "tokens": [
+    "project", 
+    "export"
+   ]
+  }, 
+  {
+   "description": "打开一个对话框检查工程的版本(例如编译器,框架,库)", 
+   "guid": "a19fda3a-9040-47ba-a191-9f80a46388a6", 
+   "name": "工程环境...", 
+   "tokens": [
+    "project", 
+    "checkavailableversions"
+   ]
+  }, 
+  {
+   "description": "提交在工程比较中接受的更改", 
+   "guid": "11d3f774-3adc-40ff-aa18-b08c3e43d6cc", 
+   "name": "提交接受的更改", 
+   "tokens": [
+    "project", 
+    "commit_accepted_changes"
+   ]
+  }, 
+  {
+   "description": "检查相同库之前安装版本的不兼容更改.", 
+   "guid": "5b1db5f4-dc0d-4484-aeea-8c41e9b26a6c", 
+   "name": "检查库兼容性", 
+   "tokens": [
+    "project", 
+    "checklibrarycompatibility"
+   ]
+  }, 
+  {
+   "description": "检查激活的应用之外的所有对象,包括未使用的对象.", 
+   "guid": "f165bf3d-e77a-4ab8-b1bd-3b6aa9233459", 
+   "name": "检查所有应用对象", 
+   "tokens": [
+    "project", 
+    "checkallapplicationobjects"
+   ]
+  }, 
+  {
+   "description": "检查池中的所有对象.没有使用应用或设备信息", 
+   "guid": "b2948d00-e68d-4a5e-a0f2-fa9b53753969", 
+   "name": "检查所有池对象", 
+   "tokens": [
+    "project", 
+    "checkall"
+   ]
+  }, 
+  {
+   "description": "比较两个工程,并以图表形式显示不同之处", 
+   "guid": "2aca1cfd-c5b0-420f-904e-96ee3754d8f4", 
+   "name": "比较...", 
+   "tokens": [
+    "project", 
+    "compare"
+   ]
+  }, 
+  {
+   "description": "清除激活的应用", 
+   "guid": "83524479-d23b-4e4c-96f4-3e89898e7277", 
+   "name": "清除", 
+   "tokens": [
+    "project", 
+    "cleanactiveapp"
+   ]
+  }, 
+  {
+   "description": "清除所有应用的全部编译内容", 
+   "guid": "024a0dc9-987d-42be-add4-5775c60d128a", 
+   "name": "清除全部", 
+   "tokens": [
+    "project", 
+    "cleanall"
+   ]
+  }, 
+  {
+   "description": "生成激活应用的hex文件.", 
+   "guid": "a5283c89-09b8-4e4b-a920-cc80f1f2adb8", 
+   "name": "生成hex文件", 
+   "tokens": [
+    "project", 
+    "generatehexfileactiveapp"
+   ]
+  }, 
+  {
+   "description": "生成激活应用的代码", 
+   "guid": "095eb048-7e69-4a49-8c7c-3b3efb494bc5", 
+   "name": "生成代码", 
+   "tokens": [
+    "project", 
+    "generatecodeactiveapp"
+   ]
+  }, 
+  {
+   "description": "生成激活应用的反汇编文件", 
+   "guid": "b27f0b92-83ec-43a4-b7ea-ad705ba57c21", 
+   "name": "生成反汇编文件", 
+   "tokens": [
+    "project", 
+    "generatedisassemblyactiveapp"
+   ]
+  }, 
+  {
+   "description": "为外部库生成Runtime系统文件", 
+   "guid": "5ec8443b-9818-42dd-a488-c56ceaa16835", 
+   "name": "生成运行时系统文件...", 
+   "tokens": [
+    "project", 
+    "generateextlibm4"
+   ]
+  }, 
+  {
+   "description": "编译激活的应用.", 
+   "guid": "a0da4287-64ed-459e-81f0-98ab3667a58f", 
+   "name": "编译", 
+   "tokens": [
+    "project", 
+    "buildactiveapp"
+   ]
+  }, 
+  {
+   "description": "设置当前激活的应用.", 
+   "guid": "7e8c3a96-bbf1-441a-b6a2-aa0a08954a76", 
+   "name": "设置激活的应用", 
+   "tokens": [
+    "project", 
+    "setactiveappl"
+   ]
+  }, 
+  {
+   "description": "重新编译激活的应用.", 
+   "guid": "50dc8f97-9e21-4b15-a504-ea2549ab61e0", 
+   "name": "重新编译", 
+   "tokens": [
+    "project", 
+    "rebuildactiveapp"
+   ]
+  }, 
+  {
+   "description": "使用右块", 
+   "guid": "0b271de3-7b2f-4b95-bf51-9d3371bf18ae", 
+   "name": "使用右块", 
+   "tokens": [
+    "project_diff", 
+    "merge_use_right_block"
+   ]
+  }, 
+  {
+   "description": "使用右线", 
+   "guid": "e6ebe2f4-2a33-4ff8-8fb8-278b081ad5c1", 
+   "name": "使用右线", 
+   "tokens": [
+    "project_diff", 
+    "merge_use_right"
+   ]
+  }, 
+  {
+   "description": "使用左块", 
+   "guid": "ef9c68ad-c6be-462f-ae43-8d4f42a601b6", 
+   "name": "使用左块", 
+   "tokens": [
+    "project_diff", 
+    "merge_use_left_block"
+   ]
+  }, 
+  {
+   "description": "使用左线", 
+   "guid": "87c1e27e-e098-470a-a100-8dd8fc28a3f3", 
+   "name": "使用左线", 
+   "tokens": [
+    "project_diff", 
+    "merge_use_left"
+   ]
+  }, 
+  {
+   "description": "先用右块后用左块", 
+   "guid": "7904315e-1408-4411-a230-1924d3222cfe", 
+   "name": "先用右块后用左块", 
+   "tokens": [
+    "project_diff", 
+    "merge_use_right_before_left_block"
+   ]
+  }, 
+  {
+   "description": "先用左块后用右块", 
+   "guid": "fd775e4d-84b2-4cba-b84d-5410fb85a70d", 
+   "name": "先用左块后用右块", 
+   "tokens": [
+    "project_diff", 
+    "merge_use_left_before_right_block"
+   ]
+  }, 
+  {
+   "description": "切换第三视图,用于合并修改和自由文本编辑.", 
+   "guid": "bc552c28-d901-4099-8da0-85986b92f6ec", 
+   "name": "切换第三个合并视图", 
+   "tokens": [
+    "project_diff", 
+    "toggle_three_way_merge_view"
+   ]
+  }, 
+  {
+   "description": "反对更改", 
+   "guid": "cca37f67-1d64-473f-b86c-a13f0419688c", 
+   "name": "反对更改", 
+   "tokens": [
+    "project_diff", 
+    "toggle_oppose_changes"
+   ]
+  }, 
+  {
+   "description": "从设备上上传配方并和工程中的配方同步.", 
+   "guid": "d64adc74-f199-4eb8-b126-c4d453c7d673", 
+   "name": "从设备上传配方.", 
+   "tokens": [
+    "recipes", 
+    "uploadrecipesfromdevice"
+   ]
+  }, 
+  {
+   "description": "在配方中保存值到文件", 
+   "guid": "11513c0b-4303-46ac-aa82-4d1fc0e6423a", 
+   "name": "保存配方...", 
+   "tokens": [
+    "recipes", 
+    "saverecipe"
+   ]
+  }, 
+  {
+   "description": "写入配方到PLC", 
+   "guid": "2c0ea133-3bf5-459c-a209-b227ea2d0675", 
+   "name": "写入配方", 
+   "tokens": [
+    "recipes", 
+    "writerecipe"
+   ]
+  }, 
+  {
+   "description": "从文件中加载值到配方并将该值写入PLC中", 
+   "guid": "8daee6ac-3dff-452d-9601-c8f369702979", 
+   "name": "加载和写入变量...", 
+   "tokens": [
+    "recipes", 
+    "loadwriterecipe"
+   ]
+  }, 
+  {
+   "description": "从文件中加载值到配方中", 
+   "guid": "6cc1e0eb-87fc-4b01-a7b5-504b10ba4145", 
+   "name": "加载配方...", 
+   "tokens": [
+    "recipes", 
+    "loadrecipe"
+   ]
+  }, 
+  {
+   "description": "在当前位置插入一个新的变量", 
+   "guid": "f3b0f291-8fb5-4790-b008-5fbaaf7049eb", 
+   "name": "插入变量", 
+   "tokens": [
+    "recipes", 
+    "insertvariable"
+   ]
+  }, 
+  {
+   "description": "在配方定义中更新结构变量的成员", 
+   "guid": "714fa2c5-b677-45b2-85d8-3144aba5d531", 
+   "name": "更新结构变量", 
+   "tokens": [
+    "recipes", 
+    "updatestructuredvariables"
+   ]
+  }, 
+  {
+   "description": "将一个在线声明编辑器的变量添加到一个配方定义上.", 
+   "guid": "381acf35-b8ec-4fae-9cb7-b2346d0cb042", 
+   "name": "添加到配方定义.", 
+   "tokens": [
+    "recipes", 
+    "addvariablestorecipedefinition"
+   ]
+  }, 
+  {
+   "description": "向配方定义中添加新变量", 
+   "guid": "cd43ae46-1b40-4df0-a033-231619868692", 
+   "name": "添加变量", 
+   "tokens": [
+    "recipes", 
+    "addvariable"
+   ]
+  }, 
+  {
+   "description": "添加同层级节点到此结构节点.", 
+   "guid": "ffab8ae9-5702-4169-822e-a5045f3b4e0a", 
+   "name": "添加同级", 
+   "tokens": [
+    "recipes", 
+    "recipevariableaddsibling"
+   ]
+  }, 
+  {
+   "description": "在此结构节点添加子节点.", 
+   "guid": "09340be0-b3f1-4215-948f-ea57ae40298c", 
+   "name": "添加子级", 
+   "tokens": [
+    "recipes", 
+    "recipevariableaddchild"
+   ]
+  }, 
+  {
+   "description": "向配方定义中添加新配方", 
+   "guid": "237b4c62-b131-4961-b2dc-5574cd16584d", 
+   "name": "添加新配方", 
+   "tokens": [
+    "recipes", 
+    "addrecipe"
+   ]
+  }, 
+  {
+   "description": "从配方定义中移除所选变量", 
+   "guid": "ddf7742b-f688-48f5-99c6-3bc539440733", 
+   "name": "移除变量", 
+   "tokens": [
+    "recipes", 
+    "removevariables"
+   ]
+  }, 
+  {
+   "description": "从配方定义中删除所选配方", 
+   "guid": "0be2aee7-875a-47b9-858f-62611d759911", 
+   "name": "移除配方", 
+   "tokens": [
+    "recipes", 
+    "removerecipes"
+   ]
+  }, 
+  {
+   "description": "从PLC中读值到配方中并写入配方文件", 
+   "guid": "370d5925-eb68-4491-9822-74c6fc685be4", 
+   "name": "读取并保存配方...", 
+   "tokens": [
+    "recipes", 
+    "readsaverecipe"
+   ]
+  }, 
+  {
+   "description": "将当前值读取到配方", 
+   "guid": "bfe30ca3-69e4-4181-809e-b2b584628b51", 
+   "name": "读取配方", 
+   "tokens": [
+    "recipes", 
+    "readrecipe"
+   ]
+  }, 
+  {
+   "description": "交换两个冗余PLC的通信设置.若应用已登录,则自动将通信切换到另一个PLC.", 
+   "guid": "73baa0a0-13bf-4c1d-a22c-2d6729011122", 
+   "name": "交换PLC路径", 
+   "tokens": [
+    "redundancy", 
+    "swapcomsettings"
+   ]
+  }, 
+  {
+   "description": "写入设置到PLC", 
+   "guid": "98f771a1-2f58-4923-afcb-f385ad179726", 
+   "name": "写入设置", 
+   "tokens": [
+    "redundancy", 
+    "writesettings"
+   ]
+  }, 
+  {
+   "description": "将PLC从模拟模式切换到主动模式", 
+   "guid": "3ab9b46e-1191-43ef-8cb5-00c897c83bd2", 
+   "name": "切换到主动", 
+   "tokens": [
+    "redundancy", 
+    "switchsimulationtoactive"
+   ]
+  }, 
+  {
+   "description": "将PLC从主动模式切换到待机模式.", 
+   "guid": "f650dc12-df2f-407a-bca5-52c2ac549c40", 
+   "name": "切换到待机", 
+   "tokens": [
+    "redundancy", 
+    "switchactivetopassive"
+   ]
+  }, 
+  {
+   "description": "将PLC从待机转换模式到模拟模式", 
+   "guid": "942f2075-e08c-4de6-b652-04964787131f", 
+   "name": "切换到模拟", 
+   "tokens": [
+    "redundancy", 
+    "switchpassivetosimulation"
+   ]
+  }, 
+  {
+   "description": "将PLC从模拟模式切换到独立模式", 
+   "guid": "70680993-7873-4a54-a149-53ec0d3b1f06", 
+   "name": "切换到独立", 
+   "tokens": [
+    "redundancy", 
+    "switchsimulationtostandalone"
+   ]
+  }, 
+  {
+   "description": "创建证书", 
+   "guid": "2d6bf955-9317-49c5-a906-4f3b1521239a", 
+   "name": "创建证书", 
+   "tokens": [
+    "redundancy", 
+    "createcertificates"
+   ]
+  }, 
+  {
+   "description": "如果PLC处于模拟模式或者错误模式时请同步它.", 
+   "guid": "9da0ad37-7598-445d-8f26-45e6452146dc", 
+   "name": "同步", 
+   "tokens": [
+    "redundancy", 
+    "synchronize"
+   ]
+  }, 
+  {
+   "description": "移除证书", 
+   "guid": "cb6fcb27-521c-42ae-8824-e4c199651638", 
+   "name": "移除证书", 
+   "tokens": [
+    "redundancy", 
+    "removecertificates"
+   ]
+  }, 
+  {
+   "description": "设置PLC2的活动路径", 
+   "guid": "a128faa3-7fd6-4de9-ab26-e034ff8474b9", 
+   "name": "设置PLC2的活动路径", 
+   "tokens": [
+    "redundancy", 
+    "setactivepathplc2"
+   ]
+  }, 
+  {
+   "description": "从PLC上读取设置", 
+   "guid": "60075872-eaaf-4a8a-81ea-fd6b07c92f3d", 
+   "name": "读取设置", 
+   "tokens": [
+    "redundancy", 
+    "readsettings"
+   ]
+  }, 
+  {
+   "description": "重新排序可调用POU的IN,OUT和INPUT变量.", 
+   "guid": "80a9336e-d2c1-4d25-b814-dc2fdaf9e53b", 
+   "name": "对变量重新排序...", 
+   "tokens": [
+    "refactor", 
+    "reorderVariables"
+   ]
+  }, 
+  {
+   "description": "执行全局更新引脚动作.", 
+   "guid": "569a419b-0526-4edf-a1fb-951c50a978a1", 
+   "name": "更新引用引脚", 
+   "tokens": [
+    "refactor", 
+    "globalupdatepins"
+   ]
+  }, 
+  {
+   "description": "向POU中添加新的变量.", 
+   "guid": "541c9eec-d74b-4cb7-b311-0093247ca835", 
+   "name": "添加变量...", 
+   "tokens": [
+    "refactor", 
+    "addvariable"
+   ]
+  }, 
+  {
+   "description": "删除工程中所有出现的选定变量", 
+   "guid": "fa5b07c7-638a-4b09-b56c-bd0f8d1d8741", 
+   "name": "清除''...", 
+   "tokens": [
+    "refactor", 
+    "removevariable"
+   ]
+  }, 
+  {
+   "description": "在工程中重命名所有出现的选定符号", 
+   "guid": "eea6d3f9-7b35-4843-8d5b-911b5e6d2dab", 
+   "name": "重命名''...", 
+   "tokens": [
+    "refactor", 
+    "rename"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "ade5b54c-58ed-4855-a7b1-3f6b0ad17cdc", 
+   "name": "...", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "69a25ff7-1630-4169-9a82-3e2776426487", 
+   "name": "A", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "c53c2b61-976b-49f7-a24a-90b99addca7d", 
+   "name": "B", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "82357d9d-824a-4056-a0af-3ec60e9bb6ec", 
+   "name": "C", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "61d39ae4-2048-4df2-8101-225ac3022235", 
+   "name": "D", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "dc4b5558-f1fa-49da-a2fc-81029bb50a98", 
+   "name": "E", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "9de3537c-95db-4140-9987-7b20186f0c53", 
+   "name": "F", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "734c40ed-5686-4e09-9e35-1555d736d622", 
+   "name": "G", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "fb344cf3-02aa-4d8f-8f07-348189c78995", 
+   "name": "H", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "60943ab6-ea7a-4d4a-a145-2b9d3a7a6b20", 
+   "name": "I", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "04e26429-5ced-4180-a2ae-9bc3aa6645f2", 
+   "name": "J", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "4bd3469a-dc77-4433-ac1e-0fd2f73c9db1", 
+   "name": "K", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "5fd900c0-1dae-48b8-8d98-598f5ffc67b5", 
+   "name": "L", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "abf0377c-b942-43b8-a2c4-0ae3eb3e70a9", 
+   "name": "M", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "36852754-42b0-4bc3-8946-aac1fd5c0c07", 
+   "name": "N", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "83090639-60f6-461c-aa76-16991219d4b9", 
+   "name": "O", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "a9b65152-0c1c-458c-bef7-655dc955aea8", 
+   "name": "P", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "30332ba1-5bdc-46e2-b395-b7cbd7c938cf", 
+   "name": "Q", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "424fae55-05cd-429a-af63-0c2a1a7a0347", 
+   "name": "R", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "4cd726c9-2a74-46e7-8429-4994b005fcd5", 
+   "name": "S", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "d5d3f463-e55c-4c4e-b557-e56beb397207", 
+   "name": "Script0 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute0"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "747a61d0-23b7-4d36-86e8-d40be44756bd", 
+   "name": "Script1 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute1"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "d53e26f4-dae3-460b-9a05-be4b6d89d70c", 
+   "name": "Script10 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute10"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "58301487-e584-47d8-be33-1b61298c6cb5", 
+   "name": "Script11 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute11"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "c2712d76-7b36-41f1-ac7a-28ca2fedcc28", 
+   "name": "Script12 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute12"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "3bd716d8-22e3-412d-8907-ef769dc637d7", 
+   "name": "Script13 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute13"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "4819c37a-fec8-4195-bb13-6dc3fa3e5322", 
+   "name": "Script14 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute14"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "d355a0ea-d59e-4c1e-8424-0697c9974a04", 
+   "name": "Script15 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute15"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "ea88ff69-1e93-446d-a4db-58718b3f507c", 
+   "name": "Script16 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute16"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "ac633e0f-4b35-4ba7-9397-c17dae2fab17", 
+   "name": "Script17 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute17"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "b0b9ca45-b3a2-43be-aaba-ffe94dbcb67f", 
+   "name": "Script18 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute18"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "0e6ddc68-3c42-41b6-9d09-74bd95b46912", 
+   "name": "Script19 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute19"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "133280df-960a-4ec7-b767-e4d562515ed0", 
+   "name": "Script2 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute2"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "a49611f9-5849-4207-8b30-42edb411fc8c", 
+   "name": "Script20 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute20"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "cf8f02cd-5116-4d79-be09-f3421e2a7157", 
+   "name": "Script21 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute21"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "0a0efe72-fbc8-4100-9355-aab9e39275cf", 
+   "name": "Script22 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute22"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "e59343ce-24ea-4fe9-b6b2-d4ac4afbe2f3", 
+   "name": "Script23 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute23"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "ebbf03a2-9997-4cc1-93a5-3601cf2995e0", 
+   "name": "Script24 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute24"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "e27ecef9-c8c6-47a5-85ed-00ea1d10a2cf", 
+   "name": "Script25 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute25"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "0d29f393-3fa0-4bb2-9742-1144a3f12ad8", 
+   "name": "Script26 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute26"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "222e3ddc-2e90-413b-93ff-eb154a91b26d", 
+   "name": "Script27 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute27"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "50ebb99c-6df0-4ae6-8006-5415f0a1b5fc", 
+   "name": "Script28 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute28"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "06e8d918-19cb-471a-9e61-5e852e108cb7", 
+   "name": "Script29 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute29"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "58af3c0b-9ff8-4e3b-ba41-32e3134b1d1a", 
+   "name": "Script3 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute3"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "0cbc7dbe-6956-482a-ad0f-663aa78bad74", 
+   "name": "Script30 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute30"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "24baca81-1add-4779-855c-140a89b4c679", 
+   "name": "Script31 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute31"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "53f7102b-1b30-4540-b848-be06df03b179", 
+   "name": "Script4 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute4"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "e287d6b7-9e9b-4db2-88be-101cff9c1d3f", 
+   "name": "Script5 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute5"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "2817fd46-e7f6-43cc-a4e2-3ded0b0bf4fe", 
+   "name": "Script6 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute6"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "a841f175-9c71-4206-857b-07eddca0ab9a", 
+   "name": "Script7 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute7"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "16895bb3-b3fa-4cec-8ca8-184312c210f4", 
+   "name": "Script8 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute8"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "f1b3b408-f152-4ea4-a504-8405cdfe73e1", 
+   "name": "Script9 (unavailable)", 
+   "tokens": [
+    "script", 
+    "execute9"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "2f5c43ea-5ae9-4953-be64-2852757a64f4", 
+   "name": "T", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "1da7a098-c6a1-4e65-8661-376fcffdfe35", 
+   "name": "U", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "c19800a9-d11c-42e3-b0fe-2fd55c2eb8b0", 
+   "name": "V", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "43ffc3ce-a574-40a6-9016-6ff50f80fe78", 
+   "name": "W", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "9f778172-f7be-41de-9be0-cf8a964344e0", 
+   "name": "X", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "be9982e1-c23f-4080-973b-28f2124f89ac", 
+   "name": "Y", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "从脚本目录中执行脚本文件", 
+   "guid": "5210847c-98b3-4a56-93d3-234e03996c5c", 
+   "name": "Z", 
+   "tokens": [
+    "script", 
+    "executewithletter"
+   ]
+  }, 
+  {
+   "description": "切换冗长的脚本跟踪(调试援助).脚本追踪与绝大部分的调试机制是互斥的.", 
+   "guid": "016de37c-8107-4b72-ad6b-f84775a45d44", 
+   "name": "使能脚本跟踪", 
+   "tokens": [
+    "script", 
+    "tracing"
+   ]
+  }, 
+  {
+   "description": "执行脚本文件", 
+   "guid": "974e36d0-d2ed-4dcc-9505-2e4f2fb9c70d", 
+   "name": "执行脚本文件...", 
+   "tokens": [
+    "script", 
+    "execute"
+   ]
+  }, 
+  {
+   "description": "帮助配置应用程序下载加密的视图。", 
+   "guid": "cfff31b1-17da-4bbc-8b48-490a41862347", 
+   "name": "加密向导", 
+   "tokens": [
+    "security_agent", 
+    "show_encryption_wizard"
+   ]
+  }, 
+  {
+   "description": "查看和更改已连接设备的安全设置", 
+   "guid": "7de26209-6771-4abc-9ac9-f21121e79f07", 
+   "name": "设备安全设置", 
+   "tokens": [
+    "security_agent", 
+    "configure_runtime_security_settings"
+   ]
+  }, 
+  {
+   "description": "用于控制安全设置的视图.", 
+   "guid": "f3812737-3d28-455f-81e0-f85fcd212aba", 
+   "name": "安全界面", 
+   "tokens": [
+    "security_manager", 
+    "show_security_screen"
+   ]
+  }, 
+  {
+   "description": "设置焦点步为初始步", 
+   "guid": "acef1039-3caa-49e0-b712-7194fd005368", 
+   "name": "初始步", 
+   "tokens": [
+    "sfc", 
+    "setinitstep"
+   ]
+  }, 
+  {
+   "description": "在焦点元素之后插入关联动作", 
+   "guid": "f0830a30-cc43-4de5-ac6a-2e0462076faa", 
+   "name": "在...之后插入关联动作", 
+   "tokens": [
+    "sfc", 
+    "insertactionassociationafter"
+   ]
+  }, 
+  {
+   "description": "在焦点元素之后插入宏步", 
+   "guid": "12b42af1-741b-416d-a24c-0c643592f72f", 
+   "name": "在...之后插入宏", 
+   "tokens": [
+    "sfc", 
+    "insertmacroafter"
+   ]
+  }, 
+  {
+   "description": "在焦点的元素后插入一个步组合", 
+   "guid": "65c3faca-ef86-4694-a171-3d9f28dc8b6f", 
+   "name": "在...之后插入步", 
+   "tokens": [
+    "sfc", 
+    "insertstepafter"
+   ]
+  }, 
+  {
+   "description": "在焦点元素之后插入步转移组合", 
+   "guid": "351754c0-5b83-4218-80e1-f0e80e657f72", 
+   "name": "在...之后插入步转移", 
+   "tokens": [
+    "sfc", 
+    "inserttransstepafter"
+   ]
+  }, 
+  {
+   "description": "在焦点元素之后插入跳转", 
+   "guid": "bb80384b-5f04-4f43-a475-aee2d3d45b1e", 
+   "name": "在...之后插入跳转", 
+   "tokens": [
+    "sfc", 
+    "insertjumpafter"
+   ]
+  }, 
+  {
+   "description": "在焦点元素后插入一个过渡", 
+   "guid": "bbc7bc6a-e9c3-4e40-b88f-bddb6c9befb0", 
+   "name": "在...之后插入转移", 
+   "tokens": [
+    "sfc", 
+    "inserttransafter"
+   ]
+  }, 
+  {
+   "description": "在下面实际位置处粘贴剪切板内容", 
+   "guid": "88c0076a-6560-476c-9cba-078604d44473", 
+   "name": "在...之后粘贴", 
+   "tokens": [
+    "sfc", 
+    "pasteafter"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "252d50a1-391f-406c-848b-6d8e85641a99", 
+   "name": "在激活和非激活之间切换", 
+   "tokens": [
+    "sfc", 
+    "toggle_step_active"
+   ]
+  }, 
+  {
+   "description": "设置所选择的分支为并行分支模式", 
+   "guid": "d62daf72-21c9-4c8d-ad23-6b70ccd4bee1", 
+   "name": "并行分支", 
+   "tokens": [
+    "sfc", 
+    "parallel"
+   ]
+  }, 
+  {
+   "description": "在焦点元素之前插入关联动作", 
+   "guid": "2a4fa2c6-c583-4de4-89e6-9932798859c6", 
+   "name": "插入关联动作", 
+   "tokens": [
+    "sfc", 
+    "insertactionassociation"
+   ]
+  }, 
+  {
+   "description": "在当前选择处插入左分支", 
+   "guid": "85936005-4d28-49ff-95c2-41e58bd3945d", 
+   "name": "插入分支", 
+   "tokens": [
+    "sfc", 
+    "insertbranch"
+   ]
+  }, 
+  {
+   "description": "在当前选择处插入右分支", 
+   "guid": "dd65dd13-00b0-45ed-91b8-64211859e1f5", 
+   "name": "插入右分支", 
+   "tokens": [
+    "sfc", 
+    "insertbranchright"
+   ]
+  }, 
+  {
+   "description": "在焦点元素之前插入宏步", 
+   "guid": "059bd758-bf2b-4bd8-8eaf-6043f98ccb49", 
+   "name": "插入宏", 
+   "tokens": [
+    "sfc", 
+    "insertmacro"
+   ]
+  }, 
+  {
+   "description": "在焦点元素前插入一步", 
+   "guid": "59f1042a-27fb-453d-893b-a88e39a18c51", 
+   "name": "插入步", 
+   "tokens": [
+    "sfc", 
+    "insertstep"
+   ]
+  }, 
+  {
+   "description": "在焦点元素之前插入步转移组合", 
+   "guid": "940b1721-68ab-4786-825a-819566daa5b3", 
+   "name": "插入步转移", 
+   "tokens": [
+    "sfc", 
+    "inserttransstep"
+   ]
+  }, 
+  {
+   "description": "在焦点元素之前插入跳转", 
+   "guid": "05badf67-3260-4987-b35d-7e91e65405d1", 
+   "name": "插入跳转", 
+   "tokens": [
+    "sfc", 
+    "insertjump"
+   ]
+  }, 
+  {
+   "description": "在焦点元素前插入一个过渡", 
+   "guid": "5bd1ab71-27dc-403e-9c56-2e9579ae5fc2", 
+   "name": "插入过渡", 
+   "tokens": [
+    "sfc", 
+    "inserttrans"
+   ]
+  }, 
+  {
+   "description": "如果步已经存在, 给步添加入口动作, 或将其打开.", 
+   "guid": "376046e4-f3b0-4824-aa09-0359e558c665", 
+   "name": "添加入口动作", 
+   "tokens": [
+    "sfc", 
+    "addentryaction"
+   ]
+  }, 
+  {
+   "description": "如果步已经存在, 给步添加出口动作, 或将其打开.", 
+   "guid": "f8889734-074a-4c26-b8dd-7e32f6578c1b", 
+   "name": "添加出口动作", 
+   "tokens": [
+    "sfc", 
+    "addexitaction"
+   ]
+  }, 
+  {
+   "description": "从所有引用的动作和过渡中移除复制.", 
+   "guid": "2a53ee11-e83b-4e1f-a402-a87f5ae7acab", 
+   "name": "移除", 
+   "tokens": [
+    "sfc", 
+    "duplicationremove"
+   ]
+  }, 
+  {
+   "description": "在所有引用动作和转移中应用复制.", 
+   "guid": "1e3e7143-9a10-4082-88fc-3bfd4ff4491a", 
+   "name": "设定", 
+   "tokens": [
+    "sfc", 
+    "setduplicate"
+   ]
+  }, 
+  {
+   "description": "进入所选择的宏步", 
+   "guid": "1360e7e6-4106-42ad-8635-9b46fdfc20ac", 
+   "name": "进入宏", 
+   "tokens": [
+    "sfc", 
+    "zoommacroin"
+   ]
+  }, 
+  {
+   "description": "退出当前宏步", 
+   "guid": "2c92dd9c-ce1a-4e30-a1c1-a7e44f512cad", 
+   "name": "退出宏", 
+   "tokens": [
+    "sfc", 
+    "zoommacroout"
+   ]
+  }, 
+  {
+   "description": "设置所选择的分支为选择分支模式", 
+   "guid": "db8a975d-3aa8-432c-92f8-069d3395a48b", 
+   "name": "选择分支", 
+   "tokens": [
+    "sfc", 
+    "alternative"
+   ]
+  }, 
+  {
+   "description": "显示或隐藏嵌入动作和转移对象", 
+   "guid": "dcd1ee27-6f0f-482f-b8a3-cf4d7d051887", 
+   "name": "隐藏嵌入对象", 
+   "tokens": [
+    "sfc", 
+    "toggleshowembeddedobjects"
+   ]
+  }, 
+  {
+   "description": "设备添加一个\"通用轴池\"和运动控制库", 
+   "guid": "005ef395-b0c2-4be1-85b0-7092652805f2", 
+   "name": "使能运动控制", 
+   "tokens": [
+    "softmotion", 
+    "enable"
+   ]
+  }, 
+  {
+   "description": "“General Axis Pool”通用轴池(所有设备)和运动控制库从设备中移除", 
+   "guid": "b742d820-248b-408f-b239-d79997d5309d", 
+   "name": "禁用运动控制", 
+   "tokens": [
+    "softmotion", 
+    "disable"
+   ]
+  }, 
+  {
+   "description": "显示从静态分析插件实现的指标", 
+   "guid": "4a787366-a156-403a-803c-b2826128b709", 
+   "name": "查看标准指标", 
+   "tokens": [
+    "staticanalysis", 
+    "standardmetrics"
+   ]
+  }, 
+  {
+   "description": "计算并导出标准指标", 
+   "guid": "eeeeeeee-7d19-4230-b8cd-8c1bb00b6f50", 
+   "name": "计算并导出标准指标", 
+   "tokens": [
+    "staticanalysis", 
+    "exportstandardmetrics"
+   ]
+  }, 
+  {
+   "description": "运行静态分析", 
+   "guid": "ae97b6f4-dc9a-480e-aac8-6061e684f3c0", 
+   "name": "运行静态分析", 
+   "tokens": [
+    "staticanalysis", 
+    "run"
+   ]
+  }, 
+  {
+   "description": "运行静态分析", 
+   "guid": "92e3b5d4-f999-4135-a1a8-a823423a370e", 
+   "name": "运行静态分析", 
+   "tokens": [
+    "staticanalysis", 
+    "runforlibrary"
+   ]
+  }, 
+  {
+   "description": "向上移动所选项目", 
+   "guid": "4cbeebb2-181f-40eb-83ee-4073f5323fa1", 
+   "name": "上移", 
+   "tokens": [
+    "tabulardeclaration", 
+    "moveup"
+   ]
+  }, 
+  {
+   "description": "向下移动选定的项目", 
+   "guid": "77d89f0d-5e4e-49b7-af9a-82140f4b0055", 
+   "name": "下移", 
+   "tokens": [
+    "tabulardeclaration", 
+    "movedown"
+   ]
+  }, 
+  {
+   "description": "在当前选定的位置插入一个新的符号", 
+   "guid": "7dbc3c49-db16-4208-91d5-8c4aa3b20ac2", 
+   "name": "插入", 
+   "tokens": [
+    "tabulardeclaration", 
+    "insert"
+   ]
+  }, 
+  {
+   "description": "编辑声明标题", 
+   "guid": "b40d9966-fab5-4b1f-9f87-087d8fcac68c", 
+   "name": "编辑声明标题...", 
+   "tokens": [
+    "tabulardeclaration", 
+    "editheader"
+   ]
+  }, 
+  {
+   "description": "导出目标设置文档", 
+   "guid": "e8b67168-ae63-459e-93f4-deb66ce956ac", 
+   "name": "目标设置文档导出", 
+   "tokens": [
+    "targetsettings", 
+    "exportdoc"
+   ]
+  }, 
+  {
+   "description": "将外部文本文件的内容插入当前编辑器.", 
+   "guid": "c1e88c90-0294-491c-9e36-73710f679b18", 
+   "name": "将文件作为文本插入...", 
+   "tokens": [
+    "text", 
+    "insertfile"
+   ]
+  }, 
+  {
+   "description": "展开当前文本文档中的所有折叠", 
+   "guid": "047e2304-dd4f-4dae-a3f4-15ce8f817b63", 
+   "name": "展开所有折叠", 
+   "tokens": [
+    "text", 
+    "expandallfolds"
+   ]
+  }, 
+  {
+   "description": "折叠当前文本文档中的所有折叠", 
+   "guid": "d72f221d-3ad3-4682-9f72-1ad877b1085c", 
+   "name": "折叠所有折叠", 
+   "tokens": [
+    "text", 
+    "collapseallfolds"
+   ]
+  }, 
+  {
+   "description": "显示缩进参考线.", 
+   "guid": "59eecf81-1a83-40cb-b08a-6b135e1ece73", 
+   "name": "查看定义指南", 
+   "tokens": [
+    "text", 
+    "viewindentationguides"
+   ]
+  }, 
+  {
+   "description": "显示空白字符(空格,标签,和换行符).", 
+   "guid": "59b7c9f4-8d9b-404c-910c-866e372f6237", 
+   "name": "查看空白", 
+   "tokens": [
+    "text", 
+    "viewwhitespace"
+   ]
+  }, 
+  {
+   "description": "插入(INS)和覆盖(OVR)模式之间切换.", 
+   "guid": "012502ca-abfb-41cb-90fa-ebd2dcad1813", 
+   "name": "覆盖模式", 
+   "tokens": [
+    "text", 
+    "toggleinsertmode"
+   ]
+  }, 
+  {
+   "description": "将插入符号移动到与当前括号匹配的位置.", 
+   "guid": "8199691f-d4b1-4de8-9d2a-9b10f2bb9bb5", 
+   "name": "转到匹配的括号", 
+   "tokens": [
+    "text", 
+    "gotomatchingbracket"
+   ]
+  }, 
+  {
+   "description": "移动光标到指定的行.", 
+   "guid": "dfbfd10a-9d9c-4aff-a296-e7d3bdf07193", 
+   "name": "转到行...", 
+   "tokens": [
+    "text", 
+    "gotoline"
+   ]
+  }, 
+  {
+   "description": "将选定文本转换成大写字符.", 
+   "guid": "e6e57377-ecd1-4991-a5f0-c835cfc526b8", 
+   "name": "转换为大写", 
+   "tokens": [
+    "text", 
+    "makeuppercase"
+   ]
+  }, 
+  {
+   "description": "将选定的文本转换成小写字符.", 
+   "guid": "74516663-f8b7-4c49-83e1-54bb800e8eec", 
+   "name": "转换为小写", 
+   "tokens": [
+    "text", 
+    "makelowercase"
+   ]
+  }, 
+  {
+   "description": "选择当前插入符号位置和与当前括号匹配的位置之间的范围.", 
+   "guid": "3879487e-90c3-4b9b-a3c6-086bade55040", 
+   "name": "选择要匹配括号", 
+   "tokens": [
+    "text", 
+    "selecttomatchingbracket"
+   ]
+  }, 
+  {
+   "description": "使能在线监控", 
+   "guid": "35a166ee-6a30-44f3-a37a-94f7a096a080", 
+   "name": "使能在线监控", 
+   "tokens": [
+    "text_editor_base", 
+    "toggle_inline_monitoring"
+   ]
+  }, 
+  {
+   "description": "打开或关闭活动编辑器里的增量搜索字段.", 
+   "guid": "08c97f66-b323-4d64-a6eb-565b6b30fb7a", 
+   "name": "切换增量搜索的字段", 
+   "tokens": [
+    "text_editor_base", 
+    "toggle_incrementalsearch"
+   ]
+  }, 
+  {
+   "description": "取消注释选定的行", 
+   "guid": "012e6601-fc48-457f-8280-19f59b6c4a51", 
+   "name": "取消注释选定的行", 
+   "tokens": [
+    "text_editor_base", 
+    "comment_in_selected_lines"
+   ]
+  }, 
+  {
+   "description": "注释掉选定的行", 
+   "guid": "5e0619de-d6f4-4f62-a9a0-9c60d44a311d", 
+   "name": "注释掉选定的行", 
+   "tokens": [
+    "text_editor_base", 
+    "comment_out_selected_lines"
+   ]
+  }, 
+  {
+   "description": "清除文本列表支持", 
+   "guid": "85ce4cc9-aa5d-44f5-a06e-76e6ce4516db", 
+   "name": "清除文本列表支持", 
+   "tokens": [
+    "text_list_enum", 
+    "convert_to_enum"
+   ]
+  }, 
+  {
+   "description": "创建全局文本列表", 
+   "guid": "3b079581-ec53-400c-88cb-79e702354d5b", 
+   "name": "创建全局文本列表", 
+   "tokens": [
+    "textlist", 
+    "createglobaltextlist"
+   ]
+  }, 
+  {
+   "description": "创建系统文本列表", 
+   "guid": "82c0c3fc-24fa-48cc-9895-a528315b4e66", 
+   "name": "创建系统文本列表", 
+   "tokens": [
+    "textlist", 
+    "createsystemtextlist"
+   ]
+  }, 
+  {
+   "description": "删除语言", 
+   "guid": "a36e8f54-4cd8-44c5-b8b4-e537ac822bef", 
+   "name": "删除语言", 
+   "tokens": [
+    "textlist", 
+    "removelanguage"
+   ]
+  }, 
+  {
+   "description": "导入/导出文本列表", 
+   "guid": "d75434a7-7d1a-4add-8f10-7cff82d18cf6", 
+   "name": "导入/导出文本列表", 
+   "tokens": [
+    "textlist", 
+    "import_export"
+   ]
+  }, 
+  {
+   "description": "导入Unicode.txt文本列表", 
+   "guid": "96ffc394-37e6-4438-a5d6-d77983a6354b", 
+   "name": "导入Unicode.txt文本列表", 
+   "tokens": [
+    "textlist", 
+    "import"
+   ]
+  }, 
+  {
+   "description": "导入全部Unicode.txt文本列表文件", 
+   "guid": "79f702f4-a03f-4a0d-b7ea-d0f50c0f3113", 
+   "name": "导入全部Unicode.txt文本列表文件", 
+   "tokens": [
+    "textlist", 
+    "importalltxtfiles"
+   ]
+  }, 
+  {
+   "description": "导出全部.txt文本列表文件", 
+   "guid": "91cc8d4f-eb03-48ec-b54d-6d6fd92c2623", 
+   "name": "导出全部.txt文本列表文件", 
+   "tokens": [
+    "textlist", 
+    "exportalltxtfiles"
+   ]
+  }, 
+  {
+   "description": "导出全部.xml文本列表文件", 
+   "guid": "78599c10-e4de-4521-9653-257f02f520fb", 
+   "name": "导出全部.xml文本列表文件", 
+   "tokens": [
+    "textlist", 
+    "exportallxmlfiles"
+   ]
+  }, 
+  {
+   "description": "导出全部Unicode.txt文本列表文件", 
+   "guid": "71775307-438e-4d4e-896a-a9f3082a9aa2", 
+   "name": "导出全部Unicode.txt文本列表文件", 
+   "tokens": [
+    "textlist", 
+    "exportallunicodetxtfiles"
+   ]
+  }, 
+  {
+   "description": "导出全部Unicode.xml文本列表文件", 
+   "guid": "5fe4c666-c36b-4885-aa1f-a814604143ad", 
+   "name": "导出全部Unicode.xml文本列表文件", 
+   "tokens": [
+    "textlist", 
+    "exportallunicodexmlfiles"
+   ]
+  }, 
+  {
+   "description": "在当前位置插入一个新的文本", 
+   "guid": "bf3179be-a7d9-4214-8fa7-56af10e7fe9e", 
+   "name": "插入文本", 
+   "tokens": [
+    "textlist", 
+    "inserttext"
+   ]
+  }, 
+  {
+   "description": "更新所有可视化文本ID", 
+   "guid": "808087ad-caff-4c87-9d7a-ec417b14f904", 
+   "name": "更新可视化文本ID", 
+   "tokens": [
+    "textlist", 
+    "updatetextids"
+   ]
+  }, 
+  {
+   "description": "检查所有可视化文本是否正确的文本ID。", 
+   "guid": "297b936c-ba12-438c-ae3f-d65e24b1e369", 
+   "name": "检查可视化文本ID", 
+   "tokens": [
+    "textlist", 
+    "checktextids"
+   ]
+  }, 
+  {
+   "description": "添加语言", 
+   "guid": "1a26a308-9a8a-4e4e-94d9-bc40e2b92caf", 
+   "name": "添加语言", 
+   "tokens": [
+    "textlist", 
+    "addlanguage"
+   ]
+  }, 
+  {
+   "description": "移除未使用文本列表记录.", 
+   "guid": "8f79c0ea-8087-42bc-b1ea-7a68481cbdea", 
+   "name": "移除未使用的文本列表记录.", 
+   "tokens": [
+    "textlist", 
+    "remove_unused_items"
+   ]
+  }, 
+  {
+   "description": "重命名语言", 
+   "guid": "83bf10ba-df48-4ee3-a7dd-abccf2fcdc3f", 
+   "name": "重命名语言", 
+   "tokens": [
+    "textlist", 
+    "renamelanguage"
+   ]
+  }, 
+  {
+   "description": "在原始版本和默认本地化之间切换本地化.", 
+   "guid": "d026b784-b5cb-48ff-8df0-7aa7c396b318", 
+   "name": "切换本地化", 
+   "tokens": [
+    "toggle", 
+    "localization"
+   ]
+  }, 
+  {
+   "description": "显示帮助管理票证和它们授权的工具", 
+   "guid": "2ce5552c-3f08-4fe4-bd85-e76d04c89a27", 
+   "name": "授权存储库...", 
+   "tokens": [
+    "tools", 
+    "licenserepository"
+   ]
+  }, 
+  {
+   "description": "显示有助于管理加密狗授权的工具.", 
+   "guid": "6b980099-a6e4-429b-9f64-c2c5191f2440", 
+   "name": "授权管理器...", 
+   "tokens": [
+    "tools", 
+    "licensemanager"
+   ]
+  }, 
+  {
+   "description": "把跟踪以ASCII或XML的文件形式储存", 
+   "guid": "28015cfa-91cb-47ad-9e91-22fad58bd53b", 
+   "name": "保存跟踪...", 
+   "tokens": [
+    "trace", 
+    "save"
+   ]
+  }, 
+  {
+   "description": "从文件加载一个跟踪", 
+   "guid": "7169b8a8-aff7-42f4-a23d-b86de0bca6d8", 
+   "name": "加载跟踪...", 
+   "tokens": [
+    "trace", 
+    "load"
+   ]
+  }, 
+  {
+   "description": "导出具有可在运行时系统加载的符号变量的跟踪配置", 
+   "guid": "d704adf2-6117-406e-8841-7c553cb078d9", 
+   "name": "导出符号跟踪配置", 
+   "tokens": [
+    "trace", 
+    "ExportSymbolicConfig"
+   ]
+  }, 
+  {
+   "description": "Change user", 
+   "guid": "aa65559b-3bcb-40b3-a6fe-871e3baa8191", 
+   "name": "Change user", 
+   "tokens": [
+    "usermgmt", 
+    "changeuser"
+   ]
+  }, 
+  {
+   "description": "为用户动作配置权限.", 
+   "guid": "7a979090-1138-4b26-aabc-9a10983d6b4d", 
+   "name": "权限...", 
+   "tokens": [
+    "usermgmt", 
+    "permissions"
+   ]
+  }, 
+  {
+   "description": "注销当前用户.", 
+   "guid": "70c28e64-65d9-498b-a80a-2f9ccbc09e5a", 
+   "name": "注销用户", 
+   "tokens": [
+    "usermgmt", 
+    "logout"
+   ]
+  }, 
+  {
+   "description": "在处理当前的工程时,以指定用户身份登录来获得特定权限.", 
+   "guid": "c0130d68-f78b-4e12-9c50-ac27371eea79", 
+   "name": "用户登录...", 
+   "tokens": [
+    "usermgmt", 
+    "login"
+   ]
+  }, 
+  {
+   "description": "插入尚未映射的 VAR_CONFIG 变量的所有路径. 工程需要编译.", 
+   "guid": "6ca69045-2e11-409d-b160-81ef1d7705f8", 
+   "name": "添加所有实例路径", 
+   "tokens": [
+    "var_config", 
+    "addallinstpaths"
+   ]
+  }, 
+  {
+   "description": "插入尚未映射的 VAR_PERSISTENT 变量的所有路径. 工程需要编译.", 
+   "guid": "76fad7fd-c8ab-417e-9a60-67fca40baeda", 
+   "name": "添加所有实例路径", 
+   "tokens": [
+    "var_persistent", 
+    "addallinstpaths"
+   ]
+  }, 
+  {
+   "description": "切换到CODESYS视角", 
+   "guid": "76cbcb67-3dda-4b8b-9854-641d25f19ac4", 
+   "name": "CODESYS 视角", 
+   "tokens": [
+    "view", 
+    "setstandardperspective"
+   ]
+  }, 
+  {
+   "description": "切换到HMI视角", 
+   "guid": "89fca65b-a68e-45e2-b53a-ea24d078d1d2", 
+   "name": "HMI 视角", 
+   "tokens": [
+    "view", 
+    "sethmiperspective"
+   ]
+  }, 
+  {
+   "description": "显示工程的HMI功能。", 
+   "guid": "b9dca5dc-1772-4d17-828e-ef23a5b53fc8", 
+   "name": "HMI功能", 
+   "tokens": [
+    "view", 
+    "hmifeaturesview"
+   ]
+  }, 
+  {
+   "description": "激活书签视图", 
+   "guid": "da81b3d6-010f-447e-b96c-dc8f921d0317", 
+   "name": "书签", 
+   "tokens": [
+    "view", 
+    "bookmarks"
+   ]
+  }, 
+  {
+   "description": "显示所选变量的所有引用.", 
+   "guid": "5ed0375d-1278-4af6-b4c8-29beaff95f43", 
+   "name": "交叉引用列表", 
+   "tokens": [
+    "view", 
+    "crossref"
+   ]
+  }, 
+  {
+   "description": "打开显示选择元素属性的视图", 
+   "guid": "79d46924-f2b6-454d-8c0e-500222a234f0", 
+   "name": "元素属性", 
+   "tokens": [
+    "view", 
+    "elementproperties"
+   ]
+  }, 
+  {
+   "description": "可定制工具箱", 
+   "guid": "ce77ea7e-c7b3-4e01-901a-0187de446bdb", 
+   "name": "可定制工具箱", 
+   "tokens": [
+    "view", 
+    "csttoolbox"
+   ]
+  }, 
+  {
+   "description": "显示工程的可视化", 
+   "guid": "321f5799-b306-4556-b7b7-dca9429a0436", 
+   "name": "可视化", 
+   "tokens": [
+    "view", 
+    "hmivisualizationsview"
+   ]
+  }, 
+  {
+   "description": "打开可视化工具箱", 
+   "guid": "b987ba7b-0844-488f-a750-11d0a500a655", 
+   "name": "可视化工具箱", 
+   "tokens": [
+    "view", 
+    "visutoolbox"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "ca5b4f8a-6be8-4ed3-9494-e1d99e716c8b", 
+   "name": "在线更改内存预留设置", 
+   "tokens": [
+    "view", 
+    "allocationplus"
+   ]
+  }, 
+  {
+   "description": "显示工具箱.", 
+   "guid": "e5a57296-ac20-41b8-86ca-0e997a2ddae9", 
+   "name": "工具箱", 
+   "tokens": [
+    "view", 
+    "toolbox"
+   ]
+  }, 
+  {
+   "description": "列出这个工程的所有应用。", 
+   "guid": "cb65a30d-212c-4492-9881-4edbd0cc60bb", 
+   "name": "所有的应用列表", 
+   "tokens": [
+    "view", 
+    "applicationlistcommand"
+   ]
+  }, 
+  {
+   "description": "打开一个视图，扫描应用程序内存中的值", 
+   "guid": "fdd09f02-cdd1-4e32-8604-b204dc87fac1", 
+   "name": "打开内存扫描", 
+   "tokens": [
+    "view", 
+    "memory_scan"
+   ]
+  }, 
+  {
+   "description": "显示工程的数据源。", 
+   "guid": "36c3ebca-445e-4946-8011-026e62be9790", 
+   "name": "数据源", 
+   "tokens": [
+    "view", 
+    "hmidatasourcesview"
+   ]
+  }, 
+  {
+   "description": "激活断点视图", 
+   "guid": "8008cd5a-234d-49f6-b2fc-9f6c5d6c87a7", 
+   "name": "断点", 
+   "tokens": [
+    "view", 
+    "breakpoints"
+   ]
+  }, 
+  {
+   "description": "打开一个视图，显示应用程序的原始内存区域", 
+   "guid": "41a4faad-6d1b-4430-bead-3dea6008058d", 
+   "name": "显示内存视图", 
+   "tokens": [
+    "view", 
+    "memory"
+   ]
+  }, 
+  {
+   "description": "该命令显示一个带有所有模块引用的窗口.", 
+   "guid": "75ff31ca-b1fa-4947-9f5b-d32fc87657d6", 
+   "name": "显示模块引用窗口", 
+   "tokens": [
+    "view", 
+    "modulereferences"
+   ]
+  }, 
+  {
+   "description": "展示模块树", 
+   "guid": "5a8291aa-370e-4dfb-8253-52c5a5ad5c65", 
+   "name": "模块", 
+   "tokens": [
+    "view", 
+    "modules"
+   ]
+  }, 
+  {
+   "description": "显示消息视图.", 
+   "guid": "ac4e98fe-8ff9-4055-8002-93a451800bac", 
+   "name": "消息", 
+   "tokens": [
+    "view", 
+    "messages"
+   ]
+  }, 
+  {
+   "description": "显示监视列表窗口", 
+   "guid": "eecbee66-648b-4e9c-a738-4e5c09ab7c50", 
+   "name": "监视 1", 
+   "tokens": [
+    "view", 
+    "watch1"
+   ]
+  }, 
+  {
+   "description": "显示监视列表窗口", 
+   "guid": "7cae844f-6685-43cb-9575-a7206be83f31", 
+   "name": "监视 2", 
+   "tokens": [
+    "view", 
+    "watch2"
+   ]
+  }, 
+  {
+   "description": "显示监视列表窗口", 
+   "guid": "325b3dcf-24ee-459c-ac41-f8bb1a158d23", 
+   "name": "监视 3", 
+   "tokens": [
+    "view", 
+    "watch3"
+   ]
+  }, 
+  {
+   "description": "显示监视列表窗口", 
+   "guid": "6bbe615c-8fe4-493f-87da-976a7461e568", 
+   "name": "监视 4", 
+   "tokens": [
+    "view", 
+    "watch4"
+   ]
+  }, 
+  {
+   "description": "显示非设备或非模块工程对象.", 
+   "guid": "92d4ebf6-b699-42ee-ac5e-3c533024eb69", 
+   "name": "程序组织单元", 
+   "tokens": [
+    "view", 
+    "pous"
+   ]
+  }, 
+  {
+   "description": "显示所选变量所有引用视图.此为经典视图.", 
+   "guid": "356e4a32-5638-4565-915a-de143fe91bfc", 
+   "name": "经典交叉引用列表", 
+   "tokens": [
+    "view", 
+    "legacycrossref"
+   ]
+  }, 
+  {
+   "description": "显示工程的HMI编程对象。", 
+   "guid": "a37956b2-67c2-44fa-82b9-c062cddb36db", 
+   "name": "编程", 
+   "tokens": [
+    "view", 
+    "hmiprogrammingview"
+   ]
+  }, 
+  {
+   "description": "显示工程设备.", 
+   "guid": "954125ec-3a22-4054-84fb-10609b9f1f5c", 
+   "name": "设备", 
+   "tokens": [
+    "view", 
+    "devices"
+   ]
+  }, 
+  {
+   "description": "激活调用栈视图", 
+   "guid": "e4b1fa4f-62fd-4972-9242-43f6828a3ebb", 
+   "name": "调用堆栈", 
+   "tokens": [
+    "view", 
+    "callstack"
+   ]
+  }, 
+  {
+   "description": "显示所选方法的执行路径,显示调用者或被调用者的视图.", 
+   "guid": "0a1c8a75-99da-47fe-a1f1-2eb258f623df", 
+   "name": "调用树", 
+   "tokens": [
+    "view", 
+    "calltree"
+   ]
+  }, 
+  {
+   "description": "打开环境后最常用的操作", 
+   "guid": "86b061d8-a4f4-4e58-9177-16ed9001c9ff", 
+   "name": "起始页", 
+   "tokens": [
+    "view", 
+    "startpage"
+   ]
+  }, 
+  {
+   "description": "一个可以多次插入现有可视化元素的指令", 
+   "guid": "984b26ee-e427-4c2f-836f-32a02f9a95e7", 
+   "name": "多样可视化元素", 
+   "tokens": [
+    "visu", 
+    "mulitplyelements"
+   ]
+  }, 
+  {
+   "description": "Trim visual element texts", 
+   "guid": "21cf650f-3a94-4390-9953-024d662930da", 
+   "name": "Trim visual element texts", 
+   "tokens": [
+    "visual", 
+    "trimvisualelementtexts"
+   ]
+  }, 
+  {
+   "description": "上对齐", 
+   "guid": "bd93da1c-7d70-46c1-be3c-d48071d3d6a2", 
+   "name": "上对齐", 
+   "tokens": [
+    "visual", 
+    "aligntop"
+   ]
+  }, 
+  {
+   "description": "下对齐", 
+   "guid": "bde710de-7a41-45a7-b4d5-082472669f11", 
+   "name": "下对齐", 
+   "tokens": [
+    "visual", 
+    "alignbottom"
+   ]
+  }, 
+  {
+   "description": "使垂直间距相等", 
+   "guid": "55ca4c71-6007-4fae-ac3d-7fbb8884f9a3", 
+   "name": "使垂直间距相等", 
+   "tokens": [
+    "visual", 
+    "makeverticalspacingequal"
+   ]
+  }, 
+  {
+   "description": "使水平间距相等", 
+   "guid": "5c240f3d-b7b9-44e8-9c77-b52385d1fc9e", 
+   "name": "使水平间距相等", 
+   "tokens": [
+    "visual", 
+    "makehorizontalspacingequal"
+   ]
+  }, 
+  {
+   "description": "从V3.5 SP2中使用新的跟踪元素替换V3.5 SP1的跟踪元素", 
+   "guid": "3ac8548f-0329-415b-a538-f3ae25496ebf", 
+   "name": "使用新的跟踪元素替代旧的跟踪元素", 
+   "tokens": [
+    "visual", 
+    "replacetraceelement"
+   ]
+  }, 
+  {
+   "description": "保持相同大小", 
+   "guid": "04afcb66-352f-495e-83b4-bed29eeb4ecf", 
+   "name": "保持相同大小", 
+   "tokens": [
+    "visual", 
+    "makesamesize"
+   ]
+  }, 
+  {
+   "description": "保持相同宽度", 
+   "guid": "c48e34a3-bcae-44e0-9241-1289b50c587b", 
+   "name": "保持相同宽度", 
+   "tokens": [
+    "visual", 
+    "makesamewidth"
+   ]
+  }, 
+  {
+   "description": "保持相同的高度", 
+   "guid": "dd45c127-14d2-47e3-90ec-d0ffb009a6f5", 
+   "name": "保持相同的高度", 
+   "tokens": [
+    "visual", 
+    "makesameheigth"
+   ]
+  }, 
+  {
+   "description": "", 
+   "guid": "04f25b75-8ebf-41f2-86b5-8a7b4153c1d2", 
+   "name": "全选", 
+   "tokens": [
+    "visual", 
+    "selectall"
+   ]
+  }, 
+  {
+   "description": "减少垂直间距", 
+   "guid": "4d512295-a029-4280-8a6a-631fcb039ec2", 
+   "name": "减少垂直间距", 
+   "tokens": [
+    "visual", 
+    "decreaseverticalspacing"
+   ]
+  }, 
+  {
+   "description": "删除垂直间距", 
+   "guid": "9cfbb0ff-e581-455c-99db-60b82eeae22b", 
+   "name": "删除垂直间距", 
+   "tokens": [
+    "visual", 
+    "removeverticalspacing"
+   ]
+  }, 
+  {
+   "description": "删除水平间距", 
+   "guid": "f91bb024-d4c8-49af-8174-d61dfbb3fc0d", 
+   "name": "删除水平间距", 
+   "tokens": [
+    "visual", 
+    "removehorizontalspacing"
+   ]
+  }, 
+  {
+   "description": "移除组并释放所有包含的元素", 
+   "guid": "cdb9d5f2-91f6-4e67-b031-a27f5d6abc7e", 
+   "name": "取消组", 
+   "tokens": [
+    "visual", 
+    "ungroupelements"
+   ]
+  }, 
+  {
+   "description": "切换可视元素列表编辑器的可见性", 
+   "guid": "929e7f56-d41d-4b3b-a6c3-d21507aace8b", 
+   "name": "可视元素列表", 
+   "tokens": [
+    "visual", 
+    "showelementlist"
+   ]
+  }, 
+  {
+   "description": "右对齐", 
+   "guid": "55c24226-d2d4-440f-a29a-17fec9cfc21d", 
+   "name": "右对齐", 
+   "tokens": [
+    "visual", 
+    "alignright"
+   ]
+  }, 
+  {
+   "description": "显示在当前打开的视图中允许更新视图参数的对话框.当视图界面改变时可能需要.", 
+   "guid": "219bb226-08d1-428d-95ce-fc83379c8839", 
+   "name": "在<无>中更新框架参数", 
+   "tokens": [
+    "visual", 
+    "updateframeparameterscurrent"
+   ]
+  }, 
+  {
+   "description": "命令采用已经改变的语言模型更新全部视图.请小心使用,因为如果库有所变化,则可能删除一些视图属性.", 
+   "guid": "c48013da-64ff-4095-847c-ceb603e76efd", 
+   "name": "在可视化视图中合并语言模型", 
+   "tokens": [
+    "visual", 
+    "mergelanguagemodel"
+   ]
+  }, 
+  {
+   "description": "垂直居中对齐", 
+   "guid": "c5f3a3e1-0cb7-4410-acc2-b823d593f198", 
+   "name": "垂直居中对齐", 
+   "tokens": [
+    "visual", 
+    "alignverticalcenter"
+   ]
+  }, 
+  {
+   "description": "增加垂直间距", 
+   "guid": "8d2938fa-9778-4534-ba80-625f5025f330", 
+   "name": "增加垂直间距", 
+   "tokens": [
+    "visual", 
+    "increaseverticalspacing"
+   ]
+  }, 
+  {
+   "description": "增加水平距离", 
+   "guid": "0346538f-3106-42fa-b8f0-b0277244a346", 
+   "name": "增加水平距离", 
+   "tokens": [
+    "visual", 
+    "increasehorizontalspacing"
+   ]
+  }, 
+  {
+   "description": "将所选元素的选项卡索引重置为默认值", 
+   "guid": "dd306b9b-15c6-4f44-8b86-57063c94ec04", 
+   "name": "复位到默认", 
+   "tokens": [
+    "visual", 
+    "resettaborder"
+   ]
+  }, 
+  {
+   "description": "大小格", 
+   "guid": "dec2e780-98e8-4f46-9bdc-d02b70de060e", 
+   "name": "大小格", 
+   "tokens": [
+    "visual", 
+    "sizetogrid"
+   ]
+  }, 
+  {
+   "description": "对齐线", 
+   "guid": "86eccc46-ac99-4a66-b012-a386332a65ff", 
+   "name": "对齐线", 
+   "tokens": [
+    "visual", 
+    "assistpositionsnap"
+   ]
+  }, 
+  {
+   "description": "将一个置尾", 
+   "guid": "83c320b9-49ca-4fbc-846a-1f685656c6ae", 
+   "name": "将一个置尾", 
+   "tokens": [
+    "visual", 
+    "sendonetoback"
+   ]
+  }, 
+  {
+   "description": "将一个置首", 
+   "guid": "88a3e153-32c6-4cf6-bc37-ec58877a4852", 
+   "name": "将一个置首", 
+   "tokens": [
+    "visual", 
+    "bringonetofront"
+   ]
+  }, 
+  {
+   "description": "左对齐", 
+   "guid": "c2b51fc7-2f6a-4035-9e17-15a524fe49c0", 
+   "name": "左对齐", 
+   "tokens": [
+    "visual", 
+    "alignleft"
+   ]
+  }, 
+  {
+   "description": "显示在此框架中的所选视图配置的对话框", 
+   "guid": "0042d1d1-ef6f-42f2-840d-baf6bd55545f", 
+   "name": "开放式框架配置", 
+   "tokens": [
+    "visual", 
+    "frameselection"
+   ]
+  }, 
+  {
+   "description": "插入元素控制XYChart...", 
+   "guid": "1eae6b5d-df41-48c2-a1f7-ac1528947c01", 
+   "name": "插入元素控制XYChart...", 
+   "tokens": [
+    "visual", 
+    "xychartwizard"
+   ]
+  }, 
+  {
+   "description": "插入元素控制跟踪...", 
+   "guid": "f2cd205f-eb42-4261-a439-1ea69934332a", 
+   "name": "插入元素控制跟踪...", 
+   "tokens": [
+    "visual", 
+    "tracewizard"
+   ]
+  }, 
+  {
+   "description": "插入用于滚动报警的元素...", 
+   "guid": "c4ad8f39-d56b-401c-a801-6af1b2293254", 
+   "name": "插入用于滚动报警的元素...", 
+   "tokens": [
+    "visual", 
+    "alarmbannerwizard"
+   ]
+  }, 
+  {
+   "description": "插入用于趋势控制的元素...", 
+   "guid": "543524b5-7950-4c6f-9589-e5913ae3d403", 
+   "name": "插入用于趋势控制的元素...", 
+   "tokens": [
+    "visual", 
+    "trendwizard"
+   ]
+  }, 
+  {
+   "description": "显示被选到框架元素中的允许更新视图参数的对话框.此命令将更新在当前工程中的全部命令.当视图界面改变时可能需要.", 
+   "guid": "071b20a3-cd40-446d-896d-857833e0e46c", 
+   "name": "更新全部框架参数", 
+   "tokens": [
+    "visual", 
+    "updateframeparametersall"
+   ]
+  }, 
+  {
+   "description": "更新在工具栏中显示的视图元素.", 
+   "guid": "9ef5e7a1-8c81-456e-966d-73dd73379102", 
+   "name": "更新工具箱", 
+   "tokens": [
+    "visual", 
+    "updatetoolbox"
+   ]
+  }, 
+  {
+   "description": "水平居中对齐", 
+   "guid": "66bca50b-1c93-4879-9832-b975e60d7742", 
+   "name": "水平居中对齐", 
+   "tokens": [
+    "visual", 
+    "alignhorizontalcenter"
+   ]
+  }, 
+  {
+   "description": "没有辅助", 
+   "guid": "70332b79-fa7a-4dc4-956e-0d3b964c3f8c", 
+   "name": "没有辅助", 
+   "tokens": [
+    "visual", 
+    "assistpositionno"
+   ]
+  }, 
+  {
+   "description": "没有选择", 
+   "guid": "85a0df4a-d8eb-4790-8f05-70b0b54458ed", 
+   "name": "没有选择", 
+   "tokens": [
+    "visual", 
+    "selectnone"
+   ]
+  }, 
+  {
+   "description": "添加一个新的类别节点作为当前选定节点的子节点。", 
+   "guid": "56997173-c88d-4cd7-a7d9-8be53787fd47", 
+   "name": "添加一个子类别节点", 
+   "tokens": [
+    "visual", 
+    "addcategoryaschildhierarchicalpropertiesnode"
+   ]
+  }, 
+  {
+   "description": "添加一个新节点作为当前选定节点的子节点。", 
+   "guid": "32931f24-f0b5-4506-abf7-e03dcfa1b210", 
+   "name": "添加一个子节点", 
+   "tokens": [
+    "visual", 
+    "addchildhierarchicalpropertiesnode"
+   ]
+  }, 
+  {
+   "description": "此命令将一个新的类别节点添加到列表的末尾。", 
+   "guid": "f9fc6a36-951e-42c3-9cbd-743ebbc2dc8a", 
+   "name": "添加一个类别节点", 
+   "tokens": [
+    "visual", 
+    "addcategoryhierarchicalpropertiesnode"
+   ]
+  }, 
+  {
+   "description": "执行该命令会增加开发可视元素所必需的库", 
+   "guid": "8de1b44e-6065-4fd8-8e10-490ea0168f7c", 
+   "name": "添加可视元素开发库", 
+   "tokens": [
+    "visual", 
+    "insertvisuelementplaceholders"
+   ]
+  }, 
+  {
+   "description": "对当前画面添加新的可视化元素", 
+   "guid": "db667872-2795-444c-9846-2b4e579026c4", 
+   "name": "添加可视化元素", 
+   "tokens": [
+    "visual", 
+    "addelement"
+   ]
+  }, 
+  {
+   "description": "该命令将所有标准属性节点添加到列表的末尾。", 
+   "guid": "afdc7226-c9a5-49ee-b71a-c7bbe297e485", 
+   "name": "添加所有标准属性节点", 
+   "tokens": [
+    "visual", 
+    "addallstandardpropertieshierarchicalpropertiesnode"
+   ]
+  }, 
+  {
+   "description": "添加一个元素描述，当这个元素被选中时，它将显示在属性视图中。", 
+   "guid": "25769029-caf9-40cd-bfd8-a71de641e77a", 
+   "name": "添加接口描述", 
+   "tokens": [
+    "visual", 
+    "addhierarchicaldescriptionnode"
+   ]
+  }, 
+  {
+   "description": "该命令将一个新的标准属性节点添加到列表的末尾。", 
+   "guid": "4fe79058-bd27-457a-b060-d3939399b324", 
+   "name": "添加标准属性节点", 
+   "tokens": [
+    "visual", 
+    "addstandardpropertyhierarchicalpropertiesnode"
+   ]
+  }, 
+  {
+   "description": "该命令将一个新节点添加到列表的末尾。", 
+   "guid": "6442ceef-6a51-4822-b791-d366755bd7a5", 
+   "name": "添加节点", 
+   "tokens": [
+    "visual", 
+    "addhierarchicalpropertiesnode"
+   ]
+  }, 
+  {
+   "description": "激活键盘使用。当它被激活时，那么可视化将消耗所有的键盘事件，因此当可视化编辑器处于激活和在线模式时，命令快捷键将不会被执行。", 
+   "guid": "e4c98a2e-d47a-4e78-9fc5-3e63abfac7ff", 
+   "name": "激活热键用法", 
+   "tokens": [
+    "visual", 
+    "activatekeyboardusage"
+   ]
+  }, 
+  {
+   "description": "打开引用的可视化。", 
+   "guid": "fd8c7961-b799-47f5-84ae-23b396ba8b97", 
+   "name": "点击参考可视化", 
+   "tokens": [
+    "visual", 
+    "gotoreferencedvisu"
+   ]
+  }, 
+  {
+   "description": "触发热键编辑器的可视性", 
+   "guid": "5417f0ca-4f99-40ee-976f-f065b5b4e5e3", 
+   "name": "热键编辑器", 
+   "tokens": [
+    "visual", 
+    "showhotkeys"
+   ]
+  }, 
+  {
+   "description": "从V3.5 SP2开始,用新的跟踪元素替换V3.5 SP1以下的跟踪元素,用于项目的所有可视化", 
+   "guid": "782e71ea-2b8d-400e-a630-404a21fc699b", 
+   "name": "用新的元素替换旧的跟踪元素,以实现项目的所有可视化", 
+   "tokens": [
+    "visual", 
+    "replacealltraceelement"
+   ]
+  }, 
+  {
+   "description": "切换界面编辑器的可视性", 
+   "guid": "37463fcb-a66a-4c0e-b7d6-409ca3093de0", 
+   "name": "界面编辑器", 
+   "tokens": [
+    "visual", 
+    "showinterface"
+   ]
+  }, 
+  {
+   "description": "将选中的元素移动到制表符顺序中的某个位置", 
+   "guid": "83f433cf-0e9d-4aa5-84cb-28fd5885c5b9", 
+   "name": "移动到位置...", 
+   "tokens": [
+    "visual", 
+    "movetotaborder"
+   ]
+  }, 
+  {
+   "description": "将元素移动到内容区域", 
+   "guid": "8c240874-f956-4b77-8158-c3991459254c", 
+   "name": "移动到内容区域", 
+   "tokens": [
+    "visual", 
+    "movetocontentarea"
+   ]
+  }, 
+  {
+   "description": "移除不支持的可视化高亮属性", 
+   "guid": "9b42b33d-28dc-4634-b160-ed979d93ad43", 
+   "name": "移除不支持的可视化高亮属性", 
+   "tokens": [
+    "visual", 
+    "removenotsupportedtargetvisulightproperties"
+   ]
+  }, 
+  {
+   "description": "将选择的元素一起放入一个组中", 
+   "guid": "42bea518-f57d-4e91-9d13-60e3f161cd70", 
+   "name": "组", 
+   "tokens": [
+    "visual", 
+    "groupelements"
+   ]
+  }, 
+  {
+   "description": "编辑趋势记录", 
+   "guid": "0cadca12-2cbe-435d-bb5a-51e7bd41abee", 
+   "name": "编辑趋势记录", 
+   "tokens": [
+    "visual", 
+    "trendrecordingconfig"
+   ]
+  }, 
+  {
+   "description": "网格", 
+   "guid": "29f0a073-0672-4c1b-b9f9-3c60cf7f2432", 
+   "name": "网格", 
+   "tokens": [
+    "visual", 
+    "assistpositiongrid"
+   ]
+  }, 
+  {
+   "description": "置尾", 
+   "guid": "6332a20e-28fe-4a3b-9034-85d4916ce35f", 
+   "name": "置尾", 
+   "tokens": [
+    "visual", 
+    "sendtoback"
+   ]
+  }, 
+  {
+   "description": "置首", 
+   "guid": "85b7c280-5694-4dcb-919e-04d29148d982", 
+   "name": "置首", 
+   "tokens": [
+    "visual", 
+    "bringtofront"
+   ]
+  }, 
+  {
+   "description": "配置视图的背景", 
+   "guid": "df2eb79b-29da-4c1c-84af-cc6d606890cc", 
+   "name": "背景", 
+   "tokens": [
+    "visual", 
+    "backgroundbitmapcolor"
+   ]
+  }, 
+  {
+   "description": "将当前选定的节点上移一个位置。", 
+   "guid": "6d28aba9-b063-48b7-97da-f0ea1d848d82", 
+   "name": "节点向上移动", 
+   "tokens": [
+    "visual", 
+    "moveselectednodeuphierarchicalpropertieseditorcommand"
+   ]
+  }, 
+  {
+   "description": "将当前选定的节点向下移动一个位置。", 
+   "guid": "c75ae092-3907-4e33-baac-d3399c740031", 
+   "name": "节点向下移动", 
+   "tokens": [
+    "visual", 
+    "moveselectednodedownhierarchicalpropertieseditorcommand"
+   ]
+  }, 
+  {
+   "description": "通过插入元素确认报警...", 
+   "guid": "31468817-3cf4-4002-8383-a935452d6a05", 
+   "name": "通过插入元素确认报警...", 
+   "tokens": [
+    "visual", 
+    "alarmtablewizard"
+   ]
+  }, 
+  {
+   "description": "配置XYChart设置...", 
+   "guid": "aa1e3c42-c4b6-40c9-b80c-f68616d33baa", 
+   "name": "配置XYChart设置...", 
+   "tokens": [
+    "visual", 
+    "xychartconfig"
+   ]
+  }, 
+  {
+   "description": "配置趋势的显示设置", 
+   "guid": "7cf1acce-5a50-479b-8c25-8c1e2e1088fa", 
+   "name": "配置趋势的显示设置", 
+   "tokens": [
+    "visual", 
+    "trendconfig"
+   ]
+  }, 
+  {
+   "description": "配置跟踪...", 
+   "guid": "c2737c84-cead-4248-9229-7325cbc9141e", 
+   "name": "配置跟踪...", 
+   "tokens": [
+    "visual", 
+    "traceconfig"
+   ]
+  }, 
+  {
+   "description": "将选定的框架元素调整为默认大小", 
+   "guid": "41d4057b-4228-41de-a57a-b6529b96fc38", 
+   "name": "重置框架大小", 
+   "tokens": [
+    "visual", 
+    "frameresize"
+   ]
+  }, 
+  {
+   "description": "降低水平间距", 
+   "guid": "6ee794bf-fb33-47ee-a62e-206dd85e5992", 
+   "name": "降低水平间距", 
+   "tokens": [
+    "visual", 
+    "decreasehorizontalspacing"
+   ]
+  }, 
+  {
+   "description": "将当前应用的所有强制表达式插入到当前的监视列表中", 
+   "guid": "8ee117eb-a14c-48f2-aef6-e44c5b2a6931", 
+   "name": "将所有的强制添加到监视列表中", 
+   "tokens": [
+    "watchlist", 
+    "addallforces"
+   ]
+  }, 
+  {
+   "description": "添加查看", 
+   "guid": "88888888-30f6-49b9-808d-245fe8ca7d76", 
+   "name": "添加查看", 
+   "tokens": [
+    "watchlist", 
+    "addchildnodetowatch"
+   ]
+  }, 
+  {
+   "description": "解除强制那些在强制列表中选择的所有值. 该值将被恢复.", 
+   "guid": "2187ff0a-d565-452b-a410-c261bd0109ca", 
+   "name": "解除和恢复所有所选值", 
+   "tokens": [
+    "watchlist", 
+    "unforce_all_selected_restore_values"
+   ]
+  }, 
+  {
+   "description": "解除强制那些在强制列表中所有选择的值. 当前值将被保留.", 
+   "guid": "0aacf5ae-1d29-4140-9922-144527cdb752", 
+   "name": "解除强制并保持所有所选值", 
+   "tokens": [
+    "watchlist", 
+    "unforce_all_selected_keep_values"
+   ]
+  }, 
+  {
+   "description": "将最重要的停靠视图重置为其默认位置", 
+   "guid": "1ce18f41-c205-4cb3-a28d-0b8fc7a794ad", 
+   "name": "重置窗口布局", 
+   "tokens": [
+    "window", 
+    "resetwindowlayout"
+   ]
+  }
+ ]
+}

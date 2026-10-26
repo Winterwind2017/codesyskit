@@ -77,6 +77,17 @@ def main():
         body = source.split("def %s(" % command, 1)[1].split("\ndef ", 1)[0]
         check("%s guards the project root" % command, "mutable_node(" in body)
     check("api inventory present", os.path.exists(os.path.join(ROOT, "docs", "API-SURFACE.md")))
+    check("command inventory present", os.path.exists(os.path.join(ROOT, "docs", "COMMANDS.md")))
+
+    # a duplicated definition silently shadows the newer one (measured: three copies of a block)
+    import collections
+    import re as _re
+    names = [match.group(1) for match in
+             _re.finditer(r"(?m)^def (cmd_[A-Za-z0-9_]+)\(", source)]
+    duplicates = {name: count for name, count in
+                  collections.Counter(names).items() if count > 1}
+    check("no duplicated command definitions", not duplicates,
+          ", ".join(sorted(duplicates)) if duplicates else "all unique")
     check("online uses the device simulation flag",
           "node.set_simulation_mode(bool(enabled))" in source)
     check("online keeps one session per project", 'ONLINE = {"key": None, "app": None}' in source)
