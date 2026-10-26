@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codesyskit"
+version = "0.1.0"
+description = "Resident, token-authenticated service for CODESYS 3.5 scripting (no COM registration)"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Winterwind2017" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+codesyskit = "codesyskit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
